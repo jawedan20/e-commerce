@@ -1,4 +1,6 @@
 import Head from "next/head";
+import Category from "../components/Category";
+import Categories from "../components/Categories";
 import { Navbar } from "../components/Navbar";
 import styles from "../styles/Home.module.css";
 
@@ -11,6 +13,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
+      <Category />
+      <Categories />
     </div>
   );
 }
