@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import pop from "../styles/pop.module.css";
 
-const NotifPop = () => {
+const PopCart = () => {
   return (
     <div className={pop.box}>
       <div className={pop.head}>
@@ -33,4 +33,4 @@ const NotifPop = () => {
   );
 };
 
-export default NotifPop;
+export default PopCart;

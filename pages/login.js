@@ -7,12 +7,6 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 export default function login() {
   return (
     <div className={styleLogin.container}>
-      <Link href="/">
-        <a className={styleLogin.homeNav}>
-          <ArrowBackIcon />
-          HOME
-        </a>
-      </Link>
       <div className={styleLogin.image}>
         <Image
           src="/shop.svg"

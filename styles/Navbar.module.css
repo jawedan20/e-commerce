@@ -1,6 +1,6 @@
 .navbar {
   padding: 20px 0;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px 0 rgba(14, 13, 13, 0.2);
   cursor: default;
 }
 .brand {
@@ -68,10 +68,11 @@
   padding: 10px;
   font-size: 0.8rem;
   color: #666666;
+  cursor:pointer;
+  font-weight: 500 ;
 }
-.link_user:hover {
-  background: #f8f8f8;
-  border-radius: 5px;
+.link_user:hover{
+  color: #8d8d8d;
 }
 .guest {
   display: flex;

@@ -1,17 +1,19 @@
 .box {
   top: 73px;
-  right: 100px;
+  right: 5vw;
   display: flex;
   flex-direction: column;
   position: absolute;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
-  width: 350px;
+  width: 400px;
   background: #ffff;
   z-index: 99;
   color: #5d5e5f;
   padding:0 10px;
   border-radius: 10px;
+  cursor: default;
 }
+
 .head {
   padding: 10px 0;
   display: flex;
@@ -40,25 +42,11 @@
   font-size: 0.7rem;
 }
 .price {
-  color: #f7b364;
+  color: #f37020;
   font-weight: 500;
 }
 .link{
   font-size: 0.8rem;
   font-weight: 600;
   color:#0070f3;
-}
-.NotifPop {
-  display: none;
-  transition: 0.75 ease-in-out 11s;
-}
-.NotifPop:hover {
-  display: block;
-}
-#cart:hover > .NotifPop {
-  display: block;
-  transition: all ease-in-out 10s;
-}
-#cart:hover +  #opacity{
-  display:block;
 }

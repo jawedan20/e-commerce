@@ -7,12 +7,6 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 const register = () => {
   return (
     <div>
-      <Link href="/">
-        <a className={styleLogin.homeNav}>
-          <ArrowBackIcon />
-          HOME
-        </a>
-      </Link>
       <div className={styleLogin.container}>
         <div className={styleLogin.image}>
           <Image

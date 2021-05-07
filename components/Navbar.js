@@ -6,10 +6,12 @@ import styleNavbar from "../styles/Navbar.module.css";
 import Badge from "@material-ui/core/Badge";
 import Link from "next/link";
 import React, { useState } from "react";
-import NotifPop from "./NotifPop";
+import PopCart from "./Popcart";
+import PopNotif from "./PopNotif";
+import PopUser from "./PopUser";
 
 export const Navbar = () => {
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState("gfh");
 
   return (
     <div>
@@ -34,13 +36,8 @@ export const Navbar = () => {
                 <ShoppingCart fontSize="small" />
               </Badge>
               <div className={styleNavbar.NotifPop}>
-                <NotifPop />
+                <PopCart />
               </div>
-            </div>
-            <div className={styleNavbar.link}>
-              <Badge badgeContent={5} color="secondary">
-                <Notifications fontSize="small" />
-              </Badge>
             </div>
             {!user ? (
               <div className={styleNavbar.guest}>
@@ -52,11 +49,28 @@ export const Navbar = () => {
                 </Link>
               </div>
             ) : (
-              <div className={styleNavbar.link_user}>
-                <Avatar
-                  style={{ width: "25px", height: "25px", marginRight: "5px" }}
-                />
-                Username
+              <div className={styleNavbar.nav_link}>
+                <div id={styleNavbar.cart} className={styleNavbar.link}>
+                  <Badge badgeContent={5} color="secondary">
+                    <Notifications fontSize="small" />
+                  </Badge>
+                  <div className={styleNavbar.NotifPop}>
+                    <PopNotif />
+                  </div>
+                </div>
+                <div id={styleNavbar.cart} className={styleNavbar.link_user}>
+                  <Avatar
+                    style={{
+                      width: "25px",
+                      height: "25px",
+                      marginRight: "5px",
+                    }}
+                  />
+                  Username
+                  <div className={styleNavbar.NotifPop}>
+                    <PopUser />
+                  </div>
+                </div>
               </div>
             )}
           </div>
