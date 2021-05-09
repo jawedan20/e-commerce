@@ -1,0 +1,106 @@
+.input input::-webkit-outer-spin-button,
+.input input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.nav {
+  min-width: fit-content;
+}
+.headNav {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+.link {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}
+.sublink {
+  padding: 0 45px;
+}
+.sublink > p {
+  margin: 10px 0;
+  font-size: 0.9rem;
+}
+
+.headcontent {
+  border-bottom: 1px solid lightgray;
+  padding: 20px;
+}
+.bodyContent {
+  display: flex;
+  padding: 30px 20px;
+}
+.changeImg {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 10px lightgray;
+  padding: 15px;
+  border-radius: 5px;
+  height: fit-content;
+}
+.changeImg img {
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.changeImg button {
+  background: none;
+  border: 1px solid lightgray;
+  color: #666666;
+  padding: 10px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+.change {
+  flex: 1;
+  padding: 10px 35px;
+}
+.field {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+.label {
+  text-align: left;
+  width: 200px;
+  
+}
+.input {
+  flex: 1;
+}
+.input input {
+  color: #555555;
+  width: 100%;
+  padding: 10px 10px;
+  border: 1px solid lightgray;
+  outline: none;
+  border-radius: 5px;
+}
+.gender {
+  flex: 1;
+  min-width: fit-content;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.input input:focus {
+  border: 1px solid #0094da;
+}
+.password {
+  background: none;
+  border: 1px solid lightgray;
+  color: #666666;
+  padding: 10px;
+  margin: 10px 0;
+  cursor: pointer;
+  margin-top: 30px;
+}
+.op {
+  display: flex;
+  flex-direction: column;
+}

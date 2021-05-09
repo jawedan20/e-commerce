@@ -9,9 +9,10 @@ import React, { useState } from "react";
 import PopCart from "./Popcart";
 import PopNotif from "./PopNotif";
 import PopUser from "./PopUser";
+import Sms from "@material-ui/icons/Sms";
 
 export const Navbar = () => {
-  const [user, setUser] = useState("gfh");
+  const [user, setUser] = useState("asdsa");
 
   return (
     <div>
@@ -57,6 +58,11 @@ export const Navbar = () => {
                   <div className={styleNavbar.NotifPop}>
                     <PopNotif />
                   </div>
+                </div>
+                <div className={styleNavbar.link}>
+                  <Badge badgeContent={0}>
+                    <Sms fontSize="small" />
+                  </Badge>
                 </div>
                 <div id={styleNavbar.cart} className={styleNavbar.link_user}>
                   <Avatar

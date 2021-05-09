@@ -1,6 +1,6 @@
 .box {
-  top: 73px;
-  right: 5vw;
+  top: 60px;
+  right: 10vw;
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -15,9 +15,8 @@
 }
 
 .head {
-  padding: 10px 0;
+  padding: 15px 0;
   display: flex;
-  padding:10px;
   justify-content:space-between;
   align-items: center;
   border-bottom: 1px solid lightgray;

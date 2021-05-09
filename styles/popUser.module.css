@@ -1,6 +1,6 @@
 .box {
-  top: 73px;
-  right: 5vw;
+  top: 60px;
+  right: 3vw;
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -9,6 +9,6 @@
   background: #ffff;
   z-index: 99;
   color: #5d5e5f;
-  border-radius: 10px;
+  border-radius: 3px 3px 10px 10px;
   cursor: default;  
 }
