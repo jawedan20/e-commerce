@@ -2,6 +2,7 @@ import Avatar from "@material-ui/core/Avatar";
 import user from "../styles/user.module.css";
 import ListAltIcon from "@material-ui/icons/ListAlt";
 import Notifications from "@material-ui/icons/Notifications";
+import Link from "next/link";
 
 const NavUser = () => {
   const mystyle = {
@@ -26,9 +27,15 @@ const NavUser = () => {
             <h5>My Account</h5>
           </div>
           <div id="sublink" className={user.sublink}>
-            <p>Personal Profile</p>
-            <p>Addres List</p>
-            <p>Bank Account</p>
+            <Link href="/user/profile">
+              <p>Personal Profile</p>
+            </Link>
+            <Link href="/user/address">
+              <p>Addres List</p>
+            </Link>
+            <Link href="#">
+              <p>Bank Account</p>
+            </Link>
           </div>
         </div>
         <div className={user.link}>

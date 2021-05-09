@@ -1,23 +1,14 @@
 import NavUser from "./NavUser";
+import layout from "../styles/layout.module.css"
+
 
 const LayoutUser = ({ children }) => {
-  const style = {
-    display: "flex",
-    color: "#666666",
-  };
-  const content = {
-    flex: "1",
-    display: "flex",
-    flexDirection: "column",
-    background: "white",
-    borderRadius: "10px",
-    boxShadow: "0 0 10px lightgray",
-    marginLeft: "20px ",
-  };
+  
+  
   return (
-    <div style={style}>
+    <div className={layout.components}>
       <NavUser />
-      <div style={content}>{children}</div>
+      <div className={layout.content}>{children}</div>
     </div>
   );
 };

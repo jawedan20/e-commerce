@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { Navbar } from "../components/Navbar";
-import Container from "@material-ui/core/Container"
+import layout from "../styles/layout.module.css"
 
 const Layout = ({ children }) => {
   return (
@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar/>
-      <Container style={{ marginTop: "120px"}}>{children}</Container>
+      <div className={layout.children}>{children}</div>
     </div>
   );
 };
