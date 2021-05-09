@@ -1,0 +1,48 @@
+.headBank {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid lightgray;
+  padding: 15px 20px;
+}
+.head {
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.head button {
+  color: white;
+  background: #0094da;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+.head p {
+  font-size: 0.8rem;
+}
+.bank {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 25px 10px;
+  padding: 15px;
+  box-shadow: 0 0 10px rgb(235, 235, 235);
+}
+.bank button {
+  border: 1px solid rgb(185, 185, 185);
+  color: rgb(185, 185, 185);
+  background: none;
+  outline: none;
+  padding: 7px 15px;
+  border-radius: 10px;
+}
+.bankdiv {
+  display: flex;
+  align-items: center;
+}
+.body{
+    padding-bottom:20px;
+}

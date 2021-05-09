@@ -6,6 +6,7 @@
 
 .nav {
   min-width: fit-content;
+  width:200px;
 }
 .headNav {
   display: flex;

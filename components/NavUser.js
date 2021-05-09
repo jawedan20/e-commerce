@@ -17,7 +17,7 @@ const NavUser = () => {
         <Avatar style={{ marginRight: "10px" }} />
         <div>
           <h4>username</h4>
-          <a href="#">Edit Profile</a>
+          <a href="/user/profile">Edit Profile</a>
         </div>
       </div>
       <div className={user.bodyNav}>
@@ -33,7 +33,7 @@ const NavUser = () => {
             <Link href="/user/address">
               <p>Addres List</p>
             </Link>
-            <Link href="#">
+            <Link href="/user/bank">
               <p>Bank Account</p>
             </Link>
           </div>
