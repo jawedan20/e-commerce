@@ -59,7 +59,7 @@
   align-items: center;
 }
 .link {
-  padding: 15px 5px;
+  padding: 15px 8px;
   cursor: pointer;
   margin-right: 10px;
   color: #666666;
@@ -73,10 +73,10 @@
   align-items: center;
   font-size: 0.8rem;
   padding:  10px;
+  padding-left: 15px;
   color: #666666;
   cursor: pointer;
   font-weight: 500;
-  border-left: 1px solid #ecedee;
 }
 .link_user:hover {
   color: #8d8d8d;

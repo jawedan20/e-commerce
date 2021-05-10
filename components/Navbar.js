@@ -69,10 +69,12 @@ export const Navbar = () => {
                     style={{
                       width: "25px",
                       height: "25px",
-                      marginRight: "5px",
+                      marginRight: "10px",
                     }}
                   />
-                  Username
+                  <h3 style={{ fontWeight: "400", color: "#66666" }}>
+                    Username
+                  </h3>
                   <div className={styleNavbar.NotifPop}>
                     <PopUser />
                   </div>

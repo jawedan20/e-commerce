@@ -8,7 +8,7 @@ const address = () => {
   return (
     <LayoutUser>
       <div className={Address.headAddress}>
-        <h3>Personal Information</h3>
+        <h3>Address List</h3>
         <button>Add New Address</button>
       </div>
       <div className={Address.bodyAddress}>
