@@ -1,0 +1,97 @@
+.Container {
+  padding: 0 50px;
+  margin-bottom: 100px;
+  color: #505050;
+}
+.all {
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 6px rgba(161, 161, 161, 0.308);
+  border-radius: 10px;
+  padding: 15px 30px;
+}
+.all p {
+  margin-left: 20px;
+  font-weight: 500;
+  font-size:0.95rem;
+} 
+.store {
+  box-shadow: 0 0 6px rgba(161, 161, 161, 0.308);
+  border-radius: 10px;
+  margin: 25px 0;
+}
+.head {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(206, 206, 206, 0.514);
+  padding: 15px 30px;
+}
+
+.body {
+  display: flex;
+  align-items: center;
+  padding: 15px 30px;
+}
+.body input {
+  margin-right: 20px;
+}
+.title {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 20px;
+}
+.title p{
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+.title i{
+  color: #7f2733;
+}
+.title span{
+  margin-bottom:8px;
+  margin-top:3px;
+  color: rgb(167, 167, 167);
+  font-size: 0.85rem;
+}
+.title h5{
+  color: #f37020;
+  font-size: 0.9rem;
+}
+.right{
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.right a {
+  margin-left:20px;
+  cursor: pointer;
+}
+.count {
+  display: flex;
+  align-items: center;
+  border: 1px solid lightgray;
+  width: fit-content;
+  border-radius: 10px;
+  margin-top :10px; 
+}
+.count span{
+  padding: 8px 10px;
+  cursor: pointer;
+}
+.count h4{
+  margin:0 20px
+}
+.action {
+  display: flex;
+  align-items: center;
+  justify-content:flex-end;
+}
+
+@media (max-width:800px){
+    .Container{
+      padding: 0 15px;
+    }
+}

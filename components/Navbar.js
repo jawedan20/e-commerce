@@ -33,9 +33,11 @@ export const Navbar = () => {
           </div>
           <div className={styleNavbar.nav_link}>
             <div id={styleNavbar.cart} className={styleNavbar.link}>
-              <Badge badgeContent={5} color="secondary">
-                <ShoppingCart fontSize="small" />
-              </Badge>
+              <Link href="/cart">
+                <Badge badgeContent={5} color="secondary">
+                  <ShoppingCart fontSize="small" />
+                </Badge>
+              </Link>
               <div className={styleNavbar.NotifPop}>
                 <PopCart />
               </div>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Avatar from "@material-ui/core/Avatar";
 import { useState } from "react";
 import popUser from "../styles/popUser.module.css";
@@ -11,10 +12,12 @@ const PopUser = () => {
   return (
     <div className={popUser.box}>
       <div className={popUser.header}>
-        <div className={popUser.head}>
-          <Avatar style={{ marginRight: "5px" }} />
-          <h3>username</h3>
-        </div>
+        <Link href="/user/profile">
+          <div className={popUser.head}>
+            <Avatar style={{ marginRight: "5px" }} />
+            <h3>username</h3>
+          </div>
+        </Link>
         <div className={popUser.head}>
           <Avatar style={{ marginRight: "5px" }}>
             <Store />
