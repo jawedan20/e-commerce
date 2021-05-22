@@ -16,7 +16,7 @@
   box-shadow: 0 0 10px lightgray;
   margin-left: 20px;
 }
-@media (max-width: 1200px) {
+@media (max-width: 1000px) {
   .children {
     padding: 0;
   }

@@ -10,6 +10,7 @@ import PopCart from "./Popcart";
 import PopNotif from "./PopNotif";
 import PopUser from "./PopUser";
 import Sms from "@material-ui/icons/Sms";
+import PopSearch from "./PopSearch";
 
 export const Navbar = () => {
   const [user, setUser] = useState("asdsa");
@@ -30,6 +31,9 @@ export const Navbar = () => {
                 className={styleNavbar.search_icon}
               />
             </button>
+            <div className={styleNavbar.PopSearch}>
+              <PopSearch />
+            </div>
           </div>
           <div className={styleNavbar.nav_link}>
             <div id={styleNavbar.cart} className={styleNavbar.link}>

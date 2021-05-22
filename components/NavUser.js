@@ -2,6 +2,7 @@ import Avatar from "@material-ui/core/Avatar";
 import user from "../styles/user.module.css";
 import ListAltIcon from "@material-ui/icons/ListAlt";
 import Notifications from "@material-ui/icons/Notifications";
+import ActiveLink from "./ActiveLink/ActiveLink";
 import Link from "next/link";
 
 const NavUser = () => {
@@ -27,22 +28,24 @@ const NavUser = () => {
             <h5>My Account</h5>
           </div>
           <div id="sublink" className={user.sublink}>
-            <Link href="/user/profile">
-              <p>Personal Profile</p>
-            </Link>
-            <Link href="/user/address">
-              <p>Addres List</p>
-            </Link>
-            <Link href="/user/bank">
-              <p>Bank Account</p>
-            </Link>
+            <ActiveLink href="/user/profile">
+              <p className={user.active}>Personal Profile</p>
+            </ActiveLink>
+            <ActiveLink href="/user/address">
+              <p className={user.active}>Addres List</p>
+            </ActiveLink>
+            <ActiveLink href="/user/bank">
+              <p className={user.active}>Bank Account</p>
+            </ActiveLink>
           </div>
         </div>
         <div className={user.link}>
           <Avatar style={mystyle}>
             <ListAltIcon fontSize="small" />
           </Avatar>
-          <h5>My Order</h5>
+          <Link href="/user/order/all" style={{cursor:"pointer"}}>
+            <h5>My Order</h5>
+          </Link>
         </div>
         <div className={user.link}>
           <Avatar style={mystyle}>

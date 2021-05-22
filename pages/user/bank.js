@@ -7,7 +7,7 @@ const address = () => {
   return (
     <LayoutUser>
       <div className={bank.headBank}>
-        <h3>Personal Information</h3>
+        <h3>Bank Account</h3>
       </div>
       <div className={bank.body}>
         <div className={bank.head}>

@@ -19,16 +19,14 @@
   align-items: center;
   margin: 10px;
 }
-.sublink {
-  padding: 0 45px;
-}
-.sublink > p {
+.active {
+  padding-left: 45px;
   margin: 10px 0;
   font-size: 0.9rem;
   cursor: pointer;
 }
-.sublink > p:hover {
-  color: #0094da;
+.active:hover {
+  color: #4999f5;
 }
 
 .headcontent {

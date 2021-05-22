@@ -1,0 +1,32 @@
+.head {
+  border-bottom: 1px solid lightgray;
+  padding: 20px;
+}
+.subHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+}
+.Navlink {
+  display: flex;
+  font-weight: 600;
+
+}
+.search:focus-within{
+  border: 1px solid #0094da;
+}
+.search {
+  display: flex;
+  align-items: center;
+  border: 1px solid lightgray;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background-color: #f0f0f0f0;
+}
+.search input {
+  border: none;
+  outline: none;
+  background: none;
+  margin-left: 7px;
+}
