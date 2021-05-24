@@ -1,5 +1,5 @@
 import user from "../../styles/user.module.css";
-import LayoutUser from "../../components/LayoutUser";
+import LayoutUser from "../../components/Layout/LayoutUser";
 
 const profile = () => {
   return (

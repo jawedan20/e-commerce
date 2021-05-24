@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import pop from "../styles/pop.module.css";
+import pop from "../../styles/pop.module.css";
 
 const PopCart = () => {
   return (

@@ -1,8 +1,8 @@
 import Avatar from "@material-ui/core/Avatar";
-import user from "../styles/user.module.css";
+import user from "../../styles/user.module.css";
 import ListAltIcon from "@material-ui/icons/ListAlt";
 import Notifications from "@material-ui/icons/Notifications";
-import ActiveLink from "./ActiveLink/ActiveLink";
+import ActiveLink from "../ActiveLink/ActiveLink";
 import Link from "next/link";
 
 const NavUser = () => {
@@ -43,7 +43,7 @@ const NavUser = () => {
           <Avatar style={mystyle}>
             <ListAltIcon fontSize="small" />
           </Avatar>
-          <Link href="/user/order/all" style={{cursor:"pointer"}}>
+          <Link href="/user/order/all" >
             <h5>My Order</h5>
           </Link>
         </div>

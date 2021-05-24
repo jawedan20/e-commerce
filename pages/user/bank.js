@@ -1,4 +1,4 @@
-import LayoutUser from "../../components/LayoutUser";
+import LayoutUser from "../../components/Layout/LayoutUser";
 import bank from "../../styles/bank.module.css";
 import AccountBalance from "@material-ui/icons/AccountBalance";
 import Avatar from "@material-ui/core/Avatar";

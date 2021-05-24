@@ -1,5 +1,5 @@
 import Link from "next/link";
-import popNotif from "../styles/popNotif.module.css";
+import popNotif from "../../styles/popNotif.module.css";
 
 const PopNotif = () => {
   return (

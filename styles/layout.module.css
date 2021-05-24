@@ -15,9 +15,14 @@
   border-radius: 10px;
   box-shadow: 0 0 10px lightgray;
   margin-left: 20px;
+  margin-right: 20px;
 }
-@media (max-width: 1000px) {
+@media (max-width: 800px) {
   .children {
+   margin-top: 58px;
     padding: 0;
+  }
+  .content{
+    margin: 0;
   }
 }

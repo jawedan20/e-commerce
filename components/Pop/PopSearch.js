@@ -1,9 +1,9 @@
-import pop from "../styles/popSearch.module.css"
+import pop from "../../styles/popSearch.module.css"
 
 const PopSearch = () => {
     return (
         <div className={pop.box}>
-            asdasdasdasd
+            This is Pop Search user &#128514;	
         </div>
     )
 }

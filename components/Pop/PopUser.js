@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Avatar from "@material-ui/core/Avatar";
 import { useState } from "react";
-import popUser from "../styles/popUser.module.css";
+import popUser from "../../styles/popUser.module.css";
 import Settings from "@material-ui/icons/Settings";
 import Power from "@material-ui/icons/PowerSettingsNew";
 import List from "@material-ui/icons/ListAlt";

@@ -2,15 +2,15 @@ import Avatar from "@material-ui/core/Avatar";
 import Notifications from "@material-ui/icons/Notifications";
 import Search from "@material-ui/icons/Search";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
-import styleNavbar from "../styles/Navbar.module.css";
+import styleNavbar from "../../styles/Navbar.module.css";
 import Badge from "@material-ui/core/Badge";
 import Link from "next/link";
 import React, { useState } from "react";
-import PopCart from "./Popcart";
-import PopNotif from "./PopNotif";
-import PopUser from "./PopUser";
+import PopCart from "../Pop/PopCart";
+import PopNotif from "../Pop/PopNotif";
+import PopUser from "../Pop/PopUser";
 import Sms from "@material-ui/icons/Sms";
-import PopSearch from "./PopSearch";
+import PopSearch from "../Pop/PopSearch";
 
 export const Navbar = () => {
   const [user, setUser] = useState("asdsa");
@@ -22,15 +22,17 @@ export const Navbar = () => {
           <Link href="/">
             <a className={styleNavbar.brand}>LOGO</a>
           </Link>
-          <div className={styleNavbar.nav_search}>
-            <input placeholder="What you want?" type="text" />
-            <button>
-              <Search
-                fontSize="small"
-                color="action"
-                className={styleNavbar.search_icon}
-              />
-            </button>
+          <div className={styleNavbar.fat}>
+            <div className={styleNavbar.nav_search}>
+              <input placeholder="What you want?" type="text" />
+              <button>
+                <Search
+                  fontSize="small"
+                  color="action"
+                  className={styleNavbar.search_icon}
+                />
+              </button>
+            </div>
             <div className={styleNavbar.PopSearch}>
               <PopSearch />
             </div>
@@ -38,7 +40,7 @@ export const Navbar = () => {
           <div className={styleNavbar.nav_link}>
             <div id={styleNavbar.cart} className={styleNavbar.link}>
               <Link href="/cart">
-                <Badge badgeContent={5} color="secondary">
+                <Badge badgeContent={5} color="secondary" overlap="circle">
                   <ShoppingCart fontSize="small" />
                 </Badge>
               </Link>
@@ -57,8 +59,8 @@ export const Navbar = () => {
               </div>
             ) : (
               <div className={styleNavbar.nav_link}>
-                <div id={styleNavbar.cart} className={styleNavbar.link}>
-                  <Badge badgeContent={5} color="secondary">
+                <div id={styleNavbar.cart} className={styleNavbar.notif}>
+                  <Badge badgeContent={5} color="secondary" overlap="circle">
                     <Notifications fontSize="small" />
                   </Badge>
                   <div className={styleNavbar.NotifPop}>
@@ -66,7 +68,7 @@ export const Navbar = () => {
                   </div>
                 </div>
                 <div className={styleNavbar.link}>
-                  <Badge badgeContent={0}>
+                  <Badge badgeContent={0} overlap="circle">
                     <Sms fontSize="small" />
                   </Badge>
                 </div>

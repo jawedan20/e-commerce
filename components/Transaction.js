@@ -1,7 +1,10 @@
 import style from "../styles/transaction.module.css";
 import Image from "next/image";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const Transaction = () => {
+  const matches = useMediaQuery("(max-width:800px)");
+
   return (
     <div className={style.container}>
       <div className={style.head}>
@@ -10,12 +13,13 @@ const Transaction = () => {
         <p>COde/Invoice/y928huw</p>
       </div>
       <div className={style.body}>
-        <Image width="60px" height="60px" src="/a.jpeg" />
+        <Image
+          width={!matches ? "60px" : "40px"}
+          height={matches ? "40px" : "60px"}
+          src="/a.jpeg"
+        />
         <div className={style.detail}>
           <h4>Baju baru Allhmadulillah</h4>
-          <span>
-            hijau, XL <i>remain 5</i>
-          </span>
           <h5>1 X Rp500.000</h5>
         </div>
         <div className={style.total}>

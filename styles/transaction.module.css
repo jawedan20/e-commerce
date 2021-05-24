@@ -1,6 +1,6 @@
 .container {
   box-shadow: 0 0 6px rgba(161, 161, 161, 0.308);
-  margin: 0 15px 25px 15px;
+  margin: 0 15px 15px 15px;
   padding: 15px;
   border-radius: 10px;
 }
@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   font-size: 0.75rem;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 .head span {
   background: #4999f5;
@@ -28,12 +28,14 @@
 }
 .detail {
   flex: 1;
-  margin-left: 30px;
-  font-size: 0.9rem;
+  margin-left: 15px;
+  font-size: 0.95rem;
 }
-.detail span{
-font-size: 0.9rem;
+.detail h5 {
+  margin-top: 5px;
+  font-weight: 400;
 }
+
 .total {
   display: flex;
   flex-direction: column;
@@ -45,27 +47,46 @@ font-size: 0.9rem;
 .total p {
   font-size: 0.75rem;
 }
-.end{
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    margin-top: 15px;
+.end {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 15px;
 }
-.end h5{
-    color:#4999f5;
-    margin-right:20px;
-    cursor:pointer;
+.end h5 {
+  color: #4999f5;
+  margin-right: 10px;
+  cursor: pointer;
 }
-.end button{
-    background: #4999f5;
+.end button {
+  background: #4999f5;
+  border: none;
+  color: white;
+  padding: 10px 30px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.end button:hover {
+  background: #1a81f7;
+}
+@media (max-width: 800px) {
+  .detail {
+    margin-left: 10px;
+    font-size: 0.85rem;
+  }
+  .total {
     border: none;
-    color: white;
-    padding: 10px 30px;
-    border-radius: 10px;
-    font-weight: 600;
-    transition: 0.5s;
-    cursor: pointer;
-}
-.end button:hover{
-    background: #1a81f7;
+    padding: 0;
+    margin-right: 5px;
+    font-size: 0.8rem;
+  }
+  .end button {
+    padding: 6px 25px;
+    font-size: 0.7rem;
+  }
+  .end {
+    font-size: 0.8rem;
+  }
 }

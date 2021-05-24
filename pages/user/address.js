@@ -1,4 +1,4 @@
-import LayoutUser from "../../components/LayoutUser";
+import LayoutUser from "../../components/Layout/LayoutUser";
 import Address from "../../styles/Address.module.css";
 import Search from "@material-ui/icons/Search";
 import Delete from "@material-ui/icons/Delete";

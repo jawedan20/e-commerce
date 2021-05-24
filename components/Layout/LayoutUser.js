@@ -1,5 +1,5 @@
-import NavUser from "./NavUser";
-import layout from "../styles/layout.module.css"
+import NavUser from "../Navigasi/NavUser";
+import layout from "../../styles/layout.module.css"
 
 
 const LayoutUser = ({ children }) => {
