@@ -54,8 +54,10 @@
   justify-content: center;
   border: none;
   border-radius: 0px 10px 10px 0px;
-  width: 50px;
-  padding: 5px;
+  width: fit-content;
+  padding: 5px 30px;
+  color: #6e6e6e;
+  font-size: 0.9rem;
 }
 .nav_search > button:hover {
   background: #dfdfdf;
@@ -113,6 +115,7 @@
   font-weight: 800;
   cursor: pointer;
 }
+
 .NotifPop, .PopSearch  {
   visibility: hidden;
   transition: visibility 0s, opacity 0.2s linear;
@@ -141,7 +144,10 @@
     padding: 0;
     margin: 0;
   }
-  .fat{
-    position: sticky;
+  .fat:focus-within{
+    position: absolute;
+    z-index: 999;
+    width: 100vw;
+    background: white;
   }
 }

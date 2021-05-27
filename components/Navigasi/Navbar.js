@@ -29,8 +29,9 @@ export const Navbar = () => {
                 <Search
                   fontSize="small"
                   color="action"
-                  className={styleNavbar.search_icon}
+                  style={{marginRight:"5px"}}
                 />
+                Search
               </button>
             </div>
             <div className={styleNavbar.PopSearch}>
