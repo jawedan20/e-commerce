@@ -3,8 +3,32 @@ import Image from "next/image";
 import styleLogin from "../styles/Login.module.css";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import axios from '../utils/axios'
+import { useState } from "react";
 
 export default function login() {
+  const [state, setState] = useState({email:"",password:""})
+  
+  const changeInput = (e) => {
+    const { value, id } = e.target;
+    setState((prev) => ({
+      ...prev,
+      [id]: value,
+    }));
+  };
+
+  const onSubmit = () => {
+    if(state.email === "" || state.password === "" ){
+      console.log("falied")
+    }else{
+        const data = JSON.stringify(state)
+        axios.post('api/auth/login/',data)
+          .then(res => console.log(res))
+          .catch(err => console.log(err))
+        // ngirim request
+    }
+  }
+  
   return (
     <div className={styleLogin.container}>
       <div className={styleLogin.image}>
@@ -26,13 +50,13 @@ export default function login() {
             </Link>
           </div>
           <div className={styleLogin.field}>
-            <label>Email/Username</label>
-            <input />
-            <label>Password</label>
-            <input />
+            <label forHtml="email">Email</label>
+            <input id="email" value={state.email} onChange={ e => changeInput(e) } />
+            <label forHtml="password">password</label>
+            <input id="password" value={state.password} onChange={ e => changeInput(e) } />
           </div>
           <a>Lupa kata sandi?</a>
-          <button className={styleLogin.button}>Login</button>
+          <button className={styleLogin.button} onClick={() => onSubmit()}>Login</button>
           <div className={styleLogin.auth}>
             <button>
               <img width="20px" src="/googleLogo.png" />
