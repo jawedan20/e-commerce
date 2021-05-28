@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { Navbar } from "../Navigasi/Navbar";
 import layout from "../../styles/layout.module.css"
+import BottomNav from "../Navigasi/BottomNav";
 
 const Layout = ({ children }) => {
   return (
@@ -11,6 +12,7 @@ const Layout = ({ children }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar/>
+      <BottomNav/>
       <div className={layout.children}>{children}</div>
     </div>
   );

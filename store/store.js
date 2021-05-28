@@ -17,4 +17,3 @@ export default createStore(
     composeWithDevTools(middlwares)
 )
 
-
