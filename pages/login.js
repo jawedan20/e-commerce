@@ -11,7 +11,7 @@ import VisibilityOff from "@material-ui/icons/VisibilityOffOutlined";
 
 export default function login() {
   const [show, setShow] = useState(false);
-  const handleShow = () => {
+  const handleShow = () => {  
     setShow(show ? false : true);
   };
 
@@ -40,8 +40,7 @@ export default function login() {
   const [required, setRequired] = useState(false);
   const validate = (e) => {
     const { value, id } = e.target;
-    setRequired(value === "" ? false : true);
-    console.log(required)
+    setRequired(value === "" ? true : false);
   };
 
   return (
@@ -76,7 +75,8 @@ export default function login() {
               onChange={(e) => changeInput(e)}
               onBlur={validate}
               multiline={false}
-              helperText={<small className={styleLogin.helper}>asdas</small>}
+              helperText={<small className={styleLogin.helper}>{required ? "Enter your password" : ""}</small>}
+              error={required}
             />
             <TextField
               label="Password"
@@ -86,6 +86,9 @@ export default function login() {
               id="password"
               value={state.password}
               required
+              onBlur={validate}
+              helperText={<small className={styleLogin.helper}>{required ? "Enter your password" : ""}</small>}
+              error={required}
               onChange={(e) => changeInput(e)}
               type={show ? "text" : "password"}
               InputProps={{
