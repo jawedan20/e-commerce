@@ -2,11 +2,6 @@
   display: flex;
   color: #666666;
 }
-.children {
-  margin-top: 120px;
-  padding: 0 5vw;
-  cursor:default;
-}
 .content {
   flex: 1;
   display: flex;
@@ -19,7 +14,6 @@
 }
 @media (max-width: 800px) {
   .children {
-   margin-top: 58px;
     padding: 0;
   }
   .content{

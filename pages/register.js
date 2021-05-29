@@ -3,10 +3,18 @@ import Image from "next/image";
 import styleLogin from "../styles/Login.module.css";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import axios from '../utils/axios'
+import Visibility from "@material-ui/icons/VisibilityOutlined";
+import VisibilityOff from "@material-ui/icons/VisibilityOffOutlined";
+import {axiosReg} from "../utils/axios";
 import { useState } from "react";
+import TextField from "@material-ui/core/TextField";
+import { InputAdornment } from "@material-ui/core";
 
 const register = () => {
+  const [show, setShow] = useState(false);
+  const handleShow = () => {
+    setShow(show ? false : true);
+  };
   const [state, setState] = useState({
     email: "",
     username: "",
@@ -23,19 +31,24 @@ const register = () => {
   };
 
   const onSubmit = () => {
-    if(state.username === "" || state.email === "" || state.password === "" || state.password2 === ""){
-      console.log("falied")
-    }else{
-      if(state.password === state.password2){
-        const data = JSON.stringify(state)
-        axios.post('api/auth/register/',data)
-          .then(res => console.log(res))
-          .catch(err => console.log(err))
+    if (
+      state.username === "" ||
+      state.email === "" ||
+      state.password === "" ||
+      state.password2 === ""
+    ) {
+      console.log("falied");
+    } else {
+      if (state.password === state.password2) {
+        const data = JSON.stringify(state);
+        axiosReg.post("api/auth/register/", data)
+          .then((res) => console.log(res))
+          .catch((err) => console.log(err));
         // ngirim request
       }
     }
-  }
-  
+  };
+
   return (
     <div>
       <div className={styleLogin.container}>
@@ -55,17 +68,77 @@ const register = () => {
               <h2>Register An account</h2>
             </div>
             <div className={styleLogin.field}>
-              <label forHtml="email">Email</label>
-              <input id="email" value={state.email} onChange={ e => changeInput(e) } />
-              <label forHtml="username">username</label>
-              <input id="username" value={state.username} onChange={ e => changeInput(e) } />
-              <label forHtml="password">password</label>
-              <input id="password" value={state.password} onChange={ e => changeInput(e) } />
-              <label forHtml="password2">password2</label>
-              <input id="password2" value={state.password2} onChange={ e => changeInput(e) } />
+              <TextField
+                label="Email"
+                variant="outlined"
+                size="small"
+                id="email"
+                style={{ marginBottom: "20px" }}
+                helperText={<small className={styleLogin.helper}>asdas</small>} 
+                value={state.email}
+                required
+                onChange={(e) => changeInput(e)}
+                error
+              />
+              <TextField
+                label="Username"
+                variant="outlined"
+                size="small"
+                style={{ marginBottom: "20px" }}
+                helperText={<small className={styleLogin.helper}>asdas</small>}
+                id="username"
+                value={state.username}
+                required
+                onChange={(e) => changeInput(e)}
+              />
+              <TextField
+                label="Password"
+                variant="outlined"
+                size="small"
+                style={{ marginBottom: "20px" }}
+                helperText={<small className={styleLogin.helper}>asdas</small>}
+                id="password"
+                value={state.password}
+                type={!show ? "password" : "text"}
+                required
+                onChange={(e) => changeInput(e)}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      {!show ? (
+                        <Visibility
+                          color="action"
+                          onClick={handleShow}
+                          style={{ cursor: "pointer" }}
+                        />
+                      ) : (
+                        <VisibilityOff
+                          color="action"
+                          onClick={handleShow}
+                          style={{ cursor: "pointer" }}
+                        />
+                      )}
+                    </InputAdornment>
+                  ),
+                }}
+              />
+              <TextField
+                label="Confirm Password"
+                variant="outlined"
+                style={{ marginBottom: "20px" }}
+                helperText={<small className={styleLogin.helper}>asdas</small>}
+                size="small"
+                id="password2"
+                value={state.password2}
+                required
+                onChange={(e) => changeInput(e)}
+                type={!show ? "password" : "text"}
+              />
             </div>
             <a></a>
-            <button className={styleLogin.button} onClick={() => onSubmit()}>Login</button>
+            <button className={styleLogin.button} onClick={() => onSubmit()}>
+              Login
+            </button>
             <div className={styleLogin.auth}>
               <button>
                 <img width="20px" src="/googleLogo.png" />

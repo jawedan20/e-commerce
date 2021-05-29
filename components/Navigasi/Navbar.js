@@ -11,12 +11,20 @@ import PopNotif from "../Pop/PopNotif";
 import PopUser from "../Pop/PopUser";
 import Sms from "@material-ui/icons/Sms";
 import PopSearch from "../Pop/PopSearch";
+import { useRouter } from "next/router";
 
 export const Navbar = () => {
   const [user, setUser] = useState("asdsa");
-
+  const router = useRouter();
+  const style = {
+    display:
+      router.asPath === `/login` || router.asPath === `/register`
+        ? "none"
+        : "block",
+  };
+  const [display, setDisplay] = useState(true);
   return (
-    <div>
+    <div style={style}>
       <div className={styleNavbar.navbar}>
         <div className={styleNavbar.container}>
           <Link href="/">
@@ -29,7 +37,7 @@ export const Navbar = () => {
                 <Search
                   fontSize="small"
                   color="action"
-                  style={{marginRight:"5px"}}
+                  style={{ marginRight: "5px" }}
                 />
                 Search
               </button>
