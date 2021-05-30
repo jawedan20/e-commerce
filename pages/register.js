@@ -5,10 +5,10 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import Visibility from "@material-ui/icons/VisibilityOutlined";
 import VisibilityOff from "@material-ui/icons/VisibilityOffOutlined";
-import {axiosReg} from "../utils/axios";
+import { axiosReg } from "../utils/axios";
 import { useState } from "react";
 import TextField from "@material-ui/core/TextField";
-import { InputAdornment } from "@material-ui/core";
+import { Button, InputAdornment } from "@material-ui/core";
 
 const register = () => {
   const [show, setShow] = useState(false);
@@ -41,12 +41,14 @@ const register = () => {
     } else {
       if (state.password === state.password2) {
         const data = JSON.stringify(state);
-        axiosReg.post("api/auth/register/", data)
+        axiosReg
+          .post("api/auth/register/", data)
           .then((res) => console.log(res))
           .catch((err) => console.log(err));
         // ngirim request
       }
     }
+    console.log(state.email.length);
   };
 
   return (
@@ -74,7 +76,7 @@ const register = () => {
                 size="small"
                 id="email"
                 style={{ marginBottom: "20px" }}
-                helperText={<small className={styleLogin.helper}>asdas</small>} 
+                helperText={<small className={styleLogin.helper}>asdas</small>}
                 value={state.email}
                 required
                 onChange={(e) => changeInput(e)}
@@ -136,9 +138,18 @@ const register = () => {
               />
             </div>
             <a></a>
-            <button className={styleLogin.button} onClick={() => onSubmit()}>
+            <Button
+              // style={{
+              //   color: "white",
+              //   background: `${
+              //     required == false && email == false ? "#0070f3" : "lightgray"
+              //   }`,
+              // }}
+              onClick={() => onSubmit()}
+              // disabled={required == false && email == false ? false : true}
+            >
               Login
-            </button>
+            </Button>
             <div className={styleLogin.auth}>
               <button>
                 <img width="20px" src="/googleLogo.png" />

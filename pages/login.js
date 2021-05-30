@@ -8,10 +8,11 @@ import { useState } from "react";
 import { Button, InputAdornment, TextField } from "@material-ui/core";
 import Visibility from "@material-ui/icons/VisibilityOutlined";
 import VisibilityOff from "@material-ui/icons/VisibilityOffOutlined";
+import { SettingsRemoteTwoTone } from "@material-ui/icons";
 
 export default function login() {
   const [show, setShow] = useState(false);
-  const handleShow = () => {  
+  const handleShow = () => {
     setShow(show ? false : true);
   };
 
@@ -23,24 +24,28 @@ export default function login() {
       ...prev,
       [id]: value,
     }));
-    console.log(state);
   };
 
   const onSubmit = () => {
-    if (state.email === "" || state.password === "") {
-      console.log("falied");
-    } else {
-      const data = JSON.stringify(state);
-      axios
-        .post("api/auth/login/", data)
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
-    }
+    const data = JSON.stringify(state);
+    axios
+      .post("api/auth/login/", data)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
-  const [required, setRequired] = useState(false);
+  const [required, setRequired] = useState();
+  const [email, setEmail] = useState();
   const validate = (e) => {
-    const { value, id } = e.target;
-    setRequired(value === "" ? true : false);
+    const { id, value } = e.target;
+    if (id === "email") {
+      {
+        value.length > 0 ? setEmail(false) : setEmail(true);
+      }
+    } else {
+      {
+        value.length > 8 ? setRequired(false) : setRequired(true);
+      }
+    }
   };
 
   return (
@@ -75,8 +80,12 @@ export default function login() {
               onChange={(e) => changeInput(e)}
               onBlur={validate}
               multiline={false}
-              helperText={<small className={styleLogin.helper}>{required ? "Enter your password" : ""}</small>}
-              error={required}
+              helperText={
+                <small className={styleLogin.helper}>
+                  {email ? "Must Enter Your Email" : ""}
+                </small>
+              }
+              error={email}
             />
             <TextField
               label="Password"
@@ -87,7 +96,11 @@ export default function login() {
               value={state.password}
               required
               onBlur={validate}
-              helperText={<small className={styleLogin.helper}>{required ? "Enter your password" : ""}</small>}
+              helperText={
+                <small className={styleLogin.helper}>
+                  {required ? "length must more than 8" : ""}
+                </small>
+              }
               error={required}
               onChange={(e) => changeInput(e)}
               type={show ? "text" : "password"}
@@ -114,10 +127,14 @@ export default function login() {
           </div>
           <a>Lupa kata sandi?</a>
           <Button
-            style={{ color: "white", background: "#0070f3" }}
-            variant="contained"
+            style={{
+              color: "white",
+              background: `${
+                required == false && email == false ? "#0070f3" : "lightgray"
+              }`,
+            }}
             onClick={() => onSubmit()}
-            disabled={false}
+            disabled={required == false && email == false ? false : true}
           >
             Login
           </Button>
