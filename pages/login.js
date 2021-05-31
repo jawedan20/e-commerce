@@ -8,7 +8,6 @@ import { useState } from "react";
 import { Button, InputAdornment, TextField } from "@material-ui/core";
 import Visibility from "@material-ui/icons/VisibilityOutlined";
 import VisibilityOff from "@material-ui/icons/VisibilityOffOutlined";
-import { SettingsRemoteTwoTone } from "@material-ui/icons";
 
 export default function login() {
   const [show, setShow] = useState(false);
@@ -37,9 +36,11 @@ export default function login() {
   const [email, setEmail] = useState();
   const validate = (e) => {
     const { id, value } = e.target;
+    var mailformat =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     if (id === "email") {
       {
-        value.length > 0 ? setEmail(false) : setEmail(true);
+        value.length > 0 && value.match(mailformat) ? setEmail(false) : setEmail(true);
       }
     } else {
       {
@@ -82,7 +83,7 @@ export default function login() {
               multiline={false}
               helperText={
                 <small className={styleLogin.helper}>
-                  {email ? "Must Enter Your Email" : ""}
+                  {email ? "Must Enter Your Email Valid" : ""}
                 </small>
               }
               error={email}
