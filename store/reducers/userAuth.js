@@ -2,7 +2,7 @@ import * as type from '../action_types/action_type_user'
 
 const initialState = {
     is_auth : false,
-    detail_user : {},
+    detail_user :{},
     location : {},
     location_primary : null
 }
@@ -16,13 +16,14 @@ const user = ( state = initialState, action ) => {
         case type.LOGIN_USER:
             return {
                 ...state,
-                detail_user:py
+                detail_user:py.user,
+                location:py.location
             }
 
         case type.LOGIN_SUCCESS:
             return {
                 ...state,
-                is_auth :true
+                is_auth :py
             }
         case type.LOGIN_FAILED:
             return {...state}
@@ -45,7 +46,7 @@ const user = ( state = initialState, action ) => {
                 ...state,
                 location_primary:py
             }
-
+        
 
         default :
             return state;

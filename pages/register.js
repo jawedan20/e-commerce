@@ -9,6 +9,7 @@ import { axiosReg } from "../utils/axios";
 import { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import { Button, InputAdornment } from "@material-ui/core";
+import Warning from "@material-ui/icons/ErrorOutline";
 
 const register = () => {
   const [show, setShow] = useState(false);
@@ -29,18 +30,57 @@ const register = () => {
       [id]: value,
     }));
   };
-
+  
+  const [err, setErr] = useState(true);
   const onSubmit = () => {
     if (state.password === state.password2) {
-      const data = JSON.stringify(state);
+      const data = JSON.stringify(state); 
       axiosReg
         .post("api/auth/register/", data)
         .then((res) => console.log(res))
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          setErr(false);
+          console.log(err)
+          }
+        );
       // ngirim request
     }
     console.log(state.email.length);
   };
+
+  const [user, setUser] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [password2, setPassword2] = useState();
+  const validate = (e) => {
+    const { id } = e.target;
+    var mailformat =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+      if (id === "email") {
+        {
+          state.email.length > 0 && state.email.match(mailformat)
+            ? setEmail(false)
+            : setEmail(true);
+        }
+      } else if(id === "username"){
+        {
+          state.username.length > 0 ? setUser(false) : setUser(true);
+        }
+      }else if(id === "password"){
+        var numbers = /[0-9]/g;
+        var upperCaseLetters = /[A-Z]/g;
+        {
+          state.password.length >= 8 && state.password.match(numbers && upperCaseLetters) ? setPassword(false) : setPassword(true);
+        }
+        
+      }else{
+        {
+          state.password2.length > 0 && state.password2.match(state.password)
+            ? setPassword2(false)  
+            : setPassword2(true);
+        }
+      }
+    };
 
   return (
     <div>
@@ -69,78 +109,107 @@ const register = () => {
                 style={{ marginBottom: "20px" }}
                 helperText={<small className={styleLogin.helper}>asdas</small>}
                 value={state.email}
-                required
+                onBlur={validate}
                 onChange={(e) => changeInput(e)}
-                error
+                error={email}
+                helperText={
+                  <small className={styleLogin.helper}>
+                    {email ? "Must Enter Your Email Valid" : ""}
+                  </small>
+                }
               />
               <TextField
                 label="Username"
                 variant="outlined"
                 size="small"
                 style={{ marginBottom: "20px" }}
-                helperText={<small className={styleLogin.helper}>asdas</small>}
                 id="username"
                 value={state.username}
-                required
                 onChange={(e) => changeInput(e)}
+                onBlur={validate}
+                error={user}
+                helperText={
+                  <small className={styleLogin.helper}>
+                    {user ? "Must Enter your Username" : ""}
+                  </small>
+                }
               />
               <TextField
                 label="Password"
                 variant="outlined"
                 size="small"
                 style={{ marginBottom: "20px" }}
-                helperText={<small className={styleLogin.helper}>asdas</small>}
+                helperText={
+                  <small className={styleLogin.helper}>
+                    {
+                      password 
+                      ? "Password min 8 characters, must content a uppercase letter and number" 
+                      : ""
+                    }
+                  </small>
+                }
                 id="password"
                 value={state.password}
                 type={!show ? "password" : "text"}
-                required
                 onChange={(e) => changeInput(e)}
+                onBlur={validate}
+                error={password}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
                       {!show ? (
                         <Visibility
+                        color="action"
+                        onClick={handleShow}
+                        style={{ cursor: "pointer" }}
+                        />
+                        ) : (
+                          <VisibilityOff
                           color="action"
                           onClick={handleShow}
                           style={{ cursor: "pointer" }}
-                        />
-                      ) : (
-                        <VisibilityOff
-                          color="action"
-                          onClick={handleShow}
-                          style={{ cursor: "pointer" }}
-                        />
-                      )}
+                          />
+                          )}
                     </InputAdornment>
                   ),
                 }}
-              />
+                />
               <TextField
                 label="Confirm Password"
                 variant="outlined"
                 style={{ marginBottom: "20px" }}
-                helperText={<small className={styleLogin.helper}>asdas</small>}
+                helperText={
+                  <small className={styleLogin.helper}>
+                    {password2 ? "doesn't match password" : ""}
+                  </small>
+                }
                 size="small"
                 id="password2"
                 value={state.password2}
-                required
+                onBlur={validate}
+                error={password2}
                 onChange={(e) => changeInput(e)}
                 type={!show ? "password" : "text"}
               />
             </div>
-            <a></a>
             <Button
-              // style={{
-              //   color: "white",
-              //   background: `${
-              //     required == false && email == false ? "#0070f3" : "lightgray"
-              //   }`,
-              // }}
+              style={{
+                color: "white",
+                background: `${
+                  user == false && email == false && password2 == false ? "#0070f3" : "lightgray"
+                }`,
+              }}
               onClick={() => onSubmit()}
-              // disabled={required == false && email == false ? false : true}
+              disabled={user == false && email == false && password2 == false ? false : true}
             >
               Login
             </Button>
+            <div hidden={err}>
+              <p className={styleLogin.alert} >
+                <Warning fontSize="small" /> 
+                <span>Email or Password Invalid</span>
+              </p>
+            </div>
             <div className={styleLogin.auth}>
               <button>
                 <img width="20px" src="/googleLogo.png" />

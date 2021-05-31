@@ -1,21 +1,27 @@
 import Link from "next/link";
 import Image from "next/image";
+
 import styleLogin from "../styles/Login.module.css";
 import FacebookIcon from "@material-ui/icons/Facebook";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import axios from "../utils/axios";
 import { useState } from "react";
 import { Button, InputAdornment, TextField } from "@material-ui/core";
 import Visibility from "@material-ui/icons/VisibilityOutlined";
 import VisibilityOff from "@material-ui/icons/VisibilityOffOutlined";
+import Warning from "@material-ui/icons/ErrorOutline";
 
-export default function login() {
-  const [show, setShow] = useState(false);
-  const handleShow = () => {
-    setShow(show ? false : true);
-  };
+import { connect, useSelector,useDispatch } from "react-redux";
+import { whoami } from "../actions/user";
 
+function login({whoami}) {
+ 
   const [state, setState] = useState({ email: "", password: "" });
+  
+  const [show, setShow] = useState(false);
+  const [err, setErr] = useState(true);
+
+  const [required, setRequired] = useState();
+  const [email, setEmail] = useState();
 
   const changeInput = (e) => {
     const { value, id } = e.target;
@@ -27,14 +33,17 @@ export default function login() {
 
   const onSubmit = () => {
     const data = JSON.stringify(state);
-    const [err, setErr] = useState;
     axios
       .post("api/auth/login/", data)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        whoami()
+      })
+
+      .catch((err) => {
+        setErr(false);
+        console.log(err.request);
+      });
   };
-  const [required, setRequired] = useState();
-  const [email, setEmail] = useState();
   const validate = (e) => {
     const { id, value } = e.target;
     var mailformat =
@@ -47,7 +56,7 @@ export default function login() {
       }
     } else {
       {
-        value.length > 8 ? setRequired(false) : setRequired(true);
+        value.length >= 8 ? setRequired(false) : setRequired(true);
       }
     }
   };
@@ -114,13 +123,13 @@ export default function login() {
                     {!show ? (
                       <Visibility
                         color="action"
-                        onClick={handleShow}
+                        onClick={() => setShow(show ? false : true)}
                         style={{ cursor: "pointer" }}
                       />
                     ) : (
                       <VisibilityOff
                         color="action"
-                        onClick={handleShow}
+                        onClick={() => setShow(show ? false : true)}
                         style={{ cursor: "pointer" }}
                       />
                     )}
@@ -142,14 +151,17 @@ export default function login() {
           >
             Login
           </Button>
+          <div hidden={err}>
+            <p className={styleLogin.alert}>
+              <Warning fontSize="small" />
+              <span>Email or Password Invalid</span>
+            </p>
+          </div>
           <div className={styleLogin.auth}>
             <button>
               <img width="20px" src="/googleLogo.png" />
               <span>Google</span>
             </button>
-            <div>
-              This is an error alert — check it out!
-            </div>
             <button disabled>
               <FacebookIcon color="primary" />
               <span>Facebook</span>
@@ -166,3 +178,9 @@ export default function login() {
     </div>
   );
 }
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, {whoami})(login);

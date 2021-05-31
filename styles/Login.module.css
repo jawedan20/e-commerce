@@ -95,6 +95,20 @@
   position: absolute;
   margin-top: -4px;
 }
+.alert{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:8px;
+  margin-top:10px;
+  border: 1px solid rgba(255, 0, 0, 0.733);
+  border-radius: 5px;
+  color: red;
+  font-size: 0.9rem;
+}
+.alert span{
+  margin-left: 10px;
+}
 @media (max-width: 1000px) {
   .image {
     display: none;

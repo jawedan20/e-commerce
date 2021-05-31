@@ -1,0 +1,188 @@
+import axios from '../utils/axios'
+import * as type from '../store/action_types/action_type_user'
+
+const logout = () => {
+    axios.post("api/auth/logout/", {})
+    .then(res => console.log(res))
+    .catch(err => console.log(e))
+}
+
+export const is_login = py => dispatch => {
+    dispatch({
+        type:type.LOGIN_SUCCESS,
+        payload:py
+    })
+}
+
+export const whoami = () => dispatch => {
+    axios.get(`api/auth/`)
+        .then(res => {
+            let data = res.data
+            const location = data.location
+            const user = {
+                email:data.email,
+                id:data.id,
+                username:data.username,
+                profil:data.profil
+            }
+            localStorage.setItem('location',JSON.stringify(location))
+            localStorage.setItem('user',JSON.stringify(user))
+            
+            dispatch({
+                type:type.LOGIN_USER,
+                payload:{
+                    user,
+                    location 
+                }
+            })
+
+            // dispatch({
+            //     type:'GET_SUCCESS_MASSAGE',
+            //     payload: `Hello ${user.username} ,Welcome...`
+            // })
+            // dispatch({
+            //     type:'LOGIN_SUCCESS',
+            //     payload :user,
+            // })
+        })
+} 
+export const massageUser = value => dispatch => {
+    dispatch({ type:'GET_SUCCESS_MASSAGE',payload:value})
+}
+export const UpdateUser = access => dispatch => {
+    const config = {
+        headers: {
+            "Authorization": 'Bearer ' + access,
+        }
+    }
+
+    axios.get(`auth/me/`,config)
+        .then(res => {
+            const rawUser = res.data
+            const user = parseJwt(rawUser)
+
+            Cookies.set('ud',rawUser)
+            dispatch({
+                type:'GET_SUCCESS_MASSAGE',
+                payload: `Username successfuly updated`
+            })
+            dispatch({
+                type:'LOGIN_SUCCESS',
+                payload :user,
+            })
+        })
+} 
+
+export const LogoutAuth = () => dispatch => {
+    dispatch({
+        type:'GET_SUCCESS_MASSAGE',
+        payload: `Logout Succussfuly`
+    })
+    return dispatch({
+        type:'LOGOUT_SUCCESS',
+    })
+}
+
+
+export const get_post_like = () => dispatch => {
+    const config = {
+        headers: {
+            "Authorization": 'Bearer ' + Cookies.get('access'),
+        }
+    }
+    axios.get('api/post/like/',config)
+        .then(res => {
+
+            const post = res.data.map(e => e.post)
+            dispatch({
+                type:'GET_LIKE_POST',
+                payload : post
+            })
+        })
+        .catch(e => console.log(e.request))
+}
+
+export const get_post_save = () => dispatch => {
+    const config = {
+        headers: {
+            "Authorization": 'Bearer ' + Cookies.get('access'),
+        }
+    }
+    axios.get('api/post/save/', config)
+        .then(res => {
+            const post = res.data.map(e => e.post)
+            dispatch({
+                type:'GET_SAVE_POST',
+                payload : post
+            })
+        })
+        .catch(e => console.log(e.request))
+}
+
+export const post_save = (prev,post_id) => dispatch => {
+    dispatch({
+        type:'SAVE_POST',
+        payload : {
+            post_id : post_id,
+            prev: prev
+        },
+    })
+}
+
+export const post_unsave = (prev,post_id) => dispatch => {
+    dispatch({
+        type: 'UNSAVE_POST',
+        payload: {
+            post_id : post_id,
+            prev:prev
+        }
+    })
+}
+
+export const like_post_with = (prev,post_id) => dispatch => {
+
+   dispatch({
+       type:'LIKE_POST',
+       payload: {
+           post_id : post_id,
+           prev:prev
+        }
+   })
+}
+export const unlike_post_with = (prev,post_id) => dispatch => {
+
+   dispatch({
+       type:'UNLIKE_POST',
+       payload: {
+           post_id : post_id,
+           prev:prev
+       }
+   })
+}
+
+export const get_post_data = data => dispatch => {
+    dispatch({
+        type:'GET_POST_DATA',
+        payload: data
+    })
+}
+
+export const get_post_save_data = () => (dispatch,getState) => {
+    const config = {
+        headers: {
+            "Authorization": 'Bearer ' + Cookies.get('access'),
+        }
+    }
+    if(getState().auth.save_post_data.length === 0){
+        axios.get('api/save/post/', config )
+            .then(res => {
+                dispatch({
+                    type:'GET_POST_SAVE_DATA',
+                    payload: res.data
+                })
+            })
+            .catch(e => console.log(e.request))
+    }
+    
+}
+
