@@ -27,6 +27,7 @@ export default function login() {
 
   const onSubmit = () => {
     const data = JSON.stringify(state);
+    const [err, setErr] = useState;
     axios
       .post("api/auth/login/", data)
       .then((res) => console.log(res))
@@ -40,7 +41,9 @@ export default function login() {
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     if (id === "email") {
       {
-        value.length > 0 && value.match(mailformat) ? setEmail(false) : setEmail(true);
+        value.length > 0 && value.match(mailformat)
+          ? setEmail(false)
+          : setEmail(true);
       }
     } else {
       {
@@ -144,6 +147,9 @@ export default function login() {
               <img width="20px" src="/googleLogo.png" />
               <span>Google</span>
             </button>
+            <div>
+              This is an error alert — check it out!
+            </div>
             <button disabled>
               <FacebookIcon color="primary" />
               <span>Facebook</span>

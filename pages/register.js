@@ -31,22 +31,13 @@ const register = () => {
   };
 
   const onSubmit = () => {
-    if (
-      state.username === "" ||
-      state.email === "" ||
-      state.password === "" ||
-      state.password2 === ""
-    ) {
-      console.log("falied");
-    } else {
-      if (state.password === state.password2) {
-        const data = JSON.stringify(state);
-        axiosReg
-          .post("api/auth/register/", data)
-          .then((res) => console.log(res))
-          .catch((err) => console.log(err));
-        // ngirim request
-      }
+    if (state.password === state.password2) {
+      const data = JSON.stringify(state);
+      axiosReg
+        .post("api/auth/register/", data)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+      // ngirim request
     }
     console.log(state.email.length);
   };
