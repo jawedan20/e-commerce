@@ -1,25 +1,31 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import styleLogin from "../styles/Login.module.css";
-import FacebookIcon from "@material-ui/icons/Facebook";
 import axios from "../utils/axios";
-import { useState } from "react";
+import styleLogin from "../styles/Login.module.css";
+import { useEffect, useState } from "react";
 import { Button, InputAdornment, TextField } from "@material-ui/core";
+
 import Visibility from "@material-ui/icons/VisibilityOutlined";
 import VisibilityOff from "@material-ui/icons/VisibilityOffOutlined";
-import Warning from "@material-ui/icons/ErrorOutline";
 
-import { connect, useSelector,useDispatch } from "react-redux";
-import { whoami } from "../actions/user";
+import MassageError from "../components/utils/MassageError";
 
-function login({whoami}) {
- 
-  const [state, setState] = useState({ email: "", password: "" });
+import { connect } from "react-redux";
+import { whoami,is_login } from "../actions/user";
+import Router  from "next/router";
+
+function loginPage({ whoami,is_auth,is_login }) {
   
+  // check apa sudah login ? kalau sudah redirect ke homepage  note:perlu optimasi masih bingung
+  useEffect(() => {
+    if(is_auth) Router.push('/')
+  },[is_auth])
+  
+  const [state, setState] = useState({ email: "", password: "" });
   const [show, setShow] = useState(false);
   const [err, setErr] = useState(true);
-
+  const [errMsg, setErrMsg] = useState(null);
   const [required, setRequired] = useState();
   const [email, setEmail] = useState();
 
@@ -36,12 +42,16 @@ function login({whoami}) {
     axios
       .post("api/auth/login/", data)
       .then((res) => {
-        whoami()
+        is_login(true)
+        whoami();
       })
 
       .catch((err) => {
+        const msg = JSON.parse(err.request.response);
+        for (let key in msg) {
+          setErrMsg(msg[key]);
+        }
         setErr(false);
-        console.log(err.request);
       });
   };
   const validate = (e) => {
@@ -91,7 +101,7 @@ function login({whoami}) {
               id="email"
               value={state.email}
               onChange={(e) => changeInput(e)}
-              onBlur={validate }
+              onBlur={validate}
               onInput={validate}
               multiline={false}
               helperText={
@@ -103,7 +113,7 @@ function login({whoami}) {
             />
             <TextField
               label="Password"
-              variant="outlined"  
+              variant="outlined"
               size="small"
               style={{ marginBottom: "10px" }}
               id="password"
@@ -152,22 +162,9 @@ function login({whoami}) {
           >
             Login
           </Button>
-          <div hidden={err}>
-            <p className={styleLogin.alert}>
-              <Warning fontSize="small" />
-              <span>Email or Password Invalid</span>
-            </p>
-          </div>
-          <div className={styleLogin.auth}>
-            <button>
-              <img width="20px" src="/googleLogo.png" />
-              <span>Google</span>
-            </button>
-            <button disabled>
-              <FacebookIcon color="primary" />
-              <span>Facebook</span>
-            </button>
-          </div>
+
+          <MassageError err={err} errMsg={errMsg} style={styleLogin.alert} />
+
           <p className={styleLogin.detail}>
             Don't have account?{" "}
             <Link href="/register">
@@ -181,7 +178,7 @@ function login({whoami}) {
 }
 
 const mapStateToProps = (state) => ({
-  auth: state.auth,
+  is_auth: state.user.is_auth,
 });
 
-export default connect(mapStateToProps, {whoami})(login);
+export default connect(mapStateToProps, { whoami,is_login })(loginPage);

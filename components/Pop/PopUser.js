@@ -6,8 +6,10 @@ import Settings from "@material-ui/icons/Settings";
 import Power from "@material-ui/icons/PowerSettingsNew";
 import List from "@material-ui/icons/ListAlt";
 import Store from "@material-ui/icons/Store";
+import { useDispatch } from "react-redux";
+import { logout } from "../../actions/user";
 
-const PopUser = () => {
+const PopUser = ({auth}) => {
   const [store, setStore] = useState("");
   return (
     <div className={popUser.box}>
@@ -15,7 +17,7 @@ const PopUser = () => {
         <Link href="/user/profile">
           <div className={popUser.head}>
             <Avatar style={{ marginRight: "5px" }} />
-            <h3>username</h3>
+            <h3>{auth.username}</h3>
           </div>
         </Link>
         <div className={popUser.head}>
@@ -34,7 +36,7 @@ const PopUser = () => {
           <Settings className={popUser.icon} />
           Setting
         </div>
-        <div className={popUser.navigasi}>
+        <div className={popUser.navigasi} >
           <Power className={popUser.icon} />
           Log Out
         </div>

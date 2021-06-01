@@ -5,17 +5,18 @@ import ShoppingCart from "@material-ui/icons/ShoppingCart";
 import styleNavbar from "../../styles/Navbar.module.css";
 import Badge from "@material-ui/core/Badge";
 import Link from "next/link";
-import React, { useState } from "react";
 import PopCart from "../Pop/PopCart";
 import PopNotif from "../Pop/PopNotif";
 import PopUser from "../Pop/PopUser";
 import Sms from "@material-ui/icons/Sms";
 import PopSearch from "../Pop/PopSearch";
 import { useRouter } from "next/router";
+import {useSelector} from 'react-redux'
 
 export const Navbar = () => {
-  const [user, setUser] = useState("asdsa");
   const router = useRouter();
+  const user = useSelector(state => state.user.is_auth)
+  const auth = useSelector(state => state.user.detail_user)
   return (
     <div
       hidden={
@@ -88,10 +89,10 @@ export const Navbar = () => {
                     }}
                   />
                   <h3 style={{ fontWeight: "400", color: "#66666" }}>
-                    Username
+                    {auth.username}
                   </h3>
                   <div className={styleNavbar.NotifPop}>
-                    <PopUser />
+                    <PopUser auth={auth} />
                   </div>
                 </div>
               </div>

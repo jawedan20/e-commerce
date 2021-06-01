@@ -19,6 +19,7 @@ MyApp.getInitialProps = async (appContext) => {
   const request = appContext.ctx.req;
   if(request){
     if(request.cookies.acc){
+      // blm jalan !!!!
       appContext.ctx.store.dispatch({type:LOGIN_SUCCESS,payload:true})
     }
   }

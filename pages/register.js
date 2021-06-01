@@ -1,21 +1,31 @@
 import Link from "next/link";
 import Image from "next/image";
 import styleLogin from "../styles/Login.module.css";
-import FacebookIcon from "@material-ui/icons/Facebook";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import Visibility from "@material-ui/icons/VisibilityOutlined";
 import VisibilityOff from "@material-ui/icons/VisibilityOffOutlined";
-import { axiosReg } from "../utils/axios";
-import { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import { Button, InputAdornment } from "@material-ui/core";
-import Warning from "@material-ui/icons/ErrorOutline";
+import Router from "next/router";
+import { axiosReg } from "../utils/axios";
+import { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { login } from "../actions/user";
+import MassageError from "../components/utils/MassageError";
 
-const register = () => {
+const register = ({ login, is_login }) => {
+  // check apa sudah login ? kalau sudah redirect ke homepage  note:perlu optimasi masih bingung 
+  // notebaru : semuahny filenya  kwokwowko
+  useEffect(() => {
+    if (is_login) Router.push("/");
+  }, [is_login]);
+
+  const [user, setUser] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
   const [show, setShow] = useState(false);
-  const handleShow = () => {
-    setShow(show ? false : true);
-  };
+  const [password2, setPassword2] = useState();
+  const [errMsg, setErrMsg] = useState([]);
+  const [err, setErr] = useState(true);
   const [state, setState] = useState({
     email: "",
     username: "",
@@ -30,60 +40,56 @@ const register = () => {
       [id]: value,
     }));
   };
-  
-  const [err, setErr] = useState(true);
+
   const onSubmit = () => {
-    if (state.password === state.password2) {
-      const data = JSON.stringify(state); 
-      axiosReg
-        .post("api/auth/register/", data)
-        .then((res) => console.log(res))
-        .catch((err) => {
-          setErr(false);
-          console.log(err)
-          }
-        );
-      // ngirim request
-    }
-    console.log(state.email.length);
+    axiosReg
+      .post("api/auth/register/", JSON.stringify(state))
+      .then((res) => login(state.email, state.password))
+      .catch((err) => {
+        let msgErr = [];
+        const msg = JSON.parse(err.request.response);
+        for (let key in msg) {
+          msgErr.push(msg[key]);
+        }
+        setErr(false);
+        setErrMsg(msgErr);
+      });
+    // ngirim request
   };
 
-  const [user, setUser] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [password2, setPassword2] = useState();
   const validate = (e) => {
     const { value, id } = e.target;
     var mailformat =
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-      if (id === "email") {
-        {
-          value.length > 0 && value.match(mailformat)
-            ? setEmail(false)
-            : setEmail(true);
-        }
-      } else if(id === "username"){
-        {
-          value.length > 0 ? setUser(false) : setUser(true);
-        }
-      }else if(id === "password"){
-        var numbers = /[0-9]/g;
-        var upperCaseLetters = /[A-Z]/g;
-        {
-          value.length >= 8 && value.match(numbers && upperCaseLetters) ? setPassword(false) : setPassword(true);
-        }
-        
-      }else{
-        {
-          value.length > 0 && value.match(state.password)
-            ? setPassword2(false)  
-            : setPassword2(true);
-        }
+    if (id === "email") {
+      {
+        value.length > 0 && value.match(mailformat)
+          ? setEmail(false)
+          : setEmail(true);
       }
-    };
+    } else if (id === "username") {
+      {
+        value.length > 0 ? setUser(false) : setUser(true);
+      }
+    } else if (id === "password") {
+      var numbers = /[0-9]/g;
+      var upperCaseLetters = /[A-Z]/g;
+      {
+        value.length >= 8 && value.match(numbers && upperCaseLetters)
+          ? setPassword(false)
+          : setPassword(true);
+      }
+    } else {
+      {
+        value.length > 0 && value.match(state.password)
+          ? setPassword2(false)
+          : setPassword2(true);
+      }
+    }
+  };
 
   return (
-    <div>
+    <>
       <div className={styleLogin.container}>
         <div className={styleLogin.image}>
           <Image
@@ -143,11 +149,9 @@ const register = () => {
                 style={{ marginBottom: "20px" }}
                 helperText={
                   <small className={styleLogin.helper}>
-                    {
-                      password 
-                      ? "Password min 8 characters, must content a uppercase letter and number" 
-                      : ""
-                    }
+                    {password
+                      ? "Password min 8 characters, must content a uppercase letter and number"
+                      : ""}
                   </small>
                 }
                 id="password"
@@ -162,21 +166,21 @@ const register = () => {
                     <InputAdornment position="end">
                       {!show ? (
                         <Visibility
-                        color="action"
-                        onClick={handleShow}
-                        style={{ cursor: "pointer" }}
-                        />
-                        ) : (
-                          <VisibilityOff
                           color="action"
-                          onClick={handleShow}
+                          onClick={() => setShow((prev) => !prev)}
                           style={{ cursor: "pointer" }}
-                          />
-                          )}
+                        />
+                      ) : (
+                        <VisibilityOff
+                          color="action"
+                          onClick={() => setShow((prev) => !prev)}
+                          style={{ cursor: "poe3inter" }}
+                        />
+                      )}
                     </InputAdornment>
                   ),
                 }}
-                />
+              />
               <TextField
                 label="Confirm Password"
                 variant="outlined"
@@ -200,30 +204,23 @@ const register = () => {
               style={{
                 color: "white",
                 background: `${
-                  user == false && email == false && password2 == false ? "#0070f3" : "lightgray"
+                  user == false && email == false && password2 == false
+                    ? "#0070f3"
+                    : "lightgray"
                 }`,
               }}
               onClick={() => onSubmit()}
-              disabled={user == false && email == false && password2 == false ? false : true}
+              disabled={
+                user == false && email == false && password2 == false
+                  ? false
+                  : true
+              }
             >
               Login
             </Button>
-            <div hidden={err}>
-              <p className={styleLogin.alert} >
-                <Warning fontSize="small" /> 
-                <span>Email or Password Invalid</span>
-              </p>
-            </div>
-            <div className={styleLogin.auth}>
-              <button>
-                <img width="20px" src="/googleLogo.png" />
-                <span>Google</span>
-              </button>
-              <button>
-                <FacebookIcon color="primary" />
-                <span>Facebook</span>
-              </button>
-            </div>
+
+            <MassageError err={err} style={styleLogin.alert} errMsg={errMsg} />
+
             <p className={styleLogin.detail}>
               You have an Account?{" "}
               <Link href="/login">
@@ -233,8 +230,10 @@ const register = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
-
-export default register;
+const mapStateToProps = (state) => ({
+  is_login: state.user.is_auth,
+});
+export default connect(mapStateToProps, { login })(register);
