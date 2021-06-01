@@ -16,15 +16,14 @@ import { useRouter } from "next/router";
 export const Navbar = () => {
   const [user, setUser] = useState("asdsa");
   const router = useRouter();
-  const style = {
-    display:
-      router.asPath === `/login` || router.asPath === `/register`
-        ? "none"
-        : "block",
-  };
-  const [display, setDisplay] = useState(true);
   return (
-    <div style={style}>
+    <div
+      hidden={
+        router.asPath === "/login" || router.asPath === "/register"
+          ? true
+          : false
+      }
+    >
       <div className={styleNavbar.navbar}>
         <div className={styleNavbar.container}>
           <Link href="/">
@@ -39,7 +38,6 @@ export const Navbar = () => {
                   color="action"
                   style={{ marginRight: "5px" }}
                 />
-                Search
               </button>
             </div>
             <div className={styleNavbar.PopSearch}>
@@ -49,7 +47,7 @@ export const Navbar = () => {
           <div className={styleNavbar.nav_link}>
             <div id={styleNavbar.cart} className={styleNavbar.link}>
               <Link href="/cart">
-                <Badge badgeContent={5} color="secondary" overlap="circle">
+                <Badge badgeContent={0} color="secondary" overlap="circle">
                   <ShoppingCart fontSize="small" />
                 </Badge>
               </Link>
@@ -69,7 +67,7 @@ export const Navbar = () => {
             ) : (
               <div className={styleNavbar.nav_link}>
                 <div id={styleNavbar.cart} className={styleNavbar.notif}>
-                  <Badge badgeContent={5} color="secondary" overlap="circle">
+                  <Badge badgeContent={0} color="secondary" overlap="circle">
                     <Notifications fontSize="small" />
                   </Badge>
                   <div className={styleNavbar.NotifPop}>

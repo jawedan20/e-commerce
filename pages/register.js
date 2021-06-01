@@ -53,29 +53,29 @@ const register = () => {
   const [password, setPassword] = useState();
   const [password2, setPassword2] = useState();
   const validate = (e) => {
-    const { id } = e.target;
+    const { value, id } = e.target;
     var mailformat =
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
       if (id === "email") {
         {
-          state.email.length > 0 && state.email.match(mailformat)
+          value.length > 0 && value.match(mailformat)
             ? setEmail(false)
             : setEmail(true);
         }
       } else if(id === "username"){
         {
-          state.username.length > 0 ? setUser(false) : setUser(true);
+          value.length > 0 ? setUser(false) : setUser(true);
         }
       }else if(id === "password"){
         var numbers = /[0-9]/g;
         var upperCaseLetters = /[A-Z]/g;
         {
-          state.password.length >= 8 && state.password.match(numbers && upperCaseLetters) ? setPassword(false) : setPassword(true);
+          value.length >= 8 && value.match(numbers && upperCaseLetters) ? setPassword(false) : setPassword(true);
         }
         
       }else{
         {
-          state.password2.length > 0 && state.password2.match(state.password)
+          value.length > 0 && value.match(state.password)
             ? setPassword2(false)  
             : setPassword2(true);
         }
@@ -109,6 +109,7 @@ const register = () => {
                 style={{ marginBottom: "20px" }}
                 helperText={<small className={styleLogin.helper}>asdas</small>}
                 value={state.email}
+                onInput={validate}
                 onBlur={validate}
                 onChange={(e) => changeInput(e)}
                 error={email}
@@ -126,6 +127,7 @@ const register = () => {
                 id="username"
                 value={state.username}
                 onChange={(e) => changeInput(e)}
+                onInput={validate}
                 onBlur={validate}
                 error={user}
                 helperText={
@@ -153,6 +155,7 @@ const register = () => {
                 type={!show ? "password" : "text"}
                 onChange={(e) => changeInput(e)}
                 onBlur={validate}
+                onInput={validate}
                 error={password}
                 InputProps={{
                   endAdornment: (
@@ -186,9 +189,10 @@ const register = () => {
                 size="small"
                 id="password2"
                 value={state.password2}
-                onBlur={validate}
                 error={password2}
                 onChange={(e) => changeInput(e)}
+                onInput={validate}
+                onBlur={validate}
                 type={!show ? "password" : "text"}
               />
             </div>

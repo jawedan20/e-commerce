@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { Navbar } from "../Navigasi/Navbar";
 import layout from "../../styles/layout.module.css";
-import BottomNav from "../Navigasi/BottomNav";
 
 const Layout = ({ children }) => {
   return (

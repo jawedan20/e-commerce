@@ -56,7 +56,7 @@ function login({whoami}) {
       }
     } else {
       {
-        value.length >= 8 ? setRequired(false) : setRequired(true);
+        value.length > 0 ? setRequired(false) : setRequired(true);
       }
     }
   };
@@ -91,7 +91,8 @@ function login({whoami}) {
               id="email"
               value={state.email}
               onChange={(e) => changeInput(e)}
-              onBlur={validate}
+              onBlur={validate }
+              onInput={validate}
               multiline={false}
               helperText={
                 <small className={styleLogin.helper}>
@@ -102,16 +103,16 @@ function login({whoami}) {
             />
             <TextField
               label="Password"
-              variant="outlined"
+              variant="outlined"  
               size="small"
               style={{ marginBottom: "10px" }}
               id="password"
               value={state.password}
-              required
               onBlur={validate}
+              onInput={validate}
               helperText={
                 <small className={styleLogin.helper}>
-                  {required ? "length must more than 8" : ""}
+                  {required ? "Must enter Your password" : ""}
                 </small>
               }
               error={required}

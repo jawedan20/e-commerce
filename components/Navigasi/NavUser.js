@@ -28,13 +28,13 @@ const NavUser = () => {
             <h5>My Account</h5>
           </div>
           <div id="sublink" className={user.sublink}>
-            <ActiveLink href="/user/profile">
+            <ActiveLink href="/user/profile" type="link">
               <p className={user.active}>Personal Profile</p>
             </ActiveLink>
-            <ActiveLink href="/user/address">
+            <ActiveLink href="/user/address" type="link">
               <p className={user.active}>Addres List</p>
             </ActiveLink>
-            <ActiveLink href="/user/bank">
+            <ActiveLink href="/user/bank" type="link">
               <p className={user.active}>Bank Account</p>
             </ActiveLink>
           </div>
@@ -43,7 +43,7 @@ const NavUser = () => {
           <Avatar style={mystyle}>
             <ListAltIcon fontSize="small" />
           </Avatar>
-          <Link href="/user/order/all" >
+          <Link href="/user/order/all">
             <h5>My Order</h5>
           </Link>
         </div>
