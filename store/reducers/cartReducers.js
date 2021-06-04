@@ -68,18 +68,30 @@ const cartReducer = (state = initialState, action) => {
       return newcartState;
 
     case types.REMOVE_CART:
-      tempState = state.filter((item) => {
-        console.log(item.product.id)
-        console.log(py)
-        if (item.product.id === py) {
-          return false;
-        }
-        return true;
-      });
-      
+      tempState = state.cartList.filter((item) => item.product.id !== py);
       newcartState = CopyStateReplaceCartList(state, tempState);
       setCookie("cart", newcartState);
       return newcartState;
+    
+    case types.REDUCE_QUANTITY:
+      tempState =
+        state.cartList.length > 0 &&
+        state.cartList.map((item) => {
+          let { product, quantity } = item;
+          if (product.id === py) {
+            quantity -= 1;
+          }
+          return { product, quantity };
+        })
+      
+        // perlu refactoring
+
+      tempState = tempState.filter( py => py.quantity > 0)
+      newcartState = CopyStateReplaceCartList(state, tempState);
+      setCookie("cart", newcartState);
+      return newcartState;
+
+
 
     case types.UPDATE_CART:
       const cartFormArr = Object.keys(action.payload).map((key, index) => {
@@ -127,6 +139,7 @@ const cartReducer = (state = initialState, action) => {
         return newProdCartState;
       }
       return state;
+
     default:
       return state;
   }

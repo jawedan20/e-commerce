@@ -1,21 +1,21 @@
-import Order from "../styles/Order.module.css";
+import Style from "../styles/Order.module.css";
 import Search from "@material-ui/icons/Search";
-import ActiveLink from "./ActiveLink/ActiveLink";
+import ActiveLink from "./utils/ActiveLink/ActiveLink";
 
 const all = ({children}) => {
   return (
     <div>
-      <div className={Order.head}>
+      <div className={Style.head}>
         <h3>Order List</h3>
       </div>
-      <div className={Order.subHead}>
-        <div className={Order.Navlink}>
-          <ActiveLink href="/user/order/all" type="subLink" >All</ActiveLink>
+      <div className={Style.subHead}>
+        <div className={Style.Navlink}>
+          <ActiveLink href="/user/order" type="subLink" >All</ActiveLink>
           <ActiveLink href="/user/order/ongoing" type="subLink" >Ongoing</ActiveLink>
           <ActiveLink href="/user/order/success" type="subLink" >Success</ActiveLink>
           <ActiveLink href="/user/order/failed" type="subLink" >Failed </ActiveLink>
         </div>
-        <div className={Order.search}>
+        <div className={Style.search}>
           <Search fontSize="small" />
           <input placeholder="Search Order" />
         </div>

@@ -1,5 +1,5 @@
 import { getCookie, removeCookie, setCookie } from "../../utils/cookies";
-import * as type from "../action_types/action_type_user";
+import * as type from "../../actions/action_types/action_type_user";
 
 let initialState;
 if (typeof localStorage !== "undefined") {
@@ -9,6 +9,7 @@ if (typeof localStorage !== "undefined") {
   } else {
     initialState = {
       is_auth: false,
+      is_cookies: true,
       detail_user: {},
       location: [],
       location_primary: null,
@@ -17,6 +18,7 @@ if (typeof localStorage !== "undefined") {
 } else {
   initialState = {
     is_auth: false,
+    is_cookies: true,
     detail_user: {},
     location: [],
     location_primary: null,
@@ -30,6 +32,8 @@ const user = (state = initialState, action) => {
     case type.LOGIN_USER:
       authObj = {
         ...state,
+        is_auth: true,
+        is_cookies: true,
         detail_user: py.user,
         location: py.location,
       };
@@ -39,21 +43,25 @@ const user = (state = initialState, action) => {
     case type.LOGIN_SUCCESS:
       authObj = {
         ...state,
+        is_cookies: true,
         is_auth: py,
       };
       setCookie("auth", authObj);
       return authObj;
+
     case type.LOGIN_FAILED:
       return { ...state };
 
     case type.LOGOUT_USER:
       removeCookie("auth");
+      removeCookie("cart");
       return {
         ...state,
         detail_user: {},
       };
     case type.LOGOUT_SUCCESS:
       removeCookie("auth");
+      removeCookie("cart");
       return {
         ...state,
         is_auth: false,
@@ -82,7 +90,9 @@ const user = (state = initialState, action) => {
       };
       setCookie("auth", authObj);
       return authObj;
-
+    case type.USER_IS_UNAUTHORIZED:
+      setCookie("auth",state)
+      return state
     default:
       return state;
   }

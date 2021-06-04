@@ -1,10 +1,14 @@
 import axios from "../utils/axios";
-import * as type from "../store/action_types/action_type_user";
+import * as type from "./action_types/action_type_user";
+import { removeCookie } from "../utils/cookies";
 
 export const logout = () => {
   axios
     .post("api/auth/logout/", {})
-    .then((res) => console.log(res))
+    .then((res) => {
+      removeCookie("auth");
+      location.href = "/login";
+    })
     .catch((err) => console.log(e));
 };
 
@@ -16,8 +20,8 @@ export const login = (email, password) => (dispatch) => {
   axios
     .post("api/auth/login/", JSON.stringify(data))
     .then((res) => {
-        dispatch(is_login());
-        dispatch(whoami());
+      dispatch(is_login(true));
+      dispatch(whoami());
     })
     .catch((err) => console.log(err.request));
 };
@@ -30,16 +34,17 @@ export const is_login = (py) => (dispatch) => {
 };
 
 export const whoami = () => (dispatch) => {
-  axios.get(`api/auth/`).then((res) => {
+  axios.get(`api/auth/whoiam/`).then((res) => {
     let data = res.data;
 
     const location = data.location;
-
+  
     const user = {
-      email: data.email,
       id: data.id,
+      email: data.email,
       username: data.username,
-      profil: data.profil,
+      profil: data.profile,
+      store: data.store,
     };
 
     dispatch({
@@ -50,15 +55,9 @@ export const whoami = () => (dispatch) => {
       },
     });
 
-    // dispatch({
-    //     type:'GET_SUCCESS_MASSAGE',
-    //     payload: `Hello ${user.username} ,Welcome...`
-    // })
-    // dispatch({
-    //     type:'LOGIN_SUCCESS',
-    //     payload :user,
-    // })
-  });
+    
+
+  }).catch(err => dispatch({type:type.USER_IS_UNAUTHORIZED}));
 };
 export const massageUser = (value) => (dispatch) => {
   dispatch({ type: "GET_SUCCESS_MASSAGE", payload: value });

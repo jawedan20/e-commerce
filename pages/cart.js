@@ -1,11 +1,13 @@
 import Image from "next/image";
 import Store from "@material-ui/icons/Store";
 import Cart from ".././styles/cart.module.css";
-import DeleteIcon from "@material-ui/icons/Delete";
-import BookmarkIcon from "@material-ui/icons/Bookmark";
 import NavBot from "../components/Navigasi/NavBotCart";
+import { useDispatch, useSelector } from "react-redux";
+import CartItem from "../components/Cart/CartItem";
 
 const cart = () => {
+  const CartList = useSelector(state => state.cart.cartList)
+  console.log(CartList)
   return (
     <div className={Cart.Container}>
       <div className={Cart.all}>
@@ -18,38 +20,12 @@ const cart = () => {
           <Store style={{ marginLeft: "20px", marginRight: "5px" }} />
           <p>storeName</p>
         </div>
-        <div className={Cart.pro}>
-          <div>
-            <input type="checkbox" className={Cart.check} />
-            <Image width="100px" height="100px" src="/a.jpeg" />
-          </div>
-          <div className={Cart.body}>
-            <div className={Cart.title}>
-              <p>Baju baru Allhmadulillah</p>
-              <span>
-                hijau, XL <i>remain 5</i>
-              </span>
-              <h5>Rp500.000</h5>
-            </div>
-            <div className={Cart.right}>
-              <div className={Cart.action}>
-                <a>
-                  <BookmarkIcon />
-                </a>
-                <a>
-                  <DeleteIcon />
-                </a>
-              </div>
-              <div className={Cart.count}>
-                <span style={{ borderRight: "1px solid lightgray" }}>-</span>
-                <h4>21</h4>
-                <span style={{ borderLeft: "1px solid lightgray" }}>+</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        {CartList.length > 0 && CartList.map((item,i) => {
+          return <CartItem key={i} product={item.product} quantity={item.quantity} />
+        })}
+        
       </div>  
-      <NavBot />
+      <NavBot cartList={CartList} />
     </div>
   );
 };

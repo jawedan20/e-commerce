@@ -1,12 +1,32 @@
-import { Provider } from "react-redux";
+import { Provider, useDispatch, useSelector } from "react-redux";
 import { createWrapper } from "next-redux-wrapper";
 import store from "../store/store";
 import Layout from "../components/Layout/Layout";
 import "../styles/globals.css";
-import App from "next/app";
-import { LOGIN_SUCCESS } from "../store/action_types/action_type_user";
+import { useEffect } from "react";
+import { getCookie } from "../utils/cookies";
+import { fetchCartAction } from "../actions/Cart";
+import { whoami } from "../actions/user";
 
 function MyApp({ Component, pageProps }) {
+  const dispatch = useDispatch();
+  const auth = useSelector((state) => state.user.is_auth);
+
+  useEffect(() => {
+    if (auth) {
+      const cart = getCookie("cart");
+      if (!cart) dispatch(fetchCartAction());
+      return () => cart
+    }
+    else if(!auth && getCookie("auth")){
+      return () => auth
+    }
+    else{
+      const Detail = getCookie("auth")
+      if(Detail === undefined ) dispatch(whoami())
+    }
+  }, [auth]);
+
   return (
     <Provider store={store}>
       <Layout>
@@ -15,18 +35,6 @@ function MyApp({ Component, pageProps }) {
     </Provider>
   );
 }
-MyApp.getInitialProps = async (appContext) => {
-  const request = appContext.ctx.req;
-  if(request){
-    if(request.cookies.acc){
-      // blm jalan !!!!
-      appContext.ctx.store.dispatch({type:LOGIN_SUCCESS,payload:true})
-    }
-  }
-  // Call the page's `getInitialProps` and fill `appProps.pageProps`
-  const appProps = await App.getInitialProps(appContext);
-  return { ...appProps };
-};
 
 //makeStore function that returns a new store for every request
 

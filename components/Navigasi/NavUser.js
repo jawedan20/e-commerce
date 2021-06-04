@@ -2,7 +2,7 @@ import Avatar from "@material-ui/core/Avatar";
 import user from "../../styles/user.module.css";
 import ListAltIcon from "@material-ui/icons/ListAlt";
 import Notifications from "@material-ui/icons/Notifications";
-import ActiveLink from "../ActiveLink/ActiveLink";
+import ActiveLink from "../utils/ActiveLink/ActiveLink";
 import Link from "next/link";
 
 const NavUser = () => {

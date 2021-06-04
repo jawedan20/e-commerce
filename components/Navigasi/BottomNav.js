@@ -1,13 +1,14 @@
 import React from "react";
 import Shop from "@material-ui/icons/Shop";
-import ActiveLink from "../ActiveLink/ActiveLink";
 import nav from "../../styles/navbotcart.module.css";
 import Home from "@material-ui/icons/Home";
 import Menu from "@material-ui/icons/Menu";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import ActiveLink from "../utils/ActiveLink/ActiveLink";
 
 const BottomNav = () => {
+  
   const matches = useMediaQuery('(min-width:800px)');
 
   return (

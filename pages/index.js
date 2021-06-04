@@ -2,12 +2,37 @@ import Category from "../components/Category";
 import Categories from "../components/Categories";
 import Product from "../components/Product";
 import BottomNav from "../components/navigasi/BottomNav";
+import axios from "../utils/axios";
 
-export default function Home() {
+export default function Home({ data }) {
   return (
-    <div>
-      <Product />
+    <>
+      {data.length > 0 &&
+        data.map((item, i) => {
+          return <Product key={i} data={item} />;
+        })}
+        
       <BottomNav />
-    </div>
+    </>
   );
+}
+
+export async function getServerSideProps(context) {
+  try {
+    const res = await axios.get("api/product/");
+    if (!res.data) {
+      return {
+        notFound: true,
+      };
+    }
+    return {
+      props: {
+        data: res.data.results,
+      }, // will be passed to the page component as props
+    };
+  } catch (error) {
+    return {
+      notFound: true,
+    };
+  }
 }
