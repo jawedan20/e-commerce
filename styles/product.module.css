@@ -22,3 +22,9 @@
   font-size: 0.9rem;
   color: #f37020;
 }
+
+@media (max-width:800px){
+    .container{
+        min-width:100%;
+    }
+}
