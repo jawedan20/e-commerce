@@ -8,6 +8,7 @@ import { Button, InputAdornment, TextField } from "@material-ui/core";
 
 import Visibility from "@material-ui/icons/VisibilityOutlined";
 import VisibilityOff from "@material-ui/icons/VisibilityOffOutlined";
+import Back from '@material-ui/icons/ArrowBackIos';
 
 import MassageError from "../components/utils/MassageError";
 
@@ -73,6 +74,12 @@ function loginPage({ whoami,is_auth,is_login }) {
 
   return (
     <div className={styleLogin.container}>
+      <Link href="/">
+        <a className={styleLogin.back}>
+          <Back/>
+          Home
+        </a>
+      </Link>
       <div className={styleLogin.image}>
         <Image
           src="/shop.svg"

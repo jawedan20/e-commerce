@@ -2,6 +2,9 @@
   display: flex;
   color: #666666;
 }
+.children {
+  margin: 90px 70px;
+}
 .content {
   flex: 1;
   display: flex;

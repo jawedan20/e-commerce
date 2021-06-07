@@ -8,11 +8,8 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import ActiveLink from "../utils/ActiveLink/ActiveLink";
 
 const BottomNav = () => {
-  
-  const matches = useMediaQuery('(min-width:800px)');
-
   return (
-    <div hidden={matches}>
+    <div className={nav.all}>
       <div className={nav.container}>
         <div className={nav.contentBot}>
           <div className={nav.nav}>

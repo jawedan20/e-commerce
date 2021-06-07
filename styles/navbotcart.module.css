@@ -44,6 +44,9 @@
 .Price {
   color: #f37020;
 }
+.all{
+  display:none;
+}
 
 @media (max-width: 1200px) {
   .container {
@@ -56,5 +59,8 @@
 @media (max-width: 800px) {
   .content {
     padding: 15px 0;
+  }
+  .all{
+    display: block;
   }
 }

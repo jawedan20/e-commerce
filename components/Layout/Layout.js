@@ -1,8 +1,10 @@
 import Head from "next/head";
 import { Navbar } from "../Navigasi/Navbar";
 import layout from "../../styles/layout.module.css";
+import { useRouter } from "next/router"
 
 const Layout = ({ children }) => {
+  const router = useRouter(); 
   return (
     <div>
       <Head>
@@ -11,7 +13,14 @@ const Layout = ({ children }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <div className={layout.children}>{children}</div>
+      <div className={
+        router.asPath === "/login" || router.asPath === "/register"
+          ? null
+          : layout.children
+        }
+      >
+        {children}
+      </div>
     </div>
   );
 };

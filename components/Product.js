@@ -5,7 +5,7 @@ import {
   removeFromCartAction,
   updateCartAction,
 } from "../actions/Cart";
-
+import style from "../styles/product.module.css"
 import { baseUrl } from "../utils/url";
 
 const Product = ({ data }) => {
@@ -14,7 +14,8 @@ const Product = ({ data }) => {
     <div>
       <div>
         <Image
-          src={baseUrl(data.thumb.image)}
+          src="/a.jpeg"
+          // src={baseUrl(data.thumb.image)}
           width="fit-content"
           height="fit-content"
         />

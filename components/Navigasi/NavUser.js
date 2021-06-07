@@ -43,7 +43,7 @@ const NavUser = () => {
           <Avatar style={mystyle}>
             <ListAltIcon fontSize="small" />
           </Avatar>
-          <Link href="/user/order/all">
+          <Link href="/user/order/">
             <h5>My Order</h5>
           </Link>
         </div>

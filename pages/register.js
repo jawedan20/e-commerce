@@ -11,6 +11,8 @@ import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { login } from "../actions/user";
 import MassageError from "../components/utils/MassageError";
+import Back from '@material-ui/icons/ArrowBackIos';
+
 
 const register = ({ login, is_login }) => {
   // check apa sudah login ? kalau sudah redirect ke homepage  note:perlu optimasi masih bingung 
@@ -91,6 +93,12 @@ const register = ({ login, is_login }) => {
   return (
     <>
       <div className={styleLogin.container}>
+        <Link href="/">
+          <a className={styleLogin.back}>
+            <Back/>
+            Home
+          </a>
+        </Link>
         <div className={styleLogin.image}>
           <Image
             src="/shop.svg"
