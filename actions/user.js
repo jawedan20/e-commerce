@@ -1,4 +1,4 @@
-import axios from "../utils/axios";
+  import axios from "../utils/axios";
 import * as type from "./action_types/action_type_user";
 import { removeCookie } from "../utils/cookies";
 
@@ -7,6 +7,8 @@ export const logout = () => {
     .post("api/auth/logout/", {})
     .then((res) => {
       removeCookie("auth");
+      removeCookie("cart");
+      
       location.href = "/login";
     })
     .catch((err) => console.log(e));

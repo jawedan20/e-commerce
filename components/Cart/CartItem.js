@@ -5,7 +5,7 @@ import Cart from "../../styles/cart.module.css";
 import DeleteIcon from "@material-ui/icons/Delete";
 import BookmarkIcon from "@material-ui/icons/Bookmark";
 import { useDispatch } from "react-redux";
-import { addToCartAction,removeFromCartAction,reduceQuantityCartAction } from "../../actions/Cart";
+import { addToCartAction,removeFromCartAction,reduceQuantityCartAction,addToCartAuthAction } from "../../actions/Cart";
 const CartItem = ({product,quantity}) => {
     const dispatch = useDispatch()
     return (

@@ -46,7 +46,7 @@ const profile = () => {
                     value="male"
                     style={{ marginRight: "5px" }}
                   />
-                  <label for="male">Male</label>
+                  <label htmlFor="male">Male</label>
                 </div>
                 <div>
                   <input
@@ -56,7 +56,7 @@ const profile = () => {
                     value="female"
                     style={{ marginRight: "5px" }}
                   />
-                  <label for="female">Female</label>
+                  <label htmlFor="female">Female</label>
                 </div>
                 <div>
                   <input
@@ -66,7 +66,7 @@ const profile = () => {
                     value="other"
                     style={{ marginRight: "5px" }}
                   />
-                  <label for="other">Other</label>
+                  <label htmlFor="other">Other</label>
                 </div>
               </div>
             </div>
