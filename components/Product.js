@@ -25,8 +25,8 @@ const Product = ({ data , image}) => {
           <button onClick={() => dispatch(removeFromCartAction(data.id))}>reduce cart</button>
           <button onClick={() => dispatch(updateCartAction(data))}>delete from cart</button>
         </div> */}
-        <h5 className={style.title}>hasiodhioahdioahsoidh</h5>
-        <h4 className={style.price}>Rp500.000</h4>
+        <h5>hasiodhioahdioahsoidh dsf fasafaf dsadasdas asdasdsf</h5>
+        <h4>Rp500.000</h4>
       </div>
       {/* <div>
         <div>

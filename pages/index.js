@@ -22,11 +22,11 @@ export default function Home({ data }) {
       <Product image="/googleLogo.png" />
       <Product image="/googleLogo.png" />
       <Product image="/googleLogo.png" />
-    </div>
-      {/* {data.length > 0 &&
+      {data.length > 0 &&
         data.map((item, i) => {
-          return <Product key={i} data={item} />;
-        })} */}
+          return <Product key={i} data={item} image="/a.jpeg" />;
+        })}
+    </div>
         
       <BottomNav />
     </>
