@@ -3,14 +3,30 @@ import Categories from "../components/Categories";
 import Product from "../components/Product";
 import BottomNav from "../components/navigasi/BottomNav";
 import axios from "../utils/axios";
+import style from "../styles/layout.module.css"
 
 export default function Home({ data }) {
   return (
     <>
-      {data.length > 0 &&
+    <div className={style.container}>
+      <Product image="/a.jpeg" />
+      <Product image="/a.jpeg" />
+      <Product image="/download.jpg" />
+      <Product image="/a.jpeg" />
+      <Product image="/googleLogo.png" />
+      <Product image="/googleLogo.png" />
+      <Product image="/googleLogo.png" />
+      <Product image="/googleLogo.png" />
+      <Product image="/googleLogo.png" />
+      <Product image="/googleLogo.png" />
+      <Product image="/googleLogo.png" />
+      <Product image="/googleLogo.png" />
+      <Product image="/googleLogo.png" />
+    </div>
+      {/* {data.length > 0 &&
         data.map((item, i) => {
           return <Product key={i} data={item} />;
-        })}
+        })} */}
         
       <BottomNav />
     </>

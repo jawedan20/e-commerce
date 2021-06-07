@@ -8,19 +8,27 @@ import {
 import style from "../styles/product.module.css"
 import { baseUrl } from "../utils/url";
 
-const Product = ({ data }) => {
+const Product = ({ data , image}) => {
   const dispatch = useDispatch();
   return (
-    <div>
-      <div>
-        <Image
-          src="/a.jpeg"
-          // src={baseUrl(data.thumb.image)}
-          width="fit-content"
-          height="fit-content"
-        />
+    <div className={style.container}>
+      <Image
+        src={image}
+        // src={baseUrl(data.thumb.image)}
+        width="fit-content"
+        height="fit-content"
+        className={style.image}
+      />
+      <div className={style.content}>
+        {/* <div>
+          <button onClick={() => dispatch(addToCartAction(data))}>add to cart</button>
+          <button onClick={() => dispatch(removeFromCartAction(data.id))}>reduce cart</button>
+          <button onClick={() => dispatch(updateCartAction(data))}>delete from cart</button>
+        </div> */}
+        <h5 className={style.title}>hasiodhioahdioahsoidh</h5>
+        <h4 className={style.price}>Rp500.000</h4>
       </div>
-      <div>
+      {/* <div>
         <div>
           <button onClick={() => dispatch(addToCartAction(data))}>add to cart</button>
           <button onClick={() => dispatch(removeFromCartAction(data.id))}>reduce cart</button>
@@ -28,7 +36,7 @@ const Product = ({ data }) => {
         </div>
         <h5>{data.title}</h5>
         <h5>{data.price}</h5>
-      </div>
+      </div> */}
     </div>
   );
 };
