@@ -1,7 +1,14 @@
 .Container {
   padding: 0 50px;
   margin-bottom: 100px;
-  color: #505050;
+  color: #666666;
+}
+.cs{
+  display: flex;
+  align-items: center;
+}
+.cs .check{
+  margin-right: 20px;
 }
 .all {
   display: flex;
@@ -30,20 +37,19 @@
 }
 .pro{
   display: flex;
+  padding: 15px 35px;
 }
 .body {
+  flex: 1;
   display: flex;
+  justify-content: space-between;
 }
-
-.title {
-  margin-left: 20px;
+.title{
+  margin-left:15px;
 }
-.title p{
+.title h3{
   font-weight: 500;
-  font-size: 1rem;
-}
-.title i{
-  color: #7f2733;
+  font-weight: 400;
 }
 .title span{
   margin-bottom:8px;
@@ -51,9 +57,8 @@
   color: rgb(167, 167, 167);
   font-size: 0.85rem;
 }
-.title h5{
+.title h4{
   color: #f37020;
-  font-size: 0.9rem;
 }
 .right{
   display: flex;
@@ -84,7 +89,6 @@
   align-items: center;
   justify-content:flex-end;
 }
-
 @media (max-width:800px){
     .Container{
       padding: 0;

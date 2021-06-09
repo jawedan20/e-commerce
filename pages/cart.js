@@ -23,7 +23,6 @@ const cart = () => {
         {CartList.length > 0 && CartList.map((item,i) => {
           return <CartItem key={i} product={item.product} quantity={item.quantity} />
         })}
-        
       </div>  
       <NavBot cartList={CartList} />
     </div>
