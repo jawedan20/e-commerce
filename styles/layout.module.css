@@ -3,7 +3,7 @@
   color: #666666;
 }
 .children {
-  margin: 90px 70px;
+  margin: 90px 5%;
 }
 .content {
   flex: 1;
@@ -17,11 +17,10 @@
 }
 .container{
   display:grid;
-  justify-content: space-between;
   grid-gap:1vw;
-  grid-template-columns: repeat(auto-fit,minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill,minmax(180px, 1fr));
 }
-@media (max-width: 800px) {
+@media (max-width: 1200px) {
   .children {
     margin:80px 10px;
   }

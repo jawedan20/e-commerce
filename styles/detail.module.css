@@ -9,6 +9,7 @@
     display: flex;
     justify-content: space-between;
     cursor: default;
+    min-width: 1000px;
 }
 .img {
     border-radius: 20px;
@@ -54,11 +55,13 @@
     flex: 0.9;
     display: flex;
     align-items: center;
+    margin-right: 20px;
 }
 .title h5 {
     font-weight: 600;
     margin-left: 10px;
     max-width: 300px;
+    min-width: 300px;
 }
 .add,
 .buy {
@@ -111,4 +114,15 @@
 .price h4 {
     color: #f37020;
     font-weight: 500;
+}
+@media (max-width: 1000px) {
+    .container {
+        min-width: 100vw;
+    }
+    .Bottom {
+        padding: 15px 10px;
+    }
+    .title{
+        display: none;
+    }
 }

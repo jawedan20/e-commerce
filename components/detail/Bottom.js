@@ -6,7 +6,7 @@ const Bottom = () => {
     return (
         <div className={style.Bottom}>
             <div className={style.title}>
-                <Image src="/sapatu.jpg" width="50px" height="50px" className="img" />
+                <img src="/sapatu.jpg" max-width="50px" height="50px" className="img" />
                 <h5>Sepatu bagus anti selip mudah dipakai Garansi satu tahun resmi &#128513;</h5>
             </div>
             <div className={style.count}>
