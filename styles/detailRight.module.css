@@ -1,0 +1,84 @@
+.store,
+.delivery {
+    box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.26);
+    padding: 15px 20px;
+    color: #444444;
+    width: 240px;
+    background: white;
+    border-radius: 20px;
+    height: fit-content;
+}
+.delivery {
+    margin: 15px 0;
+}
+.storeDetail {
+    display: flex;
+}
+.storeName {
+    margin-left: 10px;
+}
+.storeName h5 {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #0094da;
+}
+.storeName span {
+    font-size: 0.73rem;
+    font-weight: 500;
+    margin-left: 3px;
+}
+.chat,
+.follow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    border-radius: 10px;
+    margin-top: 10px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    width: 50%;
+}
+.follow {
+    border: none;
+    background: #0094da;
+    color: white;
+    border: 1px solid #0094da;
+}
+.chat {
+    border: 1px solid lightgray;
+    background: white;
+    color: #0094da;
+    margin-left: 10px;
+}
+.action {
+    display: flex;
+    justify-content: space-between;
+    margin-top:10px ;
+}
+.Location, .courier{
+    display: flex;
+    color: #666666;
+    margin-top: 17px;
+}
+.send{
+    margin-left: 10px;
+    font-size: 0.78rem;
+    font-weight: 500;
+}
+.send h5{
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #444444;
+}
+.send p{
+    color: #9ea4a1;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.send h6{
+    color: #0094da;
+    font-size: 0.68rem;
+    margin-top:5px;
+}

@@ -1,0 +1,18 @@
+.container{
+    width:570px;
+    color: #444444;
+}
+.title{
+    max-width:420px;
+    font-weight: 600;
+}
+.container p {
+    margin: 5px 0 10px ;
+    font-size: 0.85rem;
+    color: #666666;
+}
+.price{
+    color: #f37020;
+    font-weight: 630;
+    margin-bottom: 15px;
+}
