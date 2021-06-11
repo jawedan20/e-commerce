@@ -23,7 +23,7 @@ const detail = () => {
             </Breadcrumbs>
             <div className={style.container}>
                 <div className={style.Image}>
-                    <Image className={style.img} src="/a.jpeg" width="fit-content" height="500px" />
+                    <Image className={style.img} src="/a.jpeg" width="fit-content" height="400px" />
                     <div className={style.navImg}>
                         <Image
                             className={style.kind}
@@ -51,6 +51,7 @@ const detail = () => {
                     <Delivery />
                 </div>
             </div>
+            
             <Bottom />
         </>
     );
