@@ -1,11 +1,11 @@
 import Image from "next/image";
-import Bottom from "../components/detail/Bottom";
-import Store from "../components/detail/Store";
-import Detail from "../components/detail/Detail";
-import style from "../styles/detail.module.css";
+import Bottom from "../../components/detail/Bottom";
+import Store from "../../components/detail/Store";
+import Detail from "../../components/detail/Detail";
+import style from "../../styles/detail.module.css";
 import { Breadcrumbs } from "@material-ui/core";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
-import Delivery from "../components/detail/Delivery";
+import Delivery from "../../components/detail/Delivery";
 
 const detail = () => {
     return (
