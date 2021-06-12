@@ -4,13 +4,13 @@ import Add from "@material-ui/icons/Add";
 import Forum from "@material-ui/icons/Forum";
 import style from "../../styles/detailRight.module.css";
 
-const Store = () => {
+const Store = ({data}) => {
     return (
         <div className={style.store}>
             <div className={style.storeDetail}>
                 <Avatar />
                 <div className={style.storeName}>
-                    <h5>StoreName</h5>
+                    <h5>{data.store}</h5>
                     <Location style={{ fontSize: "16", verticalAlign: "sub" }} />
                     <span>StoreAddress</span>
                 </div>

@@ -91,7 +91,34 @@ const cartReducer = (state = initialState, action) => {
       setCookie("cart", newcartState);
       return newcartState;
 
+    case types.FORM_CART:
+      doesItemExist = false;
 
+      tempState =
+        state.cartList.length > 0 &&
+        state.cartList.map((item) => {
+          let { product, quantity } = item;
+          if (product.id === py.product.id) {
+            doesItemExist = true;
+            quantity = py.quantity
+          }
+          return { product, quantity };
+        });
+
+      if (doesItemExist) {
+        newcartState = CopyStateReplaceCartList(state, tempState);
+        setCookie("cart", newcartState);
+        return newcartState;
+      }
+      newcartState = {
+        cartList: [...state.cartList, { product: { ...py.product }, quantity: py.quantity }],
+        cartTotal: state.cartTotal + 1,
+        cartPrice: state.cartPrice + py.price,
+      };
+
+      setCookie("cart", newcartState);
+      return newcartState;
+      
 
     case types.UPDATE_CART:
       const cartFormArr = Object.keys(action.payload).map((key, index) => {

@@ -21,13 +21,13 @@
     font-size: small;
     font-weight: 600;
 }
-.size {
+.varian {
     display: grid;
     grid-gap: 0.3vw;
     grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
     padding-right: 150px;
 }
-.size label {
+.variant {
     border: 1px solid lightgray;
     color: #0094da;
     padding: 5px;

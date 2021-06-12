@@ -3,7 +3,7 @@ import { countCart } from "../../lib/CartUtils";
 import nav from "../../styles/navbotcart.module.css";
 
 const NavBotCart = ({cartList}) => {
-  const { cartItemCount, cartTotal } = countCart(cartList)
+  const { cartItemCount, cartTotal } =cartList.length > 0 ? countCart(cartList) : {cartItemCount:0,cartTotal:0}
   return (
     <div className={nav.container}>
       <Container>

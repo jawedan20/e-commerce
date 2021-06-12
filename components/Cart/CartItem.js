@@ -3,21 +3,19 @@ import Cart from "../../styles/cart.module.css";
 
 import DeleteIcon from "@material-ui/icons/Delete";
 import BookmarkIcon from "@material-ui/icons/Bookmark";
-import { useDispatch } from "react-redux";
-import {
-    addToCartAction,
-    removeFromCartAction,
-    reduceQuantityCartAction,
-    addToCartAuthAction,
-} from "../../actions/Cart";
+import { useDispatch, useSelector } from "react-redux";
+import {addToCart,reduceQuantity,removeFromCart} from "../../lib/CartUtils"
+import { baseUrl } from "../../utils/url";
 const CartItem = ({ product, quantity }) => {
     const dispatch = useDispatch();
+    const auth = useSelector(state => state.user.is_auth)
+
     return (
         <>
             <div className={Cart.pro}>
                 <div className={Cart.cs}>
                     <input type="checkbox" className={Cart.check} />
-                    <Image width="80px" height="80px" src="/a.jpeg" />
+                    <Image width="80px" height="80px" src={baseUrl(product.thumb.image)} />
                 </div>
                 <div className={Cart.body}>
                     <div className={Cart.title}>
@@ -30,20 +28,20 @@ const CartItem = ({ product, quantity }) => {
                             <a>
                                 <BookmarkIcon />
                             </a>
-                            <a onClick={() => dispatch(removeFromCartAction(product.id))}>
+                            <a onClick={() => dispatch(removeFromCart(auth,product.id))}>
                                 <DeleteIcon />
                             </a>
                         </div>
                         <div className={Cart.count}>
                             <span
-                                onClick={() => dispatch(reduceQuantityCartAction(product.id))}
+                                onClick={() => dispatch(reduceQuantity(auth,product.id))}
                                 style={{ borderRight: "1px solid lightgray" }}
                             >
                                 -
                             </span>
                             <h4>{quantity}</h4>
                             <span
-                                onClick={() => dispatch(addToCartAction(product))}
+                                onClick={() => dispatch(addToCart(auth,product))}
                                 style={{ borderLeft: "1px solid lightgray" }}
                             >
                                 +

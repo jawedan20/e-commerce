@@ -4,3 +4,4 @@ export const REMOVE_CART = "DELETE_CART";
 export const UPDATE_CART = "UPDATE_CART";
 export const DELETE_CART = "DELETE_CART";
 export const REDUCE_QUANTITY = "REDUCE_QUANTITY";
+export const FORM_CART = "FORM_CART"

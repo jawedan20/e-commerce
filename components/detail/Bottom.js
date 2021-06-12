@@ -1,24 +1,46 @@
 import style from "../../styles/detail.module.css";
 import Image from "next/image";
 import Book from "@material-ui/icons/Book";
-
-const Bottom = () => {
+import { useDispatch, useSelector } from "react-redux";
+import {formCart} from '../../lib/CartUtils'
+import { useState } from "react";
+import { baseUrl } from "../../utils/url";
+import image from "next/image";
+const Bottom = ({data, index}) =>{
+    const [quantity,setQuantity] = useState(1)
+    const dispatch = useDispatch()
+    const auth = useSelector(state => state.user.is_auth)
+    const varian = data.varian[index]
+    const image = varian.image ? varian.image.image : data.image[0].image
+    console.log(image)
+    const product = {
+        id:varian.id,
+        title:data.title,
+        varian:varian.name,
+        store:data.store,
+        thumb:{
+            image,
+        },
+        price:varian.price,
+        slug:data.slug        
+    }
+    
     return (
         <div className={style.Bottom}>
             <div className={style.title}>
-                <img src="/sapatu.jpg" max-width="50px" height="50px" className="img" />
-                <h5>Sepatu bagus anti selip mudah dipakai Garansi satu tahun resmi &#128513;</h5>
+                <img src={baseUrl(image)} max-width="50px" height="50px" className="img" />
+                <h5>{data.title}</h5>
             </div>
             <div className={style.count}>
-                <button>+</button>
-                <input type="number" />
-                <button>-</button>
+                <button onClick={() => setQuantity(prev => prev + 1)} >+</button>
+                <input type="number" onChange={(e) => setQuantity(e.target.value)} value={quantity} />
+                <button onClick={() => quantity > 1 && setQuantity(prev => prev - 1)} >-</button>
             </div>
             <div className={style.price}>
                 <p>Total Price:</p>
-                <h4>Rp500.000</h4>
+                <h4>Rp{varian.price * quantity}</h4>
             </div>
-            <button className={style.add}>Add To Cart</button>
+            <button onClick={() => dispatch(formCart(auth,product,quantity))}  className={style.add}>Add To Cart</button>
             <button className={style.buy}>Buy Now</button>
             <button className={style.book}>
                 <Book />

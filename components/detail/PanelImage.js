@@ -1,32 +1,30 @@
 import style from "../../styles/detail.module.css";
-import Image from "next/link"
-
-const PanelImage = () => {
-    return (
-        <div className={style.Image}>
-            <Image className={style.img} src="/a.jpeg" width="fit-content" height="400px" />
-            <div className={style.navImg}>
-                <Image
-                    className={style.kind}
-                    src="/a.jpeg"
-                    width="fit-content"
-                    height="fit-content"
-                />
-                <Image
-                    className={style.kind}
-                    src="/download.jpg"
-                    width="fit-content"
-                    height="fit-content"
-                />
-                <Image
-                    className={style.kind}
-                    src="/sapatu.jpg"
-                    width="fit-content"
-                    height="fit-content"
-                />
-            </div>
-        </div>
-    );
+import Image from "next/image";
+import { baseUrl } from "../../utils/url";
+import { useState } from "react";
+const PanelImage = ({ data }) => {
+  const [key, setKey] = useState(0);
+  return (
+    <div className={style.Image}>
+      <Image
+        className={style.img}
+        src={baseUrl(data.image[key].image)}
+        width="fit-content"
+        height="400px"
+      />
+      <div className={style.navImg}>
+        {data.image.map((img, i) => {
+          return (
+            <img
+              className={style.kind}
+              src={baseUrl(img.image)}
+              onClick={() => setKey(i)}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
 };
 
 export default PanelImage;
