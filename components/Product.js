@@ -8,7 +8,7 @@ import Link from "next/link"
 const Product = ({ data, image }) => {
     const dispatch = useDispatch();
     return (
-        <Link href={"/detail/" + data.id}>
+        <Link href={"/detail/" + data.store + "/" +data.slug}>
             <div className={style.container}>
                 <Image
                     src={image}
