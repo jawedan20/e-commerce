@@ -3,8 +3,6 @@ import * as types from "../../actions/action_types/actions_type_cart";
 
 const CopyStateReplaceCartList = (state, newCart) => ({
   cartList: newCart,
-  cartTotal: state.cartTotal,
-  totalPrice: state.totalPrice,
 });
 
 let initialState;
@@ -15,15 +13,12 @@ if (typeof localStorage !== "undefined") {
   } else {
     initialState = {
       cartList: [],
-      cartTotal: 0,
-      totalPrice: 0,
+
     };
   }
 } else {
   initialState = {
     cartList: [],
-    cartTotal: 0,
-    totalPrice: 0,
   };
 }
 // blm jalan
@@ -60,8 +55,6 @@ const cartReducer = (state = initialState, action) => {
       }
       newcartState = {
         cartList: [...state.cartList, { product: { ...py }, quantity: 1 }],
-        cartTotal: state.cartTotal + 1,
-        cartPrice: state.cartPrice + py.price,
       };
 
       setCookie("cart", newcartState);
@@ -112,8 +105,6 @@ const cartReducer = (state = initialState, action) => {
       }
       newcartState = {
         cartList: [...state.cartList, { product: { ...py.product }, quantity: py.quantity }],
-        cartTotal: state.cartTotal + 1,
-        cartPrice: state.cartPrice + py.price,
       };
 
       setCookie("cart", newcartState);

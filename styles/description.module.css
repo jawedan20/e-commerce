@@ -1,37 +1,49 @@
 .container {
-    min-width: 570px;
-    color: #444444;
-    margin: 0 40px;
+  flex: 1;
+  color: #444444;
+  margin: 0 30px;
 }
 .title {
-    max-width: 420px;
-    font-weight: 600;
+  max-width: 420px;
+  font-weight: 600;
 }
 .container p {
-    margin: 5px 0 10px;
-    font-size: 0.85rem;
-    color: #666666;
+  margin: 5px 0 10px;
+  font-size: 0.85rem;
+  color: #666666;
 }
 .price {
-    color: #f37020;
-    font-weight: 630;
+  color: #f37020;
+  font-weight: 630;
 }
 .container h4 {
-    margin-bottom: 10px;
-    font-size: small;
-    font-weight: 600;
+  margin-bottom: 10px;
+  font-size: small;
+  font-weight: 600;
 }
 .varian {
-    display: grid;
-    grid-gap: 0.3vw;
-    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
-    padding-right: 150px;
+  display: grid;
+  grid-gap: 0.3vw;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  padding-right: 150px;
 }
 .variant {
-    border: 1px solid lightgray;
-    color: #0094da;
-    padding: 5px;
-    text-align: center;
-    border-radius: 20px;
-    max-width: 50px;
+  display: grid;
+  place-items: center;
+  border: 1px solid lightgray;
+  color: #0094da;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 20px;
+  width: fit-content;
+  cursor: pointer;
+}
+.variant:hover {
+  border-color: #0094da;
+}
+
+@media (max-width: 1000px) {
+  .right {
+    display: none;
+  }
 }

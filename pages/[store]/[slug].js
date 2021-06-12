@@ -8,24 +8,11 @@ import Detail from "../../components/detail/Detail";
 
 export default function detail({ product }) {
   return (
-    <>
-      <Breadcrumbs
-        separator={<NavigateNextIcon fontSize="small" />}
-        aria-label="breadcrumb"
-        style={{ fontSize: "0.8rem", marginBottom: "20px" }}
-      >
-        <a color="inherit" href="/">
-          Men's Fashion
-        </a>
-        <a href="/getting-started/installation/">Shoes</a>
-        <a href="/" color="textPrimary">
-          Casual Shoes
-        </a>
-      </Breadcrumbs>
+
       <div className={style.container}>
         <Detail data={product} />
       </div>
-    </>
+
   );
 }
 export async function getStaticPaths() {

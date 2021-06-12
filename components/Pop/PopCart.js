@@ -21,15 +21,6 @@ const PopCart = () => {
         {CartList.length > 0 && CartList.map((item,i) => {
           if(i < 3) return <CartItemPop key={i} product={item.product} quantity={item.quantity} />
         })}
-        
-        <div className={pop.item}>
-          <Image src="/download.jpg" width={50} height={50} />
-          <div className={pop.title}>
-            <h4>sepatu ori vans</h4>
-            <span>jumlah( 1 barang )</span>
-          </div>
-          <p className={pop.price}>Rp1000.000</p>
-        </div>
       </div>
     </div>
   );

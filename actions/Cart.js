@@ -140,11 +140,9 @@ export const fetchCartAction = () => (dispatch) => {
   axiosInstance
     .get("api/cart/")
     .then((res) => {
-      const { items, total_cart, total_paid } = res.data;
+      const { items } = res.data;
       const payload = {
         cartList: items,
-        cartTotal: total_cart,
-        totalPrice: total_paid,
       };
       dispatch({
         type: types.FECTH_CART,

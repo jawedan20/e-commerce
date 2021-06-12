@@ -9,7 +9,6 @@
     display: flex;
     justify-content: space-between;
     cursor: default;
-    min-width: 1000px;
 }
 .img {
     border-radius: 20px;
@@ -17,7 +16,6 @@
 .Image {
     display: flex;
     flex-direction: column;
-    width: 330px;
     height: 400px;
 }
 .kind {
@@ -128,5 +126,11 @@
     }
     .title{
         display: none;
+    }
+}
+@media (max-width:700px){
+    .container{
+        flex-direction: column;
+        min-width: 99vw;
     }
 }

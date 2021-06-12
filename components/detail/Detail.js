@@ -8,9 +8,12 @@ import Bottom from "../../components/detail/Bottom";
 
 const detail = ({ data }) => {
   const [key, setKey] = useState(0);
+  const active = {
+    borderColor: "#0094da" 
+  }
   return (
     <>
-      <PanelImage data={data} />
+      <PanelImage data={data} active={active} />
       <div className={style.container}>
         <h3 className={style.title}>{data.title}</h3>
         <p>
@@ -28,15 +31,15 @@ const detail = ({ data }) => {
         <div className={style.varian}>
           {data.varian.map((varian, i) => {
             return (
-              <div className={style.variant} key={i} onClick={() => setKey(i)}>
-                {varian.name}
+              <div className={style.variant} style={i == key ? active : null} key={i} onClick={() => setKey(i)}>
+                <h6>{varian.name}</h6>
               </div>
             );
           })}
         </div>
         <Divider style={{ marginBottom: "25px", marginTop: "20px" }} />
       </div>
-      <div>
+      <div className={style.right}>
         <Store data={data} />
         <Delivery />
       </div>
