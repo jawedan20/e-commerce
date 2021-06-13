@@ -9,8 +9,8 @@ const PanelImage = ({ data, active }) => {
             <Image
                 className={style.img}
                 src="/sapatu.jpg"
-                // src={baseUrl(data.image[key].image)}
-                width="100%"
+                src={baseUrl(data.image[key].image)}
+                width="fit-content"
                 height="fit-content"
                 layout="responsive"
                 quality={50}

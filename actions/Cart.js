@@ -62,7 +62,7 @@ export const reduceQuantityCarAuthAction =
       (item) => item.product.id === productId
     );
     if (CartItem.length <= 0) return;
-    if (CartItem[0].quantity <= 1)
+    if (CartItem[0].quantity === 1)
       return dispatch(removeFromCartAuthAction(productId));
     let quantity = CartItem[0].quantity - 1;
     const data = {

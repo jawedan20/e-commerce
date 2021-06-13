@@ -7,17 +7,18 @@
 }
 .container {
     display: flex;
-    justify-content: space-between;
     cursor: default;
 }
 .img {
     border-radius: 20px;
 }
 .Image {
+    z-index: 0;
     display: flex;
     flex-direction: column;
     width: 23vw;
-    min-width: 200px;
+    min-width: 250px;
+    height: fit-content;
 }
 .kind {
     border-radius: 10px;
@@ -40,6 +41,7 @@
     border: 1px solid black;
 }
 .Bottom {
+    z-index: 5;
     background: white;
     box-shadow: 0px 0px 5px rgba(196, 196, 196, 0.616);
     position: fixed;
@@ -119,8 +121,9 @@
     font-weight: 500;
 }
 @media (max-width: 1000px) {
+    
     .container {
-        min-width: 100vw;
+        min-width: 97vw;
     }
     .Bottom {
         padding: 15px 10px;
@@ -135,9 +138,14 @@
     }
     .container {
         flex-direction: column;
-        width: 99vw;
     }
     .Image{
-        min-width: 100vw;
+        width:100%;
+    }
+    .img{
+        border-radius: 0;
+    }
+    .navImg{
+        display: none;
     }
 }

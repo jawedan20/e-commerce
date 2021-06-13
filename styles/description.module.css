@@ -1,7 +1,11 @@
+.content{
+  flex: 1;
+  display: flex;
+}
 .container {
   flex: 1;
+  padding: 0 30px;
   color: #444444;
-  margin: 0 30px;
 }
 .title {
   max-width: 420px;
@@ -33,17 +37,34 @@
   border: 1px solid lightgray;
   color: #0094da;
   text-align: center;
-  padding: 5px 10px;
+  padding: 5px;
   border-radius: 20px;
   width: fit-content;
   cursor: pointer;
+  width:60px;
 }
 .variant:hover {
   border-color: #0094da;
 }
 
 @media (max-width: 1000px) {
-  .right {
-    display: none;
+  .content{
+    flex-direction: column;
+    padding: 0 30px;
+  }
+  .container{
+    padding:0;
+  }
+}
+@media(max-width:700px){
+  .content{
+    padding:0;
+  }
+  .container{
+    z-index: 1;
+    margin: -20px 0 0 0;
+    background: white;
+    border-radius: 25px;
+    padding: 20px;
   }
 }

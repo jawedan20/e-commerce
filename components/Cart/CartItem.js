@@ -9,22 +9,27 @@ import { bookMarkProduct } from "../../actions/user";
 import { baseUrl } from "../../utils/url";
 import { useRouter } from "next/dist/client/router";
 
-const CartItem = ({ product, quantity }) => {
+const CartItem = ({ product, quantity, selectItem, onCheck }) => {
   const router = useRouter();
   const dispatch = useDispatch();
-
   const auth = useSelector((state) => state.user.is_auth);
-
+  
   return (
     <>
       <div className={Cart.pro}>
         <div className={Cart.cs}>
-          <input type="checkbox" className={Cart.check} />
+          <input
+            type="checkbox"
+            id={"itemCheck"}
+            className={Cart.check}
+            checked={selectItem.includes(product.id)}
+            onChange={(e) => onCheck(e)}
+            value={product.id}
+          />
           <Image
             width="80px"
             height="80px"
             src={baseUrl(product.thumb.image)}
-            
           />
         </div>
         <div className={Cart.body}>

@@ -82,3 +82,8 @@
     font-size: 0.68rem;
     margin-top:5px;
 }
+@media (max-width:1000px){
+    .store,.delivery{
+        width: 100%;
+    }
+}

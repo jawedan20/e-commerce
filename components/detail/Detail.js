@@ -9,39 +9,51 @@ import Bottom from "../../components/detail/Bottom";
 const detail = ({ data }) => {
   const [key, setKey] = useState(0);
   const active = {
-    borderColor: "#0094da" 
-  }
+    borderColor: "#0094da",
+  };
   return (
     <>
       <PanelImage data={data} active={active} />
-      <div className={style.container}>
-        <h3 className={style.title}>{data.title}</h3>
-        <p>
-          sold {data.sold} &#8226;{" "}
-          <span>
-            &#9733;{data.rating_avg}({data.rating ? data.rating.length : 0}){" "}
-          </span>
-        </p>
-        {/* error handle nama na */}
-        <h2 className={style.price}>Rp{data.varian[key].price}</h2>
-        <Divider style={{ marginBottom: "25px", marginTop: "20px" }} />
-        <h4>
-          Variant: <span>{data.varian[key].name}</span>
-        </h4>
-        <div className={style.varian}>
-          {data.varian.map((varian, i) => {
-            return (
-              <div className={style.variant} style={i == key ? active : null} key={i} onClick={() => setKey(i)}>
-                <h6>{varian.name}</h6>
-              </div>
-            );
-          })}
+      <div className={style.content}>
+        <div className={style.container}>
+          <h3 className={style.title}>{data.title}</h3>
+          <p>
+            sold {data.sold} &#8226;{" "}
+            <span>
+              &#9733;{data.rating_avg}({data.rating ? data.rating.length : 0}){" "}
+            </span>
+          </p>
+          {/* error handle nama na */}
+          <h2 className={style.price}>Rp{data.varian[key].price}</h2>
+          <Divider style={{ marginBottom: "25px", marginTop: "20px" }} />
+          <h4>
+            Variant: <span>{data.varian[key].name}</span>
+          </h4>
+          <div className={style.varian}>
+            {data.varian.map((varian, i) => {
+              return (
+                <div
+                  className={style.variant}
+                  style={i == key ? active : null}
+                  key={i}
+                  onClick={() => setKey(i)}
+                >
+                  <h6>{varian.name}</h6>
+                </div>
+              );
+            })}
+          </div>
+          <Divider style={{ marginBottom: "25px", marginTop: "20px" }} />
+          <h4>
+            Category: <span>{data.category}</span>
+          </h4>
+
+          <p>{data.desc}</p>
         </div>
-        <Divider style={{ marginBottom: "25px", marginTop: "20px" }} />
-      </div>
-      <div className={style.right}>
-        <Store data={data} />
-        <Delivery />
+        <div>
+          <Store data={data} />
+          <Delivery />
+        </div>
       </div>
       <Bottom data={data} index={key} />
     </>

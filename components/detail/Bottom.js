@@ -6,6 +6,7 @@ import { formCart } from "../../lib/CartUtils";
 import { useState } from "react";
 import { baseUrl } from "../../utils/url";
 import image from "next/image";
+
 const Bottom = ({ data, index }) => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.user.is_auth);
