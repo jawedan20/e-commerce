@@ -1,0 +1,36 @@
+.container{
+    color:#444444;
+    cursor:default!important;
+    margin-top:65px;
+}
+.content{
+    display:flex;
+    margin-top: 20px;
+}
+.detail{
+    flex: 1;
+}
+.rate{
+    display:flex;
+    align-items: center;
+    margin-left:50px;
+}
+.rate h5{
+    color:#777777;
+    margin-left: 4px;
+}
+.rate p{
+    color:#888888;
+    font-weight: 400;
+    font-size:0.8rem
+}
+.star{
+    display:grid;
+    place-items: center;
+    min-height: 100%;
+}
+.per, .star p{
+    color:#888888;
+    font-size:0.8rem;
+    font-weight: 400;
+}

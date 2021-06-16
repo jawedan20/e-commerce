@@ -27,7 +27,7 @@ const cart = () => {
   const [checkoutItem, setCheckoutItem] = useState({});
 
   useEffect(() => {
-    setCheckoutItem(getSelectItem(selectItem))
+    setCheckoutItem(getSelectItem(selectItem));
   }, [isSelectAll, selectItem, CartList]);
 
   const getSelectItem = (items) => {
@@ -35,15 +35,18 @@ const cart = () => {
       return {};
     } else {
       return CartList.filter((item) => {
-        if(items.length <= 0){
-          return false
-        }else if (items.includes(item.product.id)){
+        if (items.length > 0 && items.includes(item.product.id)) {
           return true
         }
-        return false
+        return false;
       });
     }
   };
+
+  const checkIsSelectAll = () => {
+    const idCart = CartList.map((e) => e.product.id);
+    return idCart.every(id => selectItem.includes(id));
+  }
 
   const onCheck = (e) => {
     let { id, value, checked } = e.target;
@@ -72,7 +75,7 @@ const cart = () => {
                 return id;
               }
             });
-            return [...prev, ...temp.filter(e => !isNaN(e))];
+            return [...prev, ...temp.filter((e) => !isNaN(e))];
           })
         : setSelectItem((prev) => {
             const temp = CartList.map((item) => {
@@ -96,6 +99,7 @@ const cart = () => {
               id={"selectAll"}
               onChange={(e) => onCheck(e)}
               className={style.check}
+              checked={checkIsSelectAll()}
             />
             Select All Product
           </label>

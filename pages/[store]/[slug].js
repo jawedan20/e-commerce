@@ -1,19 +1,11 @@
 import Image from "next/image";
-import style from "../../styles/detail.module.css";
 import { Breadcrumbs } from "@material-ui/core";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import axios from "../../utils/axios";
 import Detail from "../../components/detail/Detail";
 
-
 export default function detail({ product }) {
-  return (
-
-      <div className={style.container}>
-        <Detail data={product} />
-      </div>
-
-  );
+  return <Detail data={product} />;
 }
 export async function getStaticPaths() {
   const res = await axios.get("api/product");

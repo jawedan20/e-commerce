@@ -5,10 +5,6 @@
 .Bottom input[type="number"] {
     -moz-appearance: textfield;
 }
-.container {
-    display: flex;
-    cursor: default;
-}
 .img {
     border-radius: 20px;
 }
@@ -136,9 +132,7 @@
     .buy{
         flex: 1;
     }
-    .container {
-        flex-direction: column;
-    }
+    
     .Image{
         width:100%;
     }

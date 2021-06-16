@@ -1,20 +1,12 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import From from '../../components/Product/form/Root'
 
 export const index = (props) => {
     return (
-        <div>
-            store
-        </div>
+        <>
+            <From />
+        </>
     )
 }
 
-const mapStateToProps = (state) => ({
-    
-})
-
-const mapDispatchToProps = {
-    
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(index)
+export default index
