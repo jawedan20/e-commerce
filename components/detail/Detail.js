@@ -6,6 +6,7 @@ import Store from "../../components/detail/Store";
 import Delivery from "../../components/detail/Delivery";
 import Bottom from "../../components/detail/Bottom";
 import Review from "../../components/detail/Review";
+import Comment from "../../components/detail/comment";
 import StarIcon from "@material-ui/icons/Star";
 
 const detail = ({ data }) => {
@@ -60,6 +61,7 @@ const detail = ({ data }) => {
         </div>
       </div>
       <Review />
+      <Comment />
       <Bottom data={data} index={key} />
     </>
   );

@@ -4,6 +4,8 @@ import ListAltIcon from "@material-ui/icons/ListAlt";
 import Notifications from "@material-ui/icons/Notifications";
 import ActiveLink from "../utils/ActiveLink/ActiveLink";
 import Link from "next/link";
+import { useSelector } from "react-redux";
+import { srcImage } from "../../utils/url";
 
 const NavUser = () => {
   const mystyle = {
@@ -12,12 +14,13 @@ const NavUser = () => {
     color: "white",
     marginRight: "10px",
   };
+  const { username, profil } = useSelector((state) => state.user.detail_user);
   return (
     <div className={user.nav}>
       <div className={user.headNav}>
-        <Avatar style={{ marginRight: "10px" }} />
+        <Avatar src={srcImage(profil)} style={{ marginRight: "10px" }} />
         <div>
-          <h4>username</h4>
+          <h4>{username}</h4>
           <a href="/user/profile">Edit Profile</a>
         </div>
       </div>

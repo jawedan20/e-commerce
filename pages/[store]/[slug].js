@@ -1,6 +1,3 @@
-import Image from "next/image";
-import { Breadcrumbs } from "@material-ui/core";
-import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import axios from "../../utils/axios";
 import Detail from "../../components/detail/Detail";
 

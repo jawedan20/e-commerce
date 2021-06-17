@@ -14,33 +14,31 @@ const accepFileTypeArray = accepFileType.split(",").map((item) => {
 });
 
 export const verifyFile = (files) => {
-    if (files && files.length > 0) {
-      const currentFile = files[0];
-      const currentFileType = currentFile.type;
-      const currentFileSize = currentFile.size;
-      if (currentFileSize > imageSize) {
-        alert(
-          "this no allow To big below 2mb "
-        );
-        return false;
-      }
-
-      if (!accepFileTypeArray.includes(currentFileType)) {
-        alert("this files no allow or please under 2mb");
-        return false;
-      }
-      return true;
+  if (files && files.length > 0) {
+    const currentFile = files[0];
+    const currentFileType = currentFile.type;
+    const currentFileSize = currentFile.size;
+    if (currentFileSize > imageSize) {
+      alert("this no allow To big below 2mb ");
+      return false;
     }
-    return false
-  };
 
-export const toBase64 = file => new Promise((resolve, reject) => {
+    if (!accepFileTypeArray.includes(currentFileType)) {
+      alert("this files no allow or please under 2mb");
+      return false;
+    }
+    return true;
+  }
+  return false;
+};
+
+export const toBase64 = (file) =>
+  new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => resolve(reader.result);
-    reader.onerror = error => reject(error);
-});
-
+    reader.onerror = (error) => reject(error);
+  });
 
 export function downloadBase64File(base64Data, filename) {
   var element = document.createElement("a");
@@ -104,6 +102,20 @@ export function base64StringtoFile(dataurl, filename) {
   return new File([u8arr], filename, { type: mime });
 }
 
+export function isBase64(str) {
+  if (str === "" || str.trim() === "") {
+    return false;
+  }
+  try {
+    return btoa(atob(str)) == str;
+  } catch (err) {
+    return false;
+  }
+}
+export function isDataURL(s) {
+  return !!s.match(isDataURL.regex);
+}
+isDataURL.regex = /^\s*data:([a-z]+\/[a-z]+(;[a-z\-]+\=[a-z\-]+)?)?(;base64)?,[a-z0-9\!\$\&\'\,\(\)\*\+\,\;\=\-\.\_\~\:\@\/\?\%\s]*\s*$/i;
 //   fungsi membuat base64 menjadi file blob
 //   export function makeblob (dataURL) {
 //     var BASE64_MARKER = ';base64,';
