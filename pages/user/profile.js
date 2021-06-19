@@ -4,11 +4,31 @@ import useFetch from "../../utils/hooks/useFetch";
 import Image from "next/image";
 import useFormData from "../../utils/hooks/useFormData";
 import { srcImage } from "../../utils/url";
+import axios from "../../utils/axios";
+import { fetchDataUser } from "../../actions/user";
+import { useDispatch, useSelector } from "react-redux";
+import { isDataURL } from "../../utils/base64";
 
 const profile = () => {
-  const [data, error, loading, setData] = useFetch("api/auth/");
-  const {handleImage, handleChange} = useFormData(data,setData);
-  const { username, email, phone, profil } = data;
+  const dispatch = useDispatch();
+  const { data, handleImage, handleChange } = useFormData(
+    useSelector((state) => state.user.detail_user)
+  );
+  const { username, email, phone, profile } = data;
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let data;
+    if (isDataURL(profile)) {
+      data = JSON.stringify({ username, email, phone, profile });
+    } else {
+      data = JSON.stringify({ username, email, phone });
+    }
+    const res = await axios
+      .put("api/auth/", data)
+      .catch((err) => console.log(err.request.response));
+      dispatch(fetchDataUser(res.data));
+  };
   return (
     <LayoutUser>
       <div className={Styles.headcontent}>
@@ -18,7 +38,7 @@ const profile = () => {
         <div className={Styles.op}>
           <div className={Styles.changeImg}>
             <Image
-              src={srcImage(profil)}
+              src={srcImage(profile)}
               alt="username photo"
               width={300}
               height={300}
@@ -26,8 +46,8 @@ const profile = () => {
             <label>
               <input
                 type="file"
-                name="profil"
-                id="profil"
+                name="profile"
+                id="profile"
                 hidden={true}
                 onChange={(e) => handleImage(e)}
               />
@@ -102,12 +122,7 @@ const profile = () => {
               <label>Email Account</label>
             </div>
             <div className={Styles.input}>
-              <input
-                type="email"
-                value={email}
-                id="email"
-                onChange={(e) => handleChange(e)}
-              />
+              <input type="email" value={email} id="email" />
             </div>
           </div>
           <div className={Styles.field}>
@@ -120,6 +135,15 @@ const profile = () => {
                 id="phone"
                 value={phone}
                 onChange={(e) => handleChange(e)}
+              />
+            </div>
+          </div>
+          <div className={Styles.field}>
+            <div className={Styles.input}>
+              <input
+                type="submit"
+                value={"Change Profile"}
+                onClick={(e) => handleSubmit(e)}
               />
             </div>
           </div>

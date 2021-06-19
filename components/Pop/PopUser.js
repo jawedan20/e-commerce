@@ -7,7 +7,7 @@ import List from "@material-ui/icons/ListAlt";
 import Store from "@material-ui/icons/Store";
 import { logout } from "../../actions/user";
 import { connect } from "react-redux";
-import { baseUrl } from "../../utils/url";
+import { baseUrl, srcImage } from "../../utils/url";
 
 const PopUser = ({ auth, logout }) => {
   return (
@@ -15,7 +15,7 @@ const PopUser = ({ auth, logout }) => {
       <div className={popUser.header}>
         <Link href="/user/profile">
           <div className={popUser.head}>
-            <Avatar src={baseUrl(auth.profil)} style={{ marginRight: "5px" }} />
+            <Avatar src={srcImage(auth.profile)} style={{ marginRight: "5px" }} />
             <h3>{auth.username}</h3>
           </div>
         </Link>

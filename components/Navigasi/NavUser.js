@@ -14,11 +14,11 @@ const NavUser = () => {
     color: "white",
     marginRight: "10px",
   };
-  const { username, profil } = useSelector((state) => state.user.detail_user);
+  const { username, profile } = useSelector((state) => state.user.detail_user);
   return (
     <div className={user.nav}>
       <div className={user.headNav}>
-        <Avatar src={srcImage(profil)} style={{ marginRight: "10px" }} />
+        <Avatar src={srcImage(profile)} style={{ marginRight: "10px" }} />
         <div>
           <h4>{username}</h4>
           <a href="/user/profile">Edit Profile</a>

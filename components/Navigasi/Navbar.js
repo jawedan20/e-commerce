@@ -12,7 +12,7 @@ import Sms from "@material-ui/icons/Sms";
 import PopSearch from "../Pop/PopSearch";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
-import { baseUrl } from "../../utils/url";
+import { baseUrl, srcImage } from "../../utils/url";
 
 export const Navbar = () => {
   const router = useRouter();
@@ -83,7 +83,7 @@ export const Navbar = () => {
                 </div>
                 <div id={styleNavbar.cart} className={styleNavbar.link_user}>
                   <Avatar
-                    src={baseUrl(auth.profil)}
+                    src={srcImage(auth.profile)}
                     style={{
                       width: "25px",
                       height: "25px",

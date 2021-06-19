@@ -9,7 +9,6 @@ if (typeof localStorage !== "undefined") {
   } else {
     initialState = {
       is_auth: false,
-      is_cookies: true,
       detail_user: {},
       location: [],
       location_primary: null,
@@ -18,7 +17,6 @@ if (typeof localStorage !== "undefined") {
 } else {
   initialState = {
     is_auth: false,
-    is_cookies: true,
     detail_user: {},
     location: [],
     location_primary: null,
@@ -33,7 +31,6 @@ const user = (state = initialState, action) => {
       authObj = {
         ...state,
         is_auth: true,
-        is_cookies: true,
         detail_user: py.user,
         location: py.location,
       };
@@ -43,7 +40,6 @@ const user = (state = initialState, action) => {
     case type.LOGIN_SUCCESS:
       authObj = {
         ...state,
-        is_cookies: true,
         is_auth: py,
       };
       setCookie("auth", authObj);
@@ -91,8 +87,17 @@ const user = (state = initialState, action) => {
       setCookie("auth", authObj);
       return authObj;
     case type.USER_IS_UNAUTHORIZED:
-      setCookie("auth",state)
-      return state
+      setCookie("auth", state);
+      return state;
+
+    case type.FETCH_USER:
+      authObj = {
+        ...state,
+        detail_user: py,
+      };
+      setCookie("auth", authObj);
+      return authObj;
+
     default:
       return state;
   }

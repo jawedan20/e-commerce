@@ -1,57 +1,37 @@
 import LayoutUser from "../../components/Layout/LayoutUser";
-import Address from "../../styles/Address.module.css";
+import Styles from "../../styles/Address.module.css";
 import Search from "@material-ui/icons/Search";
-import Delete from "@material-ui/icons/Delete";
-import Edit from "@material-ui/icons/Edit";
+import {  useSelector } from "react-redux";
+import LocationList from '../../components/AuthSystem/Location/AdressList'
 
 const address = () => {
+  const location = useSelector(state => state.user.location)
+  const primeLocation = useSelector(state => state.user.location_primary)
   return (
     <LayoutUser>
-      <div className={Address.headAddress}>
+      <div className={Styles.headAddress}>
         <h3>Address List</h3>
         <button>Add New Address</button>
       </div>
-      <div className={Address.bodyAddress}>
-        <div className={Address.head}>
-          <div className={Address.search}>
+      <div className={Styles.bodyAddress}>
+        <div className={Styles.head}>
+          <div className={Styles.search}>
             <input />
             <div>
               <Search fontSize="small" />
             </div>
           </div>
         </div>
-        <div className={Address.list}>
-          <div>
-            <h5>Kantor <span>Primary</span></h5>
-            <h4 style={{marginTop:"5px"}}>Muhammad jawahiruzzaman</h4>
-            <p>90874309284098</p>
-            <p>
-              jl.selajambe rt 10/04 desa selajambe kabupaten sukabumi depan rel
-              kereta ada jalan
-            </p>
-          </div>
-          <div className={Address.action}>
-            <Edit style={{fontSize:25, color:"#f40057",}} />
-            <Delete style={{fontSize:25, color:"#f40057",margin:"0 10px"}} />
-            <button style={{background:"none", color:"lightGrey", border:"1px solid lightgrey",cursor:"not-allowed"}}>Set as Primary</button>
-          </div>
-        </div>
-        <div style={{background:"none", border:"none"}}className={Address.list}>
-          <div>
-            <h5>Kantor</h5>
-            <h4 style={{marginTop:"5px"}}>Muhammad jawahiruzzaman</h4>
-            <p>90874309284098</p>
-            <p>
-              jl.selajambe rt 10/04 desa selajambe kabupaten sukabumi depan rel
-              kereta ada jalan
-            </p>
-          </div>
-          <div className={Address.action}>
-            <Edit style={{fontSize:25, color:"#f40057",}} />
-            <Delete style={{fontSize:25, color:"#f40057",margin:"0 10px"}} />
-            <button>Set as Primary</button>
-          </div>
-        </div>
+
+        {location.length > 0 && (
+          location.map(item => {
+            const {id} = item
+
+            return <LocationList data={item} prime={id === primeLocation} />
+          })
+        )}
+        
+        
       </div>
     </LayoutUser>
   );
