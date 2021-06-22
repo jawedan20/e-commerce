@@ -80,6 +80,25 @@ export const whoami = () => (dispatch) => {
     .catch((err) => dispatch({ type: type.USER_IS_UNAUTHORIZED }));
 };
 
+export const setPrimaryLocation = (id) => (dispatch) => {
+  dispatch({
+    type: type.SET_PRIMARY_LOCATION,
+    payload: id,
+  });
+};
+
+export const deleteLocation = (id) => (dispatch) => {
+  axios
+    .delete(`api/auth/location/${id}/`)
+    .then((res) =>
+      dispatch({
+        type: type.DELETE_LOCATION,
+        payload: id,
+      })
+    )
+    .catch((err) => console.log(err.request));
+};
+
 export const bookMarkProduct = (productId) => (dispatch) => {
   const data = {
     product: productId,
@@ -94,9 +113,9 @@ export const massageUser = (value) => (dispatch) => {
   dispatch({ type: "GET_SUCCESS_MASSAGE", payload: value });
 };
 
-export const setPrimaryLocation = id => dispatch => {
+export const appendLocation = (data) => (dispatch) => {
   dispatch({
-    type:type.SET_PRIMARY_LOCATION,
-    payload:id
-  })
-}
+    type: type.APPEND_LOCATION,
+    payload: data,
+  });
+};

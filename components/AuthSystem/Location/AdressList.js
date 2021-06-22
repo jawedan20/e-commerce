@@ -2,7 +2,7 @@ import Styles from "../../../styles/Address.module.css";
 import Delete from "@material-ui/icons/Delete";
 import Edit from "@material-ui/icons/Edit";
 import { useDispatch } from "react-redux";
-import { setPrimaryLocation } from "../../../actions/user";
+import { setPrimaryLocation, deleteLocation } from "../../../actions/user";
 
 const Location = ({ data, prime }) => {
   const dispatch = useDispatch();
@@ -23,9 +23,11 @@ const Location = ({ data, prime }) => {
         </div>
         <div className={Styles.action}>
           <Edit style={{ fontSize: 25, color: "#f40057" }} />
-          <Delete
-            style={{ fontSize: 25, color: "#f40057", margin: "0 10px" }}
-          />
+          <div onClick={() => dispatch(deleteLocation(id))}>
+            <Delete
+              style={{ fontSize: 25, color: "#f40057", margin: "0 10px" }}
+            />
+          </div>
           <button
             style={{
               background: "none",
@@ -54,9 +56,11 @@ const Location = ({ data, prime }) => {
         </div>
         <div className={Styles.action}>
           <Edit style={{ fontSize: 25, color: "#f40057" }} />
-          <Delete
-            style={{ fontSize: 25, color: "#f40057", margin: "0 10px" }}
-          />
+          <div onClick={() => dispatch(deleteLocation(id))}>
+            <Delete
+              style={{ fontSize: 25, color: "#f40057", margin: "0 10px" }}
+            />
+          </div>
           <button onClick={() => dispatch(setPrimaryLocation(id))}>
             Set as Primary
           </button>

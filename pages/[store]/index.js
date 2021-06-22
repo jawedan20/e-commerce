@@ -1,6 +1,5 @@
 import React from 'react'
-import From from '../../components/Product/form/Root'
-
+import From from '../../components/AuthSystem/Location/CreateAdress'
 export const index = (props) => {
     return (
         <>

@@ -8,6 +8,7 @@ import Bottom from "../../components/detail/Bottom";
 import Review from "../../components/detail/Review";
 import Comment from "../../components/detail/comment";
 import StarIcon from "@material-ui/icons/Star";
+import CommentBox from "../../components/detail/CommentBox"
 
 const detail = ({ data }) => {
   const [key, setKey] = useState(0);
@@ -60,8 +61,11 @@ const detail = ({ data }) => {
           </div>
         </div>
       </div>
-      <Review />
-      <Comment />
+      <div className={style.Review}>
+        <Review />
+        <Comment />
+        <CommentBox />
+      </div>
       <Bottom data={data} index={key} />
     </>
   );

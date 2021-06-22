@@ -1,7 +1,6 @@
 .container {
   color: #444444;
   cursor: default !important;
-  margin-top: 65px;
 }
 .content {
   display: flex;
@@ -38,15 +37,45 @@
 .nav {
   display: flex;
   align-items: center;
+  color: #555555;
+  margin:25px 0;
+}
+.navList{
+  display: flex;
+  justify-content: space-between;
+  width: 330px;
+  margin-left: 10%;
 }
 .nav button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 70px;
-  height: 35px;
+  width: fit-content;
+  height: 30px;
+  padding:0 10px;
   border: 1px solid lightgray;
   background: #f9f9f9;
-  border-radius: 20px;
+  border-radius: 10px;
   color: #555555;
+}
+.Comment{
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgray;
+  padding: 20px 0;
+}
+.Comment h5{
+  color:#0094da;
+}
+.profile{
+  display: flex;
+}
+.comment{
+  flex: 1;
+  margin-left: 60px;
+}
+.action{
+  display: flex;
+  align-items: center;
 }
