@@ -65,6 +65,10 @@ const detail = ({ data }) => {
         <Review />
         <Comment />
         <CommentBox />
+        <CommentBox />
+        <CommentBox />
+        <CommentBox />
+        <CommentBox />
       </div>
       <Bottom data={data} index={key} />
     </>

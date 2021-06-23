@@ -1,7 +1,7 @@
 import Avatar from "@material-ui/core/Avatar";
 import Rating from "@material-ui/lab/Rating"
 import style from "../../styles/Review.module.css"
-import ThumbUp from '@material-ui/icons/ThumbUpAlt';
+import ThumbUp from '@material-ui/icons/ThumbUpOutlined';
 
 const CommentBox = () => {
     return (
@@ -18,7 +18,8 @@ const CommentBox = () => {
                 <p>warnanya agak pucat yah</p>
             </div>
             <div className={style.action}>
-                <button><ThumbUp/></button>
+                <span>2</span>
+                <ThumbUp style={{fontSize:"20", margin:"0 20px 0 8px"}}/>
                 <h5>Laporkan</h5>
             </div>
         </div>

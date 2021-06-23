@@ -4,6 +4,7 @@
 }
 .children {
   margin: 90px 5%;
+  cursor: default;
 }
 .content {
   flex: 1;

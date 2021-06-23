@@ -15,7 +15,7 @@ const comment = () => {
                     <button><StarIcon style={{ fontSize: 20, color: "#ffb400" }}/>1</button>
                 </div>
             </div>
-            <h5>ALL REVIEW(10)</h5>
+            <h5 style={{color:"#444444"}}>ALL REVIEW(10)</h5>
         </>
     )
 }
