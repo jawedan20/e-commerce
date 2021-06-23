@@ -1,6 +1,5 @@
-import React from 'react'
 import From from '../../components/AuthSystem/Location/CreateAdress'
-export const index = (props) => {
+export const index = () => {
     return (
         <>
             <From />
