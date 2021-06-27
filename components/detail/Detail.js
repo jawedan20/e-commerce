@@ -4,11 +4,9 @@ import style from "../../styles/description.module.css";
 import PanelImage from "../../components/detail/PanelImage";
 import Store from "../../components/detail/Store";
 import Delivery from "../../components/detail/Delivery";
+import Review from "./review/ReviewRoot";
 import Bottom from "../../components/detail/Bottom";
-import Review from "../../components/detail/Review";
-import Comment from "../../components/detail/comment";
 import StarIcon from "@material-ui/icons/Star";
-import CommentBox from "../../components/detail/CommentBox"
 
 const detail = ({ data }) => {
   const [key, setKey] = useState(0);
@@ -62,13 +60,7 @@ const detail = ({ data }) => {
         </div>
       </div>
       <div className={style.Review}>
-        <Review />
-        <Comment />
-        <CommentBox />
-        <CommentBox />
-        <CommentBox />
-        <CommentBox />
-        <CommentBox />
+        <Review data={data.rating} avg={data.rating_avg} /> 
       </div>
       <Bottom data={data} index={key} />
     </>

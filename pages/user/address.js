@@ -28,7 +28,6 @@ const address = () => {
                 {location.length > 0 &&
                     location.map((item) => {
                         const { id } = item;
-
                         return <LocationList data={item} prime={id === primeLocation} />;
                     })}
             </div>

@@ -87,7 +87,14 @@ export const setPrimaryLocation = (id) => (dispatch) => {
   });
 };
 
-export const deleteLocation = (id) => (dispatch) => {
+export const deleteLocation = (id) => (dispatch, getState) => {
+  const primary = getState().user.location_primary;
+  if (id === primary) {
+    dispatch({
+      type: type.SET_PRIMARY_LOCATION,
+      payload: NULL,
+    });
+  }
   axios
     .delete(`api/auth/location/${id}/`)
     .then((res) =>

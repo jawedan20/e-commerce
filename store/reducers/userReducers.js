@@ -73,7 +73,6 @@ const user = (state = initialState, action) => {
       setCookie("auth", authObj);
       return authObj;
     case type.APPEND_LOCATION:
-      console.log([...state.location, py])
       authObj = {
         ...state,
         location: [...state.location, py],
