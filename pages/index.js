@@ -20,7 +20,7 @@ export default function Home({ data }) {
     );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
     try {
         const res = await axios.get("api/product/");
         if (!res.data) {

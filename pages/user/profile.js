@@ -43,7 +43,7 @@ const profile = () => {
               width={300}
               height={300}
             />
-            <label>
+            <label className={Styles.changeFoto}>
               <input
                 type="file"
                 name="profile"
@@ -71,51 +71,6 @@ const profile = () => {
               />
             </div>
           </div>
-          {/* <div className={Styles.field}>
-            <div className={Styles.label}>
-              <label>Date of Birth</label>
-            </div>
-            <div className={Styles.input}>
-              <input type="date" />
-            </div>
-          </div> */}
-          {/* <div className={Styles.field}>
-            <div className={Styles.label}>
-              <label>Gender </label>
-            </div>
-            <div className={Styles.gender}>
-              <div>
-                <input
-                  type="radio"
-                  id="male"
-                  name="gender"
-                  value="male"
-                  style={{ marginRight: "5px" }}
-                />
-                <label htmlFor="male">Male</label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  id="female"
-                  name="gender"
-                  value="female"
-                  style={{ marginRight: "5px" }}
-                />
-                <label htmlFor="female">Female</label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  id="other"
-                  name="gender"
-                  value="other"
-                  style={{ marginRight: "5px" }}
-                />
-                <label htmlFor="other">Other</label>
-              </div>
-            </div>
-          </div> */}
           <h4>Change Account</h4>
           <div className={Styles.field}>
             <div className={Styles.label}>
