@@ -16,15 +16,6 @@ const address = () => {
                 <From />
             </div>
             <div className={Styles.bodyAddress}>
-                <div className={Styles.head}>
-                    <div className={Styles.search}>
-                        <input />
-                        <div>
-                            <Search fontSize="small" />
-                        </div>
-                    </div>
-                </div>
-
                 {location.length > 0 &&
                     location.map((item) => {
                         const { id } = item;

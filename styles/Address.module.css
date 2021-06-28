@@ -1,80 +1,61 @@
 .headAddress {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid lightgray;
-  padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+    padding: 15px 20px;
 }
-.headAddress button{
-  color: white;
-  background:#0094da;
-  border: none;
-  outline: none;
-  border-radius: 5px;
-  padding: 10px;
-  cursor: pointer;
+.headAddress button {
+    color: white;
+    background: #0094da;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
 }
 .bodyAddress {
-  display: flex;
-  flex-direction: column;
-  padding: 30px 20px;
-}
-.head {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-.search {
-  display: flex;
-  align-items: center;
-  border: 1px solid lightgray;
-  width: fit-content;
-  background: none;
-}
-.search input {
-  border: none;
-  outline: none;
-  margin: 0 5px;
-}
-.search div {
-  padding: 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
 }
 .list {
-  box-shadow: 0 0 10px rgb(235, 235, 235);
-  border: 1px solid #72b4d3;
-  border-radius:5px;
-  background:#f2f7fc;
-  margin-top:20px ;
-  padding:25px;
-  display: flex;
-  align-items: center;
-  justify-content:space-between
+    box-shadow: 0 0 10px rgb(235, 235, 235);
+    border: 1px solid #72b4d3;
+    border-radius: 5px;
+    background: #f2f7fc;
+    margin-top: 20px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
-.list p{
-  max-width: 400px;
-  margin: 5px 0;
+.list p {
+    max-width: 400px;
+    margin: 5px 0;
 }
-.list span{
-  margin: 0 1px;
-  color:#f37020;
-  border: 1px solid #f37020;
-  padding:1px;
-  font-size: 0.65rem;
+.list span {
+    margin: 0 1px;
+    color: #f37020;
+    border: 1px solid #f37020;
+    padding: 1px;
+    font-size: 0.65rem;
 }
-.action{
-  display: flex;
-  width:fit-content;
-  align-items: center;
+.action {
+    display: flex;
+    width: fit-content;
+    align-items: center;
 }
-.action button{
-  color: white;
-  background:#0094da;
-  border: none;
-  outline: none;
-  border-radius: 5px;
-  padding: 8px;
-  cursor: pointer;
+.action button {
+    color: white;
+    background: #0094da;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 8px;
+    cursor: pointer;
 }
-.action button:hover, .headAddress button:hover{
-    background:#0081bd;
+.action button:hover,
+.headAddress button:hover {
+    background: #0081bd;
 }
