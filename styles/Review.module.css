@@ -4,7 +4,6 @@
 }
 .content {
   display: flex;
-  margin-top: 20px;
 }
 .detail {
   flex: 1;
