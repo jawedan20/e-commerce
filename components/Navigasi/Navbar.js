@@ -13,11 +13,18 @@ import PopSearch from "../Pop/PopSearch";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { baseUrl, srcImage } from "../../utils/url";
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 export const Navbar = () => {
+  const matches = useMediaQuery('(min-width:800px)');
   const router = useRouter();
   const user = useSelector((state) => state.user.is_auth);
   const auth = useSelector((state) => state.user.detail_user);
+  const style = {
+    background: matches && window.scrollY < 20 ? "white" : "none", 
+    boxShadow: matches && window.scrollY < 20 ? "0 2px 4px 0 rgba(14, 13, 13, 0.2)" : "none"
+  };
+ 
   return (
     <div
       hidden={
@@ -26,7 +33,8 @@ export const Navbar = () => {
           : false
       }
     >
-      <div className={styleNavbar.navbar}>
+  
+      <div className={styleNavbar.navbar} style={style}>
         <div className={styleNavbar.container}>
           <Link href="/">
             <a className={styleNavbar.brand}>LOGO</a>
