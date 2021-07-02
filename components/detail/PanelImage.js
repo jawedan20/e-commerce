@@ -8,7 +8,6 @@ const PanelImage = ({ data, active }) => {
         <div className={style.Image}>
             <Image
                 className={style.img}
-                src="/sapatu.jpg"
                 src={baseUrl(data.image[key].image)}
                 width="fit-content"
                 height="fit-content"

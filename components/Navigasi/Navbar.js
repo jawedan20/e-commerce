@@ -16,13 +16,13 @@ import { baseUrl, srcImage } from "../../utils/url";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 export const Navbar = () => {
-  const matches = useMediaQuery('(min-width:800px)');
+  const matches = useMediaQuery('(min-width:700px)');
   const router = useRouter();
   const user = useSelector((state) => state.user.is_auth);
   const auth = useSelector((state) => state.user.detail_user);
   const style = {
-    background: matches && window.scrollY < 20 ? "white" : "none", 
-    boxShadow: matches && window.scrollY < 20 ? "0 2px 4px 0 rgba(14, 13, 13, 0.2)" : "none"
+    background: matches  ? "white" : "none", 
+    boxShadow: matches  ? "0 2px 4px 0 rgba(14, 13, 13, 0.2)" : "none"
   };
  
   return (

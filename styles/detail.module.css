@@ -127,22 +127,22 @@
     .Bottom {
         padding: 15px 10px;
     }
-    .price, .title,.count {
+    .title,.count {
         display: none;
+    }
+    .buy{
+        flex: 1;
+        margin: 0 15px;
     }
 }
 @media (max-width: 700px) {
-    .buy{
-        flex: 1;
-    }
-    
     .Image{
         width:100%;
     }
     .img{
         border-radius: 0;
     }
-    .navImg{
+    .navImg, .price{
         display: none;
     }
 }
