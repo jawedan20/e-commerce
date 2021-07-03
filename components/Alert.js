@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 
@@ -7,12 +8,12 @@ function AlertComponent(props) {
 }
 
 const Alert = () => {
+	// mengambil data dari reducers / sifatnya sama kayak useState
 	const { id, message, typeToast } = useSelector((state) => state.alert);
 	const [open, setOpen] = useState(false);
+
 	useEffect(() => {
-		if (id) {
-			setOpen(true);
-		}
+		id && setOpen(true);
 	}, [id]);
 
 	const handleClose = (event, reason) => {
@@ -23,6 +24,7 @@ const Alert = () => {
 		setOpen(false);
 	};
 
+	// logic AlertComponent
 	let alertMessage;
 
 	if (typeToast === 1) {
