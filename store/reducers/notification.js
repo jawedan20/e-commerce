@@ -23,6 +23,7 @@ if (typeof localStorage !== "undefined") {
     location_primary: null,
   };
 }
+
 const user = (state = initialState, action) => {
   let py = action.payload;
   let authObj;

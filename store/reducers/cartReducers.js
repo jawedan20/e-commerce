@@ -1,6 +1,6 @@
 import { getCookie, setCookie } from "../../utils/cookies";
 import * as types from "../../actions/action_types/actions_type_cart";
-
+// sok buat file reducern
 const CopyStateReplaceCartList = (state, newCart) => ({
   cartList: newCart,
 });

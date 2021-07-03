@@ -3,7 +3,6 @@ import Search from "@material-ui/icons/Search";
 import ActiveLink from "./utils/ActiveLink/ActiveLink";
 
 const all = ({children}) => {
-  console.log(children)
   return (
     <div>
       <div className={Style.head}>
