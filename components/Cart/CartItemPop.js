@@ -10,9 +10,8 @@ const CartItemPop = ({product,quantity}) => {
         <div className={pop.title}>
           <h4>{product.title}</h4>
           <span>{product.varian}</span><br/>
-          <span>jumlah( {quantity} barang )</span>
         </div>
-        <p className={pop.price}>Rp{product.price}</p>
+        <p className={pop.price}>{quantity} x Rp{product.price}</p>
       </div>
     </>
   );

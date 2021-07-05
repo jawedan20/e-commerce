@@ -13,7 +13,7 @@ const Review = ({ ratingSort, avg, ratingLength }) => {
 
   return (
     <div className={style.container}>
-      <h3>Review({ratingLength})</h3>
+      <h3>Review ({ratingLength})</h3>
       <div className={style.content}>
         <div className={style.star}>
           <h1>

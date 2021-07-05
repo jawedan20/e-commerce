@@ -3,6 +3,28 @@
   margin-bottom: 100px;
   color: #666666;
 }
+.empty{
+  text-align: center;
+  margin-top: 140px;
+  color: #444444;
+}
+.child{
+  color: #888888;
+}
+.message, .child, .btn{
+  margin-top: 13px;
+}
+.btn{
+  background: #0094da;
+  border: none;
+  cursor: pointer;
+  width: 180px;
+  height: 40px;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 10px;
+}
 .cs{
   display: flex;
   align-items: center;
