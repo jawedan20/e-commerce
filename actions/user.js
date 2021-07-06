@@ -1,6 +1,7 @@
 import axios from "../utils/axios";
 import * as type from "./action_types/action_type_user";
 import { removeCookie } from "../utils/cookies";
+import { sendAlert } from "./AlertActions";
 
 export const logout = () => (dispatch) => {
   axios
@@ -8,6 +9,7 @@ export const logout = () => (dispatch) => {
     .then((res) => {
       removeCookie("auth");
       removeCookie("cart");
+      dispatch(sendAlert('Logout Successfuly ',1))
 
       location.href = "/login";
     })
@@ -94,16 +96,22 @@ export const deleteLocation = (id) => (dispatch, getState) => {
       type: type.SET_PRIMARY_LOCATION,
       payload: NULL,
     });
+   
+
   }
   axios
     .delete(`api/auth/location/${id}/`)
     .then((res) =>
-      dispatch({
+      {dispatch({
         type: type.DELETE_LOCATION,
         payload: id,
       })
+      dispatch(sendAlert('Delete Address Successfuly ',1))}
+      
     )
-    .catch((err) => console.log(err.request));
+    .catch((err) => {
+      console.log(err.request)
+      dispatch(sendAlert('Delete Address Failed ',3))});
 };
 
 export const bookMarkProduct = (productId) => (dispatch) => {
@@ -112,7 +120,7 @@ export const bookMarkProduct = (productId) => (dispatch) => {
   };
   axios
     .post("api/auth/bookmark/", data)
-    .then((res) => console.log(res))
+    .then((res) =>  dispatch(sendAlert('Add BookMark',1)))
     .catch((err) => console.log(err));
 };
 

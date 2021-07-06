@@ -2,6 +2,7 @@ import StarIcon from "@material-ui/icons/Star";
 import { useState } from "react";
 import style from "../../../styles/Review.module.css";
 import CommentBox from "./CommentBox";
+import ActiveLink from "../../utils/ActiveLink/FilterActiveLink"
 
 const comment = ({ data }) => {
 	const [comments, setComments] = useState(data);
@@ -9,7 +10,7 @@ const comment = ({ data }) => {
 	const filterByRating = (rate) => {
 		setComments(data.filter((item) => item.rating === rate));
 	};
-
+	
 	return (
 		<>
 			<div className={style.nav}>

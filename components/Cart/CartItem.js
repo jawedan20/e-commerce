@@ -6,7 +6,7 @@ import BookmarkIcon from "@material-ui/icons/Bookmark";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, reduceQuantity, removeFromCart } from "../../lib/CartUtils";
 import { bookMarkProduct } from "../../actions/user";
-import { baseUrl } from "../../utils/url";
+import { srcImage } from "../../utils/url";
 import { useRouter } from "next/dist/client/router";
 
 const CartItem = ({ product, quantity, selectItem, onCheck }) => {
@@ -29,7 +29,7 @@ const CartItem = ({ product, quantity, selectItem, onCheck }) => {
           <Image
             width="80px"
             height="80px"
-            src={baseUrl(product.thumb.image)}
+            src={srcImage(product.thumb.image)}
           />
         </div>
         <div className={Cart.body}>
