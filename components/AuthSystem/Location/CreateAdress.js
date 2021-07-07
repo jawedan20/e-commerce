@@ -39,13 +39,13 @@ export default function CreateAdress() {
 			.post("api/auth/location/", JSON.stringify(formData))
 			.then((res) => {
 				dispatch(appendLocation(res.data));
-        dispatch(sendAlert("success Add Address", 1));
+				dispatch(sendAlert("success Add Address", 1));
 				if (primary) {
 					dispatch(setPrimaryLocation(res.data.id));
 				}
 				handleClose();
 			})
-			.catch((err) => 	dispatch(sendAlert(err.request.response, 3)));
+			.catch((err) => dispatch(sendAlert(err.request.response, 3)));
 	};
 	return (
 		<div>

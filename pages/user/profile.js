@@ -77,7 +77,7 @@ const profile = () => {
               <label>Email Account</label>
             </div>
             <div className={Styles.input}>
-              <input type="email" value={email} id="email" />
+              <input type="email" value={email} readOnly id="email" />
             </div>
           </div>
           <div className={Styles.field}>

@@ -19,7 +19,7 @@ const PopCart = () => {
     return (
         <div className={pop.box}>
             <div className={pop.head}>
-                <h4>Cart({cartItemCount})</h4>
+                <div></div>
                 <Link href="/cart">
                     <a className={pop.link}>View More</a>
                 </Link>

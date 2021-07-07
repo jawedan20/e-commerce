@@ -5,16 +5,17 @@ const uid = function () {
 	return Date.now().toString(36) + Math.random().toString(36).substr(2);
 };
 
+/* 
+	typeToast legend
+				- 1 == "success Alert"
+				- 2 == "warning Alert"
+				- 3 == "error Alert"
+*/
+
 const initialState = {
 	id: null, // buat unique
 	message: "",
 	typeToast: null,
-	/* 
-        typeToast legend
-                    - 1 == "success Alert"
-                    - 2 == "warning Alert"
-                    - 3 == "error Alert"
-    */
 };
 
 const Alert = (state = initialState, action) => {
@@ -48,4 +49,4 @@ const Alert = (state = initialState, action) => {
 	}
 };
 
-export default Alert ;
+export default Alert;
