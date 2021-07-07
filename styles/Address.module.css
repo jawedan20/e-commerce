@@ -30,9 +30,20 @@
     align-items: center;
     justify-content: space-between;
 }
+.list h5{
+    font-size: 0.95rem;
+    font-weight: 600;
+
+}
+.list h4{
+    font-size: 1.1rem;
+    font-weight: 600;
+}
 .list p {
     max-width: 400px;
-    margin: 5px 0;
+    margin: 3px 0;
+    font-size: 0.95rem;
+    font-weight: 400;
 }
 .list span {
     margin: 0 1px;
@@ -41,21 +52,37 @@
     padding: 1px;
     font-size: 0.65rem;
 }
-.action {
-    display: flex;
-    width: fit-content;
-    align-items: center;
-}
-.action button {
-    color: white;
-    background: #0094da;
+.primary , .setPrimary {
     border: none;
     outline: none;
     border-radius: 5px;
-    padding: 8px;
+    padding: 10px 20px;
     cursor: pointer;
 }
-.action button:hover,
+.setPrimary{
+    color: white;
+    background: #0094da;
+    cursor: pointer;
+}
+.primary{
+    color: lightgray;
+    cursor: not-allowed;
+}
+.action{
+    display: flex;
+    color: #0094da;
+    margin-top: 10px;
+}
+.action p{
+    font-weight: 600;
+    font-size: small;
+    padding-right: 20px;
+}
+.delete{
+    border-left: 1px solid rgba(128, 128, 128, 0.432);
+    padding: 0 20px;
+}
+.setPrimary:hover,
 .headAddress button:hover {
     background: #0081bd;
 }

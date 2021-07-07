@@ -13,7 +13,7 @@ export const logout = () => (dispatch) => {
 
       location.href = "/login";
     })
-    .catch((err) => console.log(e));
+    .catch((err) => console.log(err));
 };
 
 export const login = (email, password) => (dispatch) => {
