@@ -2,7 +2,7 @@ import * as types from "../../actions/action_types/action_type_notification";
 import { countUnread } from "../../lib/NotificationUtils";
 
 const initialState = {
-	notifications: [],
+	notifications: null,
 	unreadNotification: 0,
 };
 

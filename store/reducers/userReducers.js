@@ -99,7 +99,13 @@ const user = (state = initialState, action) => {
 			};
 			setCookie("auth", authObj);
 			return authObj;
-
+		case type.SET_TOKEN:
+			authObj = {
+				...state,
+				token: py,
+			};
+			setCookie("auth", authObj);
+			return authObj;
 		default:
 			return state;
 	}

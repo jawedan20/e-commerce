@@ -3,7 +3,7 @@ import firebase from "firebase/app";
 import { getCookie, setCookie } from "./cookies";
 import axios from "./axios";
 
-let firebaseConfig = {
+export const firebaseConfig = {
 	apiKey: "AIzaSyAoHiKZD-hGj8rfuK4_iWWJK6KV6qNVX5s",
 	authDomain: "e-commerce-cd481.firebaseapp.com",
 	projectId: "e-commerce-cd481",
@@ -26,24 +26,37 @@ const firebaseCloudMessaging = {
 				.post("api/auth/token/", JSON.stringify(data))
 				.catch((err) => console.log(err.request));
 		}
-        sendToServer(newToken)
+		sendToServer(newToken);
 		let newCookie = JSON.parse(getCookie("auth"));
 		newCookie.token = newToken;
 		return newCookie;
 	},
-
+	getMessage: function () {
+		if (!firebase.apps.length) {
+			firebase.initializeApp(firebaseConfig);
+			const messaging = firebase.messaging();
+			// Handle incoming messages. Called when:
+			// - a message is received while the app has focus
+			// - the user clicks on an app notification created by a service worker
+			//   `messaging.onBackgroundMessage` handler.
+			messaging.onMessage((payload) => {
+				console.log("Message received. ", payload);
+				// Update the UI to include the received message.
+				appendMessage(payload);
+			});
+		}
+	},
 	//initializing firebase app
 
 	init: async function () {
 		if (!firebase.apps.length) {
 			firebase.initializeApp(firebaseConfig);
-
 			try {
 				const messaging = firebase.messaging();
 				const tokenInCookie = await this.tokenInCookie();
 
 				//if FCM token is already there just return the token
-				if (tokenInCookie) {
+				if (tokenInCookie.length > 0) {
 					return tokenInCookie;
 				}
 
@@ -55,7 +68,6 @@ const firebaseCloudMessaging = {
 					if (fcm_token) {
 						//setting FCM token in indexed db using localforage
 						let newAuth = this.setAuthCookie(fcm_token);
-						console.log(newAuth);
 						setCookie("auth", newAuth);
 						//return the FCM token after saving it
 						return fcm_token;

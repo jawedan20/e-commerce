@@ -9,10 +9,13 @@ import { fetchCartAction } from "../actions/Cart";
 import { whoami } from "../actions/user";
 import { firebaseCloudMessaging } from "../utils/webPush";
 import firebase from "firebase/app";
+import { fecthNotification } from "../actions/NotificationActions";
+import { sendAlert } from "../actions/AlertActions";
 
 function MyApp({ Component, pageProps }) {
 	const dispatch = useDispatch();
 	const auth = useSelector((state) => state.user.is_auth);
+	const { notifications } = useSelector((state) => state.notification);
 
 	useEffect(() => {
 		async function setToken() {
@@ -26,9 +29,10 @@ function MyApp({ Component, pageProps }) {
 			}
 		}
 		function getMessage() {
-			// masih belum mau nampilin data di depan
-			firebase.messaging().onMessage((payload) => {
-				console.log(payload);
+			const messaging = firebase.messaging();
+			messaging.onMessage((message) => {
+				console.log(message);
+				dispatch(sendAlert("ada notif baru ", 1));
 			});
 		}
 
@@ -44,7 +48,13 @@ function MyApp({ Component, pageProps }) {
 			if (Detail === undefined) dispatch(whoami());
 		}
 	}, [auth]);
-
+	useEffect(() => {
+		if (notifications) {
+			console.log("masuk");
+		} else {
+			dispatch(fecthNotification());
+		}
+	}, [notifications]);
 	return (
 		<Provider store={store}>
 			<Layout>
