@@ -48,12 +48,9 @@ function MyApp({ Component, pageProps }) {
 			if (Detail === undefined) dispatch(whoami());
 		}
 	}, [auth]);
+
 	useEffect(() => {
-		if (notifications) {
-			console.log("masuk");
-		} else {
-			dispatch(fecthNotification());
-		}
+		if (!notifications) dispatch(fecthNotification());
 	}, [notifications]);
 	return (
 		<Provider store={store}>

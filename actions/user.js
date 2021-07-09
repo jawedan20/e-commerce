@@ -62,7 +62,7 @@ export const whoami = () => (dispatch) => {
 
 			const location = data.location;
 			const { id, email, username, profile, phone, store } = data;
-      const token = data.tokens
+			const token = data.tokens;
 
 			const user = {
 				id,
@@ -80,10 +80,10 @@ export const whoami = () => (dispatch) => {
 					location,
 				},
 			});
-      dispatch({
-        type:type.SET_TOKEN,
-        payload:token
-      })
+			dispatch({
+				type: type.SET_TOKEN,
+				payload: token,
+			});
 		})
 		.catch((err) => dispatch({ type: type.USER_IS_UNAUTHORIZED }));
 };
