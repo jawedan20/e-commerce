@@ -1,29 +1,17 @@
-import NavBot from "../components/Navigasi/NavBotCart";
+import NavBot from "../../components/Navigasi/NavBotCart";
 import { useSelector } from "react-redux";
-import CartStore from "../components/Cart/CartStore";
-import style from "../styles/cart.module.css";
+import CartStore from "../../components/Cart/CartStore";
+import style from "../../styles/cart.module.css";
 import { useState } from "react";
 import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { sortCartWithStore } from "../../lib/CartUtils";
 
-const CartRawToSort = (cart) => {
-	const data = new Object();
-	cart.length > 0 &&
-		cart.map((item) => {
-			const { store } = item.product;
-			if (store in data) {
-				data[store] = [...data[store], item];
-			} else {
-				data[store] = [item];
-			}
-		});
-	return { data };
-};
 
 const cart = () => {
 	const CartList = useSelector((state) => state.cart.cartList);
-	const { data } = CartRawToSort(CartList);
+	const data  = sortCartWithStore(CartList);
 	const [isSelectAll, setIselectAll] = useState(false);
 	const [selectItem, setSelectItem] = useState([]);
 	const [checkoutItem, setCheckoutItem] = useState({});

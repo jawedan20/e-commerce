@@ -1,31 +1,42 @@
-import { CallToActionSharp } from "@material-ui/icons";
+
 import * as types from "../../actions/action_types/action_type_order";
 
 const initialState = {
-    order:[],
-    loading:false,
-    next:null,
-}
+	shipments: [],
+	buyNow: null,
+};
 
-const Order = (state =initialState, action) => {
-    
-    let py = action.payload
+const Order = (state = initialState, action) => {
+	let py = action.payload;
 
-    switch (action.type) {
-        case types.FETCH_ORDER_DATA:
-
-            return state    
-       
-            case types.LOADING_ORDER:
-            return {
+	switch (action.type) {
+		case types.ADDSHIPMENT:
+			return {
                 ...state,
-                loading:py
+                shipments:py
             }
 
-        default:
-            return state
-        
-    }
-}
+        case types.ORDER_SUCCESS:
+            return {
+                ...state,
+                shipments:[]
+            }
+         
+        case types.REMOVE_BUYNOW:
+            return {
+                ...state,
+                buyNow:null
+            }
+            
+		case types.ADD_BUYNOW:
+			return {
+				...state,
+                buyNow:py
+			};
 
-export default Order 
+		default:
+			return state;
+	}
+};
+
+export default Order;

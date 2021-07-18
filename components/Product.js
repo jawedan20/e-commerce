@@ -1,6 +1,6 @@
 import Image from "next/image";
 import style from "../styles/product.module.css";
-import { baseUrl } from "../utils/url";
+import {  srcImage } from "../utils/url";
 import Link from "next/link"
 
 const Product = ({ data, image }) => {
@@ -8,7 +8,7 @@ const Product = ({ data, image }) => {
         <Link href={data.store + "/" +data.slug}>
             <div className={style.container}>
                 <Image
-                    src={baseUrl(data.thumb.image)}
+                    src={srcImage(data.thumb.image)}
                     width="fit-content"
                     height="fit-content"
                     className={style.image}

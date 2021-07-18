@@ -1,34 +1,23 @@
-import axios from "../utils/axios";
 import * as types from "./action_types/action_type_order";
 
-export const fecthDataOrder =
-	(endpoint = null) =>
-	(dispatch) => {
-		let url = endpoint
-			? `api/order/${endpoint.slice(endpoint.length - 7)}`
-			: `api/order/?page=1`;
-		dispatch({
-			type: types.LOADING_ORDER,
-			payload: true,
-		});
-		axios
-			.get(url)
-			.then((res) => {
-				const { next, results } = res.data;
-				dispatch({
-					type: types.LOADING_ORDER,
-					payload: false,
-				});
-				dispatch({
-					type: types.FETCH_ORDER_DATA,
-					payload: { next, results },
-				});
-			})
-			.catch((err) => {
-				dispatch({
-					type: types.LOADING_ORDER,
-					payload: false,
-				});
-				console.log(err.request);
-			});
-	};
+export const addShipment = (cartList) => dispacth => {
+	const payload = cartList.map(item => item.product.id)
+	dispacth({
+		type:types.ADDSHIPMENT,
+		payload
+	})
+}
+
+export const addBuyNow = (product) => (dispatch) => {
+	dispatch({
+		type: types.ADD_BUYNOW,
+		payload: {
+			id: product.id,
+			title: product.title,
+			price: product.price,
+			store: product.store,
+			varian: null,
+			quantity:1
+		},
+	});
+};

@@ -11,4 +11,8 @@ export const fecthNotification = () => (dispatch) => {
             payload:res.data
         })        
     })
+    .catch(err =>  dispatch({
+        type:types.FECTHNOTIFICATION,
+        payload:[]
+    })  )
 }

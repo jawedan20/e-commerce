@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { appendLocation, setPrimaryLocation } from "../../../actions/user";
 import axios from "../../../utils/axios";
-import useFormData from "../../../utils/hooks/useFormData";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
@@ -10,21 +9,35 @@ import style from "../../../styles/CreateAddress.module.css";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { sendAlert } from "../../../actions/AlertActions";
+import { InputLabel, MenuItem, Select } from "@material-ui/core";
+import AutoAddress from "./createAdress/AutoAddress";
+import AutoPostal from "./createAdress/AutoPostCode";
 
 export default function CreateAdress() {
 	const [open, setOpen] = useState(false);
 	const dispatch = useDispatch();
 	const [primary, SetPrimary] = useState(false);
 	const user = useSelector((state) => state.user.detail_user.id);
-	const { data, handleChange } = useFormData({
+	const [data, setData] = useState({
 		name: "",
 		phone: "",
-		city: "",
+		city: {
+			province_name: "",
+			city: "",
+			sub_district: "",
+			postal_code: [],
+			select: null,
+		},
 		address: "",
 		other: "",
 		name_location: "",
 		user,
 	});
+
+	const handleChange = (e) => {
+		const { id, value } = e.target;
+		setData((prev) => ({ ...prev, [id]: value }));
+	};
 
 	const handleOpen = () => setOpen(true);
 
@@ -34,7 +47,10 @@ export default function CreateAdress() {
 
 	const handleSubmit = () => {
 		let formData = data;
-
+		formData = {
+			...formData,
+			city: `${formData.city.province_name} ,${formData.city.city} ,${formData.city.sub_district} ,${formData.city.select}`,
+		};
 		axios
 			.post("api/auth/location/", JSON.stringify(formData))
 			.then((res) => {
@@ -47,6 +63,7 @@ export default function CreateAdress() {
 			})
 			.catch((err) => dispatch(sendAlert(err.request.response, 3)));
 	};
+
 	return (
 		<div>
 			<button type="button" onClick={handleOpen}>
@@ -64,14 +81,26 @@ export default function CreateAdress() {
 				<Fade in={open}>
 					<form className={style.paper}>
 						<h2>Add New Address</h2>
-						<TextField
-							label="Address Label"
-							style={{ marginBottom: "20px" }}
+
+						<InputLabel id="name_location">Label Location</InputLabel>
+						<Select
+							labelId="name_location"
 							id="name_location"
-							variant="outlined"
-							size="small"
-							onChange={(e) => handleChange(e)}
-						/>
+							value={data.name_location}
+							onChange={(e) =>
+								setData((prev) => ({
+									...prev,
+									name_location: e.target.value,
+								}))
+							}
+						>
+							<MenuItem id="name_location" value={"rumah"}>
+								Rumah
+							</MenuItem>
+							<MenuItem id="name_location" value={"kantor"}>
+								Kantor
+							</MenuItem>
+						</Select>
 						<div className={style.name}>
 							<TextField
 								label="Recipient's Name"
@@ -90,22 +119,25 @@ export default function CreateAdress() {
 								onChange={(e) => handleChange(e)}
 							/>
 						</div>
+						<div className={style.name}>
+							<AutoAddress setData={setData} />
+
+							<AutoPostal
+								options={data.city.postal_code}
+								disable={
+									data.city.postal_code &&
+									data.city.postal_code.length > 0
+								}
+								setData={setData}
+							/>
+						</div>
 						<TextField
-							label="City and Other"
-							style={{ marginBottom: "20px" }}
-							id="city"
-							variant="outlined"
-							size="small"
-							onChange={(e) => handleChange(e)}
-						/>
-						<TextField
-							label="alamat"
+							label="Address"
 							style={{ marginBottom: "20px" }}
 							id="address"
 							variant="outlined"
 							size="small"
 							onChange={(e) => handleChange(e)}
-							label="alamat penerima"
 						/>
 						<TextField
 							style={{ marginBottom: "20px" }}
@@ -113,7 +145,7 @@ export default function CreateAdress() {
 							variant="outlined"
 							size="small"
 							onChange={(e) => handleChange(e)}
-							label="patokan opsional penerima"
+							label="information Address (Optional)"
 						/>
 						{/* yang bawah enak pake opsion kayak rumah / kantor */}
 						<div className={style.check}>

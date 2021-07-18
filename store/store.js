@@ -4,6 +4,7 @@ import user from './reducers/userReducers'
 import cart from './reducers/cartReducers'
 import alert from './reducers/alertReducers'
 import notification from './reducers/notificationReducers'
+import order from './reducers/orderReducers'
 
 import { composeWithDevTools } from 'redux-devtools-extension';
 
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   user,
   cart,
   alert,
-  notification
+  notification,
+  order
 })
 
 const middlwares = applyMiddleware(thunk)

@@ -17,9 +17,9 @@ const address = () => {
             </div>
             <div className={Styles.bodyAddress}>
                 {location.length > 0 &&
-                    location.map((item) => {
+                    location.map((item,i) => {
                         const { id } = item;
-                        return <LocationList data={item} prime={id === primeLocation} />;
+                        return <LocationList key={i} data={item} prime={id === primeLocation} />;
                     })}
             </div>
         </LayoutUser>

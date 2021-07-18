@@ -1,3 +1,8 @@
-export const FETCH_ORDER_DATA = "FECTH_ORDER_DATA"
-export const UPDATE_ORDER_DATA = "UPDATE_ORDER_DATA"
-export const LOADING_ORDER = "LOADING_ORDER"
+// buy now types
+export const ADD_BUYNOW = "ADD_BUYNOW";
+export const REMOVE_BUYNOW = "REMOVE_BUYNOW"
+
+// shipment types
+export const ADDSHIPMENT = "ADDSHIPMENT";
+export const ORDER_SUCCESS = "ORDER_SUCCESS";
+export const CANCEL_ORDER = "CANCEL_ORDER";

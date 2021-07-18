@@ -22,19 +22,13 @@ function MyApp({ Component, pageProps }) {
 			try {
 				const token = await firebaseCloudMessaging.init();
 				if (token) {
-					getMessage();
+					firebaseCloudMessaging.getMessage()
 				}
 			} catch (error) {
 				console.log(error);
 			}
 		}
-		function getMessage() {
-			const messaging = firebase.messaging();
-			messaging.onMessage((message) => {
-				console.log(message);
-				dispatch(sendAlert("ada notif baru ", 1));
-			});
-		}
+		
 
 		if (auth) {
 			setToken();
