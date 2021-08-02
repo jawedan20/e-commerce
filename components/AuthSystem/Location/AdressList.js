@@ -1,6 +1,4 @@
 import Styles from "../../../styles/Address.module.css";
-import Delete from "@material-ui/icons/Delete";
-import Edit from "@material-ui/icons/Edit";
 import { useDispatch } from "react-redux";
 import { setPrimaryLocation, deleteLocation } from "../../../actions/user";
 
@@ -48,7 +46,7 @@ const Location = ({ data, prime }) => {
                 </div>
                 <button
                     className={Styles.setPrimary}
-                    onClick={() => dispatch(setPrimaryLocation(id))}
+                    onClick={() => dispatch(setPrimaryLocation(data))}
                 >
                     Set as Primary
                 </button>

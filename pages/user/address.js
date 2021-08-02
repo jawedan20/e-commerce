@@ -19,7 +19,7 @@ const address = () => {
                 {location.length > 0 &&
                     location.map((item,i) => {
                         const { id } = item;
-                        return <LocationList key={i} data={item} prime={id === primeLocation} />;
+                        return <LocationList key={i} data={item} prime={id === (primeLocation && primeLocation.id)} />;
                     })}
             </div>
         </LayoutUser>

@@ -100,7 +100,7 @@ export const deleteLocation = (id) => (dispatch, getState) => {
 	if (id === primary) {
 		dispatch({
 			type: type.SET_PRIMARY_LOCATION,
-			payload: NULL,
+			payload: null,
 		});
 	}
 	axios

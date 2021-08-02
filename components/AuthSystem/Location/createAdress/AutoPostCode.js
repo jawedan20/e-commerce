@@ -19,7 +19,7 @@ export default function Grouped({ options, disable, setData }) {
 				setValue(newValue);
 				setData((prev) => ({
 					...prev,
-					city: { ...prev.city, select: newValue },
+					postal_code:Number(newValue)
 				}));
 			}}
 			getOptionLabel={(option) => (option ? String(option) : "")}

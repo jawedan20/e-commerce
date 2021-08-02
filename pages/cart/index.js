@@ -61,7 +61,7 @@ const cart = () => {
 				? setSelectItem((prev) => {
 						const temp = CartList.map((item) => {
 							const { id, store } = item.product;
-							if (store === value) {
+							if (store.name === value) {
 								return id;
 							}
 						});
@@ -70,7 +70,7 @@ const cart = () => {
 				: setSelectItem((prev) => {
 						const temp = CartList.map((item) => {
 							const { id, store } = item.product;
-							if (store === value) {
+							if (store.name === value) {
 								return id;
 							}
 						});

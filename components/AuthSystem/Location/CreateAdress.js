@@ -26,8 +26,9 @@ export default function CreateAdress() {
 			city: "",
 			sub_district: "",
 			postal_code: [],
-			select: null,
 		},
+		postal_code: null,
+		city_id: null,
 		address: "",
 		other: "",
 		name_location: "",
@@ -49,15 +50,17 @@ export default function CreateAdress() {
 		let formData = data;
 		formData = {
 			...formData,
-			city: `${formData.city.province_name} ,${formData.city.city} ,${formData.city.sub_district} ,${formData.city.select}`,
+			city: `${formData.city.province_name} ,${formData.city.city} ,${formData.city.sub_district} ,${formData.postal_code}`,
+			city_id: formData.city.city_id,
 		};
+
 		axios
 			.post("api/auth/location/", JSON.stringify(formData))
 			.then((res) => {
 				dispatch(appendLocation(res.data));
 				dispatch(sendAlert("success Add Address", 1));
 				if (primary) {
-					dispatch(setPrimaryLocation(res.data.id));
+					dispatch(setPrimaryLocation(res.data));
 				}
 				handleClose();
 			})

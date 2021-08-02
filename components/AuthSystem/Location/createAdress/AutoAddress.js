@@ -47,7 +47,7 @@ export default function Grouped({ setData }) {
 				setValue(newValue);
 				setData((prev) => ({
 					...prev,
-					city: { ...newValue, select: null },
+					city: { ...newValue,select: null },
 				}));
 			}}
 			inputValue={input}
