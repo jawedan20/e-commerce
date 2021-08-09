@@ -8,6 +8,12 @@ export const addShipment = (cartList) => dispacth => {
 	})
 }
 
+export const RemoveShipment = () => dispacth => {
+	dispacth({
+		type:types.ORDER_SUCCESS,
+	})
+}
+
 export const addBuyNow = (product) => (dispatch) => {
 	dispatch({
 		type: types.ADD_BUYNOW,

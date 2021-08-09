@@ -1,31 +1,62 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { sortCartWithStore } from "../../lib/CartUtils";
+import { useState } from "react";
+import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
+import { sortCartWithStore,countCart, formCart } from "../../lib/CartUtils";
 import Testing from "../../components/AuthSystem/Location/CreateAdress";
-import { useEffect } from "react";
 
+import StoreOrder from "../../components/Shipment/StoreOrder";
 import axios from "../../utils/axios";
-
+import { RemoveShipment } from "../../actions/OrderActions";
 
 const shipment = () => {
+	const router = useRouter()
+	const dispatch = useDispatch()
 	const order = useSelector((state) => state.order.shipments);
-	const alamat = useSelector((state) => state.user.location_primary);
+
 	const cartList = useSelector((state) => state.cart.cartList);
-	const orderList = sortCartWithStore(
-		cartList.filter((item) => order.includes(item.product.id))
-	); // sort data
-	const origin = 412;
-	const destination = 430;
-	// useEffect(() => {
-	// 	axios
-	// 		.post("api/auth/cek-ongkir/", { origin, destination })
-	// 		.then((res) => console.log(res.data));
-	// }, []);
+	const orderItem = cartList.filter((item) => order.includes(item.product.id));
+	const orderList = sortCartWithStore(orderItem); // sort data
+	const address = useSelector((state) => state.user.location_primary);
+
+	const {cartItemCount, cartTotal} = countCart(orderItem)
+	const [data, setData] = useState({
+		order_item: orderItem.map((item) => ({
+			quantity: item.quantity,
+			product: item.product.id,
+		})),
+		location: address ? address.id : null,
+		ongkir: 0,
+	});
+
+	const onSubmit = () => {
+		axios.post('api/order/',JSON.stringify(data))
+		.then(res => {
+			dispatch(formCart(true,orderItem.map(item => item.product.id)))
+			dispatch(RemoveShipment())
+			router.push('/cart')
+			
+		}).catch(err => console.log(err.request))
+	}
 
 	return (
 		<>
 			<h1>shipmant</h1>
-			<Testing />
+			{Object.keys(orderList).map((key) => {
+				console.log(orderList[key]);
+				return (
+					<StoreOrder
+						setData={setData}
+						key={key}
+						data={orderList[key]}
+						store={key}
+						address={address}
+					/>
+				);
+			})}
+			<p>total product({cartItemCount}) : {cartTotal}</p>
+			<p>total ongkir : {data.ongkir}</p>
+			<p>total : {cartTotal + data.ongkir}</p>
+			<button onClick={() => onSubmit()}>Order</button>
 		</>
 	);
 };

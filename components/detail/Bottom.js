@@ -1,8 +1,7 @@
 import style from "../../styles/detail.module.css";
-import Image from "next/image";
 import Book from "@material-ui/icons/Book";
 import { useDispatch, useSelector } from "react-redux";
-import { formCart } from "../../lib/CartUtils";
+import { addFormToCart } from "../../lib/CartUtils";
 import { useState } from "react";
 import {  srcImage } from "../../utils/url";
 import { addBuyNow } from "../../actions/OrderActions";
@@ -58,7 +57,7 @@ const Bottom = ({ data, index }) => {
 				<h4>Rp{varian.price * quantity}</h4>
 			</div>
 			<button
-				onClick={() => dispatch(formCart(auth, product, quantity))}
+				onClick={() => dispatch(addFormToCart(auth, product,quantity))}
 				className={style.add}
 			>
 				Add To Cart

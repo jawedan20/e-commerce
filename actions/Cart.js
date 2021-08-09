@@ -99,7 +99,7 @@ export const removeFromCartAction = (productId) => (dispatch) => {
 };
 
 export const removeFromCartAuthAction = (productId) => (dispatch) => {
-	axiosInstance.delete(`api/cart/${productId}/delete/`).then((res) => {
+	axiosInstance.post(`api/cart/delete/`, [productId]).then((res) => {
 		dispatch({
 			type: types.REMOVE_CART,
 			payload: productId,
@@ -108,7 +108,34 @@ export const removeFromCartAuthAction = (productId) => (dispatch) => {
 	});
 };
 
-export const FormCartAction = (product, quantity) => (dispatch) => {
+export const FormCartAction = (payload) => (dispatch) => {
+	dispatch({
+		type: types.REMOVE_SELECT_CART,
+		payload,
+	});
+	dispatch(sendAlert("Add Cart Successfuly ", 1));
+};
+export const FormCartAuthAction = (payload) => (dispatch) => {
+	const data = payload;
+	axiosInstance
+		.post("api/cart/delete/", data, { cancelToken: source.token })
+		.then((res) => {
+			dispatch({
+				type: types.REMOVE_SELECT_CART,
+				payload,
+			});
+			dispatch(sendAlert("Add Cart Successfuly ", 1));
+		})
+		.catch((err) => {
+			if (axios.isCancel(err)) {
+				console.clear();
+			} else {
+				console.log(err.request);
+				dispatch(sendAlert("Remove Cart Failed ", 3));
+			}
+		});
+};
+export const AddFormCartAction = (product, quantity) => (dispatch) => {
 	dispatch({
 		type: types.FORM_CART,
 		payload: {
@@ -117,7 +144,7 @@ export const FormCartAction = (product, quantity) => (dispatch) => {
 		},
 	});
 };
-export const FormCartAuthAction = (product, quantity) => (dispatch) => {
+export const AddFormCartAuthAction = (product, quantity) => (dispatch) => {
 	const data = {
 		quantity,
 		product: product.id,
@@ -132,16 +159,14 @@ export const FormCartAuthAction = (product, quantity) => (dispatch) => {
 					quantity,
 				},
 			});
-  dispatch(sendAlert('Add Cart Successfuly ',1))
-      
+			dispatch(sendAlert("Add Cart Successfuly ", 1));
 		})
 		.catch((err) => {
 			if (axios.isCancel(err)) {
 				console.clear();
 			} else {
 				console.log(err.request);
-      dispatch(sendAlert('Remove Cart Failed ',3))
-
+				dispatch(sendAlert("Remove Cart Failed ", 3));
 			}
 		});
 };

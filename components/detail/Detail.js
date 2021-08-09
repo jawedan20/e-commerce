@@ -54,7 +54,7 @@ const detail = ({ data }) => {
             <p>{data.desc}</p>
           </div>
           <div>
-            <Store data={data} />
+            <Store data={data.store} />
             <Delivery />
           </div>
         </div>

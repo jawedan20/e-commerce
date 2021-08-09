@@ -8,11 +8,11 @@ const Store = ({data}) => {
     return (
         <div className={style.store}>
             <div className={style.storeDetail}>
-                <Avatar />
+                <Avatar src={data.profile}/>
                 <div className={style.storeName}>
-                    <h5>{data.store}</h5>
+                    <h5>{data.name}</h5>
                     <Location style={{ fontSize: "16", verticalAlign: "sub" }} />
-                    <span>StoreAddress</span>
+                    <span>{data.location.city}</span>
                 </div>
             </div>
             <div className={style.action}>

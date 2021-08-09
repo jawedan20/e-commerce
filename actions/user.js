@@ -72,6 +72,10 @@ export const whoami = () => (dispatch) => {
 				phone,
 				store,
 			};
+			dispatch({
+				type: type.SET_PRIMARY_LOCATION,
+				payload: location ? location[0] : null,
+			});
 
 			dispatch({
 				type: type.LOGIN_USER,

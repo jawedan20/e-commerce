@@ -9,7 +9,7 @@ export async function getStaticPaths() {
   const products = res.data.results;
 
   const paths = products.map((product) => ({
-    params: { store: product.store, slug: product.slug },
+    params: { store: product.store.name, slug: product.slug },
   }));
   return { paths, fallback: false };
 }
