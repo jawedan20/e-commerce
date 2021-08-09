@@ -25,9 +25,9 @@ export default function Grouped({ options, disable, setData }) {
 			getOptionLabel={(option) => (option ? String(option) : "")}
 			getOptionSelected={(option, value) => option === value}
 			options={options}
-			style={{ width: 150 }}
+			style={{ width: 150, marginBottom: "20px" }}
 			renderInput={(params) => (
-				<TextField {...params} label="Postal Code" variant="outlined" />
+				<TextField {...params} label="Postal Code" variant="outlined" size="small" />
 			)}
 		/>
 	);

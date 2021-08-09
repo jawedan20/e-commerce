@@ -6,34 +6,28 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import axiosInstance from "../../../../utils/axios";
 
 export default function Grouped({ setData }) {
-	const [open, setOpen] = useState(false);
-	const [options, setOptions] = useState([]);
-	const [value, setValue] = useState(null);
-	const [input, setInput] = useState("");
-	const [loading, setLoading] = useState(false);
+    const [open, setOpen] = useState(false);
+    const [options, setOptions] = useState([]);
+    const [value, setValue] = useState(null);
+    const [input, setInput] = useState("");
+    const [loading, setLoading] = useState(false);
 
-	const getFistlatter = (name) => {
-		const fistlatter = name[0].toUpperCase();
-		return /[0-9]/.test(fistlatter) ? "0-9" : fistlatter;
-	};
-	useEffect(() => {
-		if (input.length > 3) {
-			setLoading(true);
-			axiosInstance
-				.get(`api/auth/location/address/?search=${input}`)
-				.then((res) => {
-					setLoading(false);
-					setOptions(res.data);
-				})
-				.catch((e) =>
-					axios.isCancel(e) ? console.clear() : console.log(e.request)
-				);
-		}
-	}, [input]);
+    useEffect(() => {
+        if (input.length > 3) {
+            setLoading(true);
+            axiosInstance
+                .get(`api/auth/location/address/?search=${input}`)
+                .then((res) => {
+                    setLoading(false);
+                    setOptions(res.data);
+                })
+                .catch((e) => (axios.isCancel(e) ? console.clear() : console.log(e.request)));
+        }
+    }, [input]);
 
-	useEffect(() => {
-		if (!open) setOptions([]);
-	}, [open]);
+    useEffect(() => {
+        if (!open) setOptions([]);
+    }, [open]);
 
 	return (
 		<Autocomplete

@@ -9,7 +9,7 @@ import style from "../../../styles/CreateAddress.module.css";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { sendAlert } from "../../../actions/AlertActions";
-import { InputLabel, MenuItem, Select } from "@material-ui/core";
+import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
 import AutoAddress from "./createAdress/AutoAddress";
 import AutoPostal from "./createAdress/AutoPostCode";
 
@@ -84,26 +84,31 @@ export default function CreateAdress() {
 				<Fade in={open}>
 					<form className={style.paper}>
 						<h2>Add New Address</h2>
-
-						<InputLabel id="name_location">Label Location</InputLabel>
-						<Select
-							labelId="name_location"
-							id="name_location"
-							value={data.name_location}
-							onChange={(e) =>
-								setData((prev) => ({
-									...prev,
-									name_location: e.target.value,
-								}))
-							}
+						<FormControl
+							variant="outlined"
+							size="small"
+							style={{ marginBottom: "20px" }}
 						>
-							<MenuItem id="name_location" value={"rumah"}>
-								Rumah
-							</MenuItem>
-							<MenuItem id="name_location" value={"kantor"}>
-								Kantor
-							</MenuItem>
-						</Select>
+							<InputLabel id="name_location">Label Location</InputLabel>
+							<Select
+								labelId="name_location"
+								id="name_location"
+								value={data.name_location}
+								onChange={(e) =>
+									setData((prev) => ({
+										...prev,
+										name_location: e.target.value,
+									}))
+								}
+							>
+								<MenuItem id="name_location" value={"rumah"}>
+									Rumah
+								</MenuItem>
+								<MenuItem id="name_location" value={"kantor"}>
+									Kantor
+								</MenuItem>
+							</Select>
+						</FormControl>
 						<div className={style.name}>
 							<TextField
 								label="Recipient's Name"
