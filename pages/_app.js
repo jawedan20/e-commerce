@@ -2,20 +2,18 @@ import { Provider, useDispatch, useSelector } from "react-redux";
 import { createWrapper } from "next-redux-wrapper";
 import store from "../store/store";
 import Layout from "../components/Layout/Layout";
-import "../styles/globals.css";
 import { useEffect } from "react";
 import { getCookie } from "../utils/cookies";
 import { fetchCartAction } from "../actions/Cart";
 import { whoami } from "../actions/user";
 import { firebaseCloudMessaging } from "../utils/webPush";
-import firebase from "firebase/app";
 import { fecthNotification } from "../actions/NotificationActions";
-import { sendAlert } from "../actions/AlertActions";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
 	const dispatch = useDispatch();
 	const auth = useSelector((state) => state.user.is_auth);
-	const { notifications } = useSelector((state) => state.notification);
+	// const { notifications } = useSelector((state) => state.notification);
 
 	useEffect(() => {
 		async function setToken() {
@@ -29,7 +27,6 @@ function MyApp({ Component, pageProps }) {
 			}
 		}
 		
-
 		if (auth) {
 			setToken();
 			const cart = getCookie("cart");
@@ -43,9 +40,9 @@ function MyApp({ Component, pageProps }) {
 		}
 	}, [auth]);
 
-	useEffect(() => {
-		if (!notifications) dispatch(fecthNotification());
-	}, [notifications]);
+	// useEffect(() => {
+	// 	if (!notifications) dispatch(fecthNotification());
+	// }, [notifications]);
 	return (
 		<Provider store={store}>
 			<Layout>
