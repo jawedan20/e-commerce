@@ -4,22 +4,22 @@ import { srcImage } from "../../utils/url";
 import SelectOngkir from "../../components/Shipment/OngkirSelect";
 import axios from "../../utils/axios";
 
-const StoreOrder = ({ data, store,address,setData }) => {
+const StoreOrder = ({ data, store, address, setData }) => {
 	const [data_ongkir, setData_ongkir] = useState([]);
-   
-    
+
 	const checkOngkir = async () => {
 		if (!address) return;
 		if (!data.length > 0) return;
-		const origin = data[0].product.store.location.city_id;
+		const origin = data[0].product.store.location[0].city_id;
 		const destination = address.city_id;
 
 		axios
 			.post("api/auth/cek-ongkir/", { origin, destination })
 			.then((res) => {
+				console.log(res.data);
 				setData_ongkir(res.data.rajaongkir.results[0].costs);
 			})
-			.catch((err) => console.log(err.request));
+			.catch((err) => console.log(err));
 	};
 
 	return (
@@ -31,7 +31,7 @@ const StoreOrder = ({ data, store,address,setData }) => {
 						<>
 							<p>{item.product.title}</p>
 							<img
-								src={srcImage(item.product.thumb.image)}
+								src={srcImage(item.product.thumb[0].image)}
 								alt="image"
 								width={50}
 								height={50}

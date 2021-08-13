@@ -13,7 +13,7 @@ const CartItem = ({ product, quantity, selectItem, onCheck }) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.user.is_auth);
-  
+  console.log(product.thumb)
   return (
     <>
       <div className={Cart.pro}>
@@ -29,7 +29,7 @@ const CartItem = ({ product, quantity, selectItem, onCheck }) => {
           <Image
             width="80px"
             height="80px"
-            src={srcImage(product.thumb.image)}
+            src={srcImage(product.thumb[0].image)}
           />
         </div>
         <div className={Cart.body}>

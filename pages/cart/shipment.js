@@ -48,7 +48,6 @@ const shipment = () => {
 		<>
 			<h1>shipmant</h1>
 			{Object.keys(orderList).map((key) => {
-				console.log(orderList[key]);
 				return (
 					<StoreOrder
 						setData={setData}

@@ -12,7 +12,7 @@ const OrderItem = ({data}) => {
         <Image
           width={!matches ? "60px" : "40px"}
           height={matches ? "40px" : "60px"}
-          src={srcImage(product.thumb.image)}
+          src={srcImage(product.thumb[0].image)}
         />
         <div className={style.detail}>
           <h4>{product.title}</h4>
