@@ -3,6 +3,7 @@ import InputLabel from  "@material-ui/core/InputLabel"
 import MenuItem from  "@material-ui/core/MenuItem"
 import Select from  "@material-ui/core/Select"
 import { useState } from "react";
+import { intToRupiah } from "../../utils/convert";
 
 const OngkirSelect = ({ dataset, setData}) => {
     const [ongkir,setOngkir] = useState(null)
@@ -30,7 +31,7 @@ const OngkirSelect = ({ dataset, setData}) => {
 									{item.description} <span>{cost.etd} hari </span>
 								</p>
 								<br></br>
-								<p>Rp {cost.value}</p>
+								<p>{intToRupiah(cost.value)}</p>
 							</MenuItem>
 						);
 					})}

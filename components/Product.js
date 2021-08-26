@@ -2,6 +2,7 @@ import Image from "next/image";
 import style from "../styles/product.module.css";
 import {  srcImage } from "../utils/url";
 import Link from "next/link"
+import { intToRupiah } from "../utils/convert";
 
 const Product = ({ data, image }) => {
     return (
@@ -15,7 +16,7 @@ const Product = ({ data, image }) => {
                 />
                 <div className={style.content}>
                     <h5>{data.title}</h5>
-                    <h4>Rp{data.price}</h4>
+                    <h4>{intToRupiah(data.price)}</h4>
                 </div>
             </div>
         </Link>

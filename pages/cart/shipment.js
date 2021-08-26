@@ -7,6 +7,7 @@ import Testing from "../../components/AuthSystem/Location/CreateAdress";
 import StoreOrder from "../../components/Shipment/StoreOrder";
 import axios from "../../utils/axios";
 import { RemoveShipment } from "../../actions/OrderActions";
+import { intToRupiah } from "../../utils/convert";
 
 const shipment = () => {
 	const router = useRouter();
@@ -59,10 +60,10 @@ const shipment = () => {
 				);
 			})}
 			<p>
-				total product({cartItemCount}) : {cartTotal}
+				total product({cartItemCount}) : {intToRupiah(cartTotal)}
 			</p>
-			<p>total ongkir : {data.ongkir}</p>
-			<p>total : {cartTotal + data.ongkir}</p>
+			<p>total ongkir : {intToRupiah(data.ongkir)}</p>
+			<p>total : {intToRupiah(cartTotal + data.ongkir)}</p>
 			<button onClick={() => onSubmit()}>Order</button>
 		</>
 	);

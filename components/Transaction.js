@@ -6,7 +6,8 @@ const Transaction = ({ data }) => {
 
 	return (
 		<div className={style.container}>
-			<div className={style.head}>
+			<div cla
+			ssName={style.head}>
 				<b>{create_at}</b>
 				<span>{order_status}</span>
 				<p>{order_key}</p>

@@ -8,6 +8,7 @@ import { addToCart, reduceQuantity, removeFromCart } from "../../lib/CartUtils";
 import { bookMarkProduct } from "../../actions/user";
 import { srcImage } from "../../utils/url";
 import { useRouter } from "next/dist/client/router";
+import { intToRupiah } from "../../utils/convert";
 
 const CartItem = ({ product, quantity, selectItem, onCheck }) => {
   const router = useRouter();
@@ -36,7 +37,7 @@ const CartItem = ({ product, quantity, selectItem, onCheck }) => {
           <div className={Cart.title}>
             <h3>{product.title}</h3>
             <span>{product.varian}</span>
-            <h4>Rp{product.price}</h4>
+            <h4>{intToRupiah(product.price)}</h4>
           </div>
           <div className={Cart.right}>
             <div className={Cart.action}>

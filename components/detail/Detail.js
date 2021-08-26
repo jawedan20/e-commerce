@@ -7,6 +7,7 @@ import Delivery from "../../components/detail/Delivery";
 import Review from "./review/ReviewRoot";
 import Bottom from "../../components/detail/Bottom";
 import StarIcon from "@material-ui/icons/Star";
+import { intToRupiah } from "../../utils/convert";
 
 const detail = ({ data }) => {
   const [key, setKey] = useState(0);
@@ -28,7 +29,7 @@ const detail = ({ data }) => {
               </span>
             </p>
             {/* error handle nama na */}
-            <h2 className={style.price}>Rp{data.varian[key].price}</h2>
+            <h2 className={style.price}>{intToRupiah(data.varian[key].price)}</h2>
             <Divider style={{ marginBottom: "25px", marginTop: "20px" }} />
             <h4>
               Variant: <span>{data.varian[key].name}</span>

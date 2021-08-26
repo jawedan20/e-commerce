@@ -5,6 +5,7 @@ import { addFormToCart } from "../../lib/CartUtils";
 import { useState } from "react";
 import {  srcImage } from "../../utils/url";
 import { addBuyNow } from "../../actions/OrderActions";
+import { intToRupiah } from "../../utils/convert";
 
 const Bottom = ({ data, index }) => {
 	const dispatch = useDispatch();
@@ -54,7 +55,7 @@ const Bottom = ({ data, index }) => {
 			</div>
 			<div className={style.price}>
 				<p>Total Price:</p>
-				<h4>Rp{varian.price * quantity}</h4>
+				<h4>{intToRupiah(varian.price * quantity)}</h4>
 			</div>
 			<button
 				onClick={() => dispatch(addFormToCart(auth, product,quantity))}

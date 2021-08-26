@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { srcImage } from "../../utils/url";
+import { intToRupiah } from "../../utils/convert";
 
 const OrderItem = ({data}) => {
     const matches = useMediaQuery("(max-width:800px)");
@@ -20,7 +21,7 @@ const OrderItem = ({data}) => {
         </div>
         <div className={style.total}>
           <p>Total Price</p>
-          <h4>Rp {product.price * quantity}</h4>
+          <h4> {intToRupiah(product.price * quantity)}</h4>
         </div>
       </div>
     )

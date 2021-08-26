@@ -1,5 +1,6 @@
 import Image from "next/image";
 import pop from "../../styles/pop.module.css";
+import { intToRupiah } from "../../utils/convert";
 import { srcImage } from "../../utils/url";
 
 const CartItemPop = ({product,quantity}) => {
@@ -11,7 +12,7 @@ const CartItemPop = ({product,quantity}) => {
           <h4>{product.title}</h4>
           <span>{product.varian}</span><br/>
         </div>
-        <p className={pop.price}>{quantity} x Rp{product.price}</p>
+        <p className={pop.price}>{quantity} x {intToRupiah(product.price)}</p>
       </div>
     </>
   );
