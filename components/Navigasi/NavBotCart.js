@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { addShipment } from "../../actions/OrderActions";
 import { countCart } from "../../lib/CartUtils";
 import nav from "../../styles/navbotcart.module.css";
+import { intToRupiah } from "../../utils/convert";
 
 const NavBotCart = ({ cartList }) => {
   const dispatch = useDispatch()
@@ -23,7 +24,7 @@ const NavBotCart = ({ cartList }) => {
 				<div className={nav.content}>
 					<div className={nav.price}>
 						<p>Total</p>
-						<p className={nav.Price}>Rp{cartTotal}</p>
+						<p className={nav.Price}>{intToRupiah(cartTotal)}</p>
 					</div>
 					<button onClick={() =>checkOutShipment() }>Checkout ({cartItemCount})</button>
 				</div>

@@ -9,7 +9,7 @@ const Product = ({ data, image }) => {
         <Link href={data.store.name + "/" +data.slug}>
             <div className={style.container}>
                 <Image
-                    src={srcImage(data.thumb.image)}
+                    src={srcImage(data.thumb?.image)}
                     width="fit-content"
                     height="fit-content"
                     className={style.image}

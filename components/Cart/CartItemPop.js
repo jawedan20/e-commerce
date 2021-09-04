@@ -7,7 +7,7 @@ const CartItemPop = ({product,quantity}) => {
   return (
     <>
       <div className={pop.item}>
-        <Image src={srcImage(product.thumb[0].image)} width={50} height={50} />
+        <Image src={srcImage(Array.isArray(product.thumb) ? product.thumb[0].image : product.thumb.image)} width={50} height={50} />
         <div className={pop.title}>
           <h4>{product.title}</h4>
           <span>{product.varian}</span><br/>

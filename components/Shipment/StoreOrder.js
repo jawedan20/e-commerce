@@ -31,7 +31,11 @@ const StoreOrder = ({ data, store, address, setData }) => {
 						<>
 							<p>{item.product.title}</p>
 							<img
-								src={srcImage(item.product.thumb[0].image)}
+								src={srcImage(
+									Array.isArray(item.product.thumb)
+										? item.product.thumb[0].image
+										: item.product.thumb.image
+								)}
 								alt="image"
 								width={50}
 								height={50}

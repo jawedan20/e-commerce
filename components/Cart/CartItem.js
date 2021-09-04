@@ -30,7 +30,7 @@ const CartItem = ({ product, quantity, selectItem, onCheck }) => {
           <Image
             width="80px"
             height="80px"
-            src={srcImage(product.thumb[0].image)}
+            src={srcImage(Array.isArray(product.thumb) ? product.thumb[0].image : product.thumb.image)}
           />
         </div>
         <div className={Cart.body}>
