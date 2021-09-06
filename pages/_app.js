@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { getCookie } from "../utils/cookies";
 import { fetchCartAction } from "../actions/Cart";
 import { whoami } from "../actions/user";
-import { firebaseCloudMessaging } from "../utils/webPush";
+import { firebaseCloudMessaging } from "../services/webPush";
 import { fecthNotification } from "../actions/NotificationActions";
 import "../styles/globals.css";
 

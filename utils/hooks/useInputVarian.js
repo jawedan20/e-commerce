@@ -1,26 +1,6 @@
 import { useState } from "react";
 import { toBase64, verifyFile } from "../base64";
-/* 
-varian:[
-            {
-            name:"sm",
-            stock:"10",
-            price:"5000000",
-            image:{
-                image:"file image"
-             }
-            },
-            {
-            name:"xl",
-            stock:"10",
-            price:"5000000"
-            image:{#image opsional
-                image:"file image"
-             }
-            }
-            
-        ]
-*/
+
 const useInputVarian = (initialState) => {
   const [data, setData] = useState(initialState); // data utama []
 

@@ -5,6 +5,7 @@ import Link from "next/link"
 import { intToRupiah } from "../utils/convert";
 
 const Product = ({ data, image }) => {
+    console.log(data)
     return (
         <Link href={data.store.name + "/" +data.slug}>
             <div className={style.container}>
