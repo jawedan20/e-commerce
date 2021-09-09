@@ -1,6 +1,8 @@
 import firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/firestore";
 
-const config = {
+const firebaseConfig = {
 	apiKey: "AIzaSyAoHiKZD-hGj8rfuK4_iWWJK6KV6qNVX5s",
 	authDomain: "e-commerce-cd481.firebaseapp.com",
 	projectId: "e-commerce-cd481",
@@ -10,7 +12,6 @@ const config = {
 	measurementId: "G-R0ZNQV8FVJ",
 };
 
-firebase.initializeApp(config);
 
-export const messaging = firebase.messaging()
-export const firestore = firebase.firestore();
+export default !firebase.apps.length ? firebase.initializeApp(firebaseConfig) : firebase.app();
+

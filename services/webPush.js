@@ -1,6 +1,7 @@
+import "firebase/messaging";
+import firebase from "./firebase";
 import { getCookie, setCookie } from "../utils/cookies";
 import axios from "../utils/axios";
-import { messaging } from "./firebaseSetup";
 
 const firebaseCloudMessaging = {
 	//checking whether token is available in indexed DB
@@ -21,6 +22,7 @@ const firebaseCloudMessaging = {
 		return newCookie;
 	},
 	getMessage: function () {
+		const messaging = firebase.messaging();
 		// Handle incoming messages. Called when:
 		// - a message is received while the app has focus
 		// - the user clicks on an app notification created by a service worker
@@ -35,6 +37,7 @@ const firebaseCloudMessaging = {
 
 	init: async function () {
 		try {
+			const messaging = firebase.messaging();
 			const tokenInCookie = await this.tokenInCookie();
 
 			//if FCM token is already there just return the token
