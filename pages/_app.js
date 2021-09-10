@@ -7,15 +7,17 @@ import { getCookie } from "../utils/cookies";
 import { fetchCartAction } from "../actions/Cart";
 import { whoami } from "../actions/user";
 import { firebaseCloudMessaging } from "../services/webPush";
-import { fecthNotification } from "../actions/NotificationActions";
 import "../styles/globals.css";
+import firestore from "../services/firestore";
 
 function MyApp({ Component, pageProps }) {
 	const dispatch = useDispatch();
 	const auth = useSelector((state) => state.user.is_auth);
+
 	// const { notifications } = useSelector((state) => state.notification);
 
 	useEffect(() => {
+		
 		async function setToken() {
 			try {
 				const token = await firebaseCloudMessaging.init();

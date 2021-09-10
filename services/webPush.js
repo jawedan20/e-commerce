@@ -1,4 +1,5 @@
 import "firebase/messaging";
+<<<<<<< HEAD
 import firebase from "firebase/app";
 import { getCookie, setCookie } from "../utils/cookies";
 import axios from "../utils/axios";
@@ -12,6 +13,11 @@ export const firebaseConfig = {
 	appId: "1:868424335775:web:da79c218ad68b83a6f7daa",
 	measurementId: "G-R0ZNQV8FVJ",
 };
+=======
+import firebase from "./firebase";
+import { getCookie, setCookie } from "../utils/cookies";
+import axios from "../utils/axios";
+>>>>>>> 5fc10a291c0f179ae9ee4ada6803f7e8cfd72b3f
 
 const firebaseCloudMessaging = {
 	//checking whether token is available in indexed DB
@@ -32,6 +38,7 @@ const firebaseCloudMessaging = {
 		return newCookie;
 	},
 	getMessage: function () {
+<<<<<<< HEAD
 		if (!firebase.apps.length) {
 			firebase.initializeApp(firebaseConfig);
 			const messaging = firebase.messaging();
@@ -45,15 +52,33 @@ const firebaseCloudMessaging = {
 				appendMessage(payload);
 			});
 		}
+=======
+		const messaging = firebase.messaging();
+		// Handle incoming messages. Called when:
+		// - a message is received while the app has focus
+		// - the user clicks on an app notification created by a service worker
+		//   `messaging.onBackgroundMessage` handler.
+		messaging.onMessage((payload) => {
+			console.log("Message received. ", payload);
+			// Update the UI to include the received message.
+			appendMessage(payload);
+		});
+>>>>>>> 5fc10a291c0f179ae9ee4ada6803f7e8cfd72b3f
 	},
 	//initializing firebase app
 
 	init: async function () {
+<<<<<<< HEAD
 		if (!firebase.apps.length) {
 			firebase.initializeApp(firebaseConfig);
 			try {
 				const messaging = firebase.messaging();
 				const tokenInCookie = await this.tokenInCookie();
+=======
+		try {
+			const messaging = firebase.messaging();
+			const tokenInCookie = await this.tokenInCookie();
+>>>>>>> 5fc10a291c0f179ae9ee4ada6803f7e8cfd72b3f
 
 				//if FCM token is already there just return the token
 				if (tokenInCookie.length > 0) {
