@@ -1,5 +1,3 @@
-<<<<<<< HEAD:services/firebaseSetup.js
-=======
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
@@ -16,5 +14,3 @@ const firebaseConfig = {
 
 
 export default !firebase.apps.length ? firebase.initializeApp(firebaseConfig) : firebase.app();
-
->>>>>>> 5fc10a291c0f179ae9ee4ada6803f7e8cfd72b3f:services/firebase.js

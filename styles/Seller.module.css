@@ -58,10 +58,15 @@
     align-items: center;
     padding: 10px 13px;
 }
-
+.navSide span{
+    margin-left: 10px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+}
 .navSide:hover {
     background-color: aliceblue;
-    border-left: #0094da 3px solid;
+    border-left: 3px #0094da solid;
     color: #0094da;
 }
 .income {
@@ -70,7 +75,20 @@
 .income p {
     display: flex;
     justify-content: space-between;
+    color: #666666;
+    font-size: 0.9rem;
+}
+.income span{
+    color: #444444;
+    font-weight: 500;
 }
 .detail{
     margin-left:10px;
+}
+.detail h4{
+  color: #444444;
+}
+.detail p{
+    font-size: 0.85rem;
+    color: #444444;
 }

@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import style from "../../../styles/Seller.module.css"
 
 function ActiveLink({ children, href, type }) {
   const router = useRouter();
@@ -19,6 +20,10 @@ function ActiveLink({ children, href, type }) {
   const bottom ={
     color: router.asPath === href ? "#4999f5" : "",
   }
+  const side = {
+    borderLeft: router.asPath === href ? "#0094da 3px solid" : "",
+    color: router.asPath === href ? "#0094da" : "",
+  }
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -29,7 +34,8 @@ function ActiveLink({ children, href, type }) {
     <a
       href={href}
       onClick={handleClick}
-      style={type == "link" ? link : type == "bottom" ? bottom : subLink}
+      style={type == "link" ? link : type == "bottom" ? bottom : type == "subLink" ? subLink : side}
+      className={type == "side" ? style.navSide : ""}
     >
       {children}
     </a>

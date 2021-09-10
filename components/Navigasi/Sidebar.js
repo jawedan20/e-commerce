@@ -1,6 +1,8 @@
 import style from "../../styles/Seller.module.css";
-import DashboardIcon from "@material-ui/icons/Dashboard";
+import DashboardIcon from '@material-ui/icons/DashboardOutlined';
 import { Avatar, Divider } from "@material-ui/core";
+import ActiveLink from "../utils/ActiveLink/ActiveLink";
+import ShopIcon from '@material-ui/icons/ShopTwoOutlined';
 const Sidebar = () => {
     return (
         <div className={style.sidebar}>
@@ -13,27 +15,31 @@ const Sidebar = () => {
                 <Avatar />
                 <div className={style.detail}>
                     <h4>nama toko</h4>
-                    <h6>pemilik toko</h6>
+                    <p>pemilik toko</p>
                 </div>
             </div>
-            <Divider variant="middle" style={{marginTop:"13px"}} />
+            <Divider variant="middle" style={{ marginTop: "13px" }} />
             <div className={style.income}>
-                <p>Balance <span>12</span></p>
-                <p>Salary <span>12</span></p>
+                <p>
+                    Balance <span>Rp12</span>
+                </p>
+                <p>
+                    Salary <span>12</span>
+                </p>
             </div>
-            <Divider variant="middle" style={{marginBottom:"13px"}} />
-            <div className={style.navSide}>
-                <DashboardIcon />
-                <span>Dashboard</span>
-            </div>
-            <div className={style.navSide}>
-                <DashboardIcon />
+            <Divider variant="middle" style={{ marginBottom: "13px" }} />
+            <ActiveLink href="/user/store" type="side">
+                    <DashboardIcon />
+                    <span>Dashboard</span>
+            </ActiveLink>
+            <ActiveLink href="/user/store/product" type="side">
+                <ShopIcon />
                 <span>Product</span>
-            </div>
-            <div className={style.navSide}>
+            </ActiveLink>
+            <ActiveLink href="/user/store/order" type="side">
                 <DashboardIcon />
                 <span>Order</span>
-            </div>
+            </ActiveLink>
         </div>
     );
 };
