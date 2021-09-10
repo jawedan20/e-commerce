@@ -1,0 +1,76 @@
+/* layout style */
+.sellerPage {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.children {
+    position: relative;
+    margin-top: 70px;
+}
+
+/* navigasi style */
+.nav {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    width: 100vw;
+    height: 18vh;
+    background-color: #0094da;
+    color: white;
+    padding: 0 23px;
+}
+.navRight {
+    display: flex;
+    align-items: center;
+    height: 50%;
+}
+
+/* sidebar style */
+.sidebar {
+    top: 0;
+    left: 0;
+    background-color: white;
+    width: 250px;
+    height: 100vh;
+    box-shadow: 0 2px 4px 0 rgba(216, 216, 216, 0.5);
+}
+.headSidebar {
+    padding: 10px 0;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.headSidebar h1 {
+    color: #0094da;
+    word-spacing: -5px;
+}
+.headSidebar h1 span {
+    color: rgb(107, 107, 107);
+    font-weight: 400;
+    text-shadow: 1px 1px rgb(172, 171, 171);
+    font-size: 0.9rem;
+    vertical-align: top;
+}
+.navSide,
+.profileSide {
+    display: flex;
+    align-items: center;
+    padding: 10px 13px;
+}
+
+.navSide:hover {
+    background-color: aliceblue;
+    border-left: #0094da 3px solid;
+    color: #0094da;
+}
+.income {
+    padding: 12px 15px;
+}
+.income p {
+    display: flex;
+    justify-content: space-between;
+}
+.detail{
+    margin-left:10px;
+}

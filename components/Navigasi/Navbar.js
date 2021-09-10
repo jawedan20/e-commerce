@@ -28,7 +28,7 @@ export const Navbar = () => {
   return (
     <div
       hidden={
-        router.asPath === "/login" || router.asPath === "/register"
+        router.asPath === "/login" || router.asPath === "/register" || router.asPath.includes("/store")
           ? true
           : false
       }
