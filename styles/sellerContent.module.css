@@ -1,0 +1,80 @@
+.content {
+    margin-top: -50px;
+    padding: 0 25px;
+}
+/* dashboard seller */
+.container {
+    margin-bottom: 20px;
+    display: flex;
+    grid-gap: 1vw;
+    color: #444444;
+}
+.container h5 {
+    color: #888888;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+.container h1 {
+    font-weight: 600;
+}
+.box,
+.box1,
+.boxMoney {
+    background: white;
+    box-shadow: 0 0 3px rgb(184, 184, 184);
+    max-width: 100%;
+    border-radius: 5px;
+    display: flex;
+    padding: 0 20px;
+}
+.box {
+    width: 22%;
+    flex-direction: column;
+    justify-content: center;
+    height: 120px;
+}
+.box1 {
+    width: 34%;
+    justify-content: space-between;
+    align-items: center;
+    height: 120px;
+}
+.boxMoney {
+    width: 50%;
+    height: 100px;
+    align-items: center;
+    justify-content: space-between;
+}
+.boxMoney h1,
+.boxMoney h5 {
+    direction: rtl;
+}
+.boxIcon {
+    background-color: #0094da;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}
+
+/* product seller*/
+.paper {
+    margin: -50px 25px 0 25px;
+    background: white;
+    box-shadow: 0 0 3px rgb(184, 184, 184);
+}
+.head{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    color: #444444;
+    margin-bottom: 10px;
+}
+.head button{
+    border: none;
+    color:white;
+    background: #0094da;
+    padding:10px 15px;
+    border-radius: 10px;
+    font-weight: 700;
+}

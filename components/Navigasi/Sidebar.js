@@ -8,7 +8,7 @@ const Sidebar = () => {
         <div className={style.sidebar}>
             <div className={style.headSidebar}>
                 <h1>
-                    LOGO<span>Seller</span>
+                    LOGO&nbsp;<span>Seller</span>
                 </h1>
             </div>
             <div className={style.profileSide}>
@@ -18,16 +18,7 @@ const Sidebar = () => {
                     <p>pemilik toko</p>
                 </div>
             </div>
-            <Divider variant="middle" style={{ marginTop: "13px" }} />
-            <div className={style.income}>
-                <p>
-                    Balance <span>Rp12</span>
-                </p>
-                <p>
-                    Salary <span>12</span>
-                </p>
-            </div>
-            <Divider variant="middle" style={{ marginBottom: "13px" }} />
+            <Divider variant="middle" style={{ marginTop: "13px", marginBottom:"13px" }} />
             <ActiveLink href="/user/store" type="side">
                     <DashboardIcon />
                     <span>Dashboard</span>

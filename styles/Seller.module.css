@@ -1,34 +1,29 @@
 /* layout style */
-.sellerPage {
-    display: flex;
-    position: fixed;
-    top: 0;
-    left: 0;
+.children{
+    margin-left: 250px;
 }
-.children {
-    position: relative;
-    margin-top: 70px;
-}
-
 /* navigasi style */
 .nav {
     display: flex;
     flex-direction: row;
-    position: absolute;
-    width: 100vw;
+    justify-content: space-between;
     height: 18vh;
     background-color: #0094da;
     color: white;
-    padding: 0 23px;
+    padding: 0 25px;
 }
-.navRight {
+.navLeft ,.navRight{
     display: flex;
     align-items: center;
     height: 50%;
 }
+.navLeft h2{
+    margin-left: 15px;
+}
 
 /* sidebar style */
 .sidebar {
+    position: fixed;
     top: 0;
     left: 0;
     background-color: white;
@@ -49,8 +44,7 @@
     color: rgb(107, 107, 107);
     font-weight: 400;
     text-shadow: 1px 1px rgb(172, 171, 171);
-    font-size: 0.9rem;
-    vertical-align: top;
+    font-size: 1.8rem;
 }
 .navSide,
 .profileSide {
@@ -87,8 +81,31 @@
 }
 .detail h4{
   color: #444444;
+  font-weight: 500;
 }
 .detail p{
     font-size: 0.85rem;
     color: #444444;
+}
+
+@media (max-width:1000px){
+    .sidebar{
+        animation-name: sidebar;
+        animation-duration: 1.5s;
+        animation-fill-mode: forwards;
+
+    }
+    .children{
+        animation-name: child;
+        animation-duration: 1.5s;
+        animation-fill-mode: forwards;
+    }
+}
+@keyframes sidebar{
+    from {left:0;}
+    to {left:-250px;}
+}
+@keyframes child{
+    from {margin-left:250px;}
+    to {margin-left:0px;}
 }

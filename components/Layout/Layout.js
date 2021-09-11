@@ -18,7 +18,7 @@ const Layout = ({ children }) => {
       <Navbar />
       <Alert />
       <div className={
-        router.asPath === "/login" || router.asPath === "/register"
+        router.asPath === "/login" || router.asPath === "/register" || router.asPath.includes("/store")
           ? null
           : layout.children
         }

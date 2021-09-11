@@ -7,11 +7,9 @@ const LayoutSeller = ({ children }) => {
     return (
         <div className={style.sellerPage}>
             <Sidebar />
-            <div>
+            <div className={style.children}>
                 <NavSeller />
-                <Container>
-                    <div className={style.children}>{children}</div>
-                </Container>
+                {children}
             </div>
         </div>
     );

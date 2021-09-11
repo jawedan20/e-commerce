@@ -4,8 +4,8 @@ import style from "../../../styles/Seller.module.css"
 function ActiveLink({ children, href, type }) {
   const router = useRouter();
   const link = {
-    color: router.asPath === href ? "#4999f5" : "#707070",
-    background: router.asPath === href ? "white" : "none",
+    color: router.asPath.includes(href) ? "#4999f5" : "#707070",
+    background: router.asPath.includes(href) ? "white" : "none",
   };
   const subLink = {
     textAlign: "center",
@@ -22,7 +22,7 @@ function ActiveLink({ children, href, type }) {
   }
   const side = {
     borderLeft: router.asPath === href ? "#0094da 3px solid" : "",
-    color: router.asPath === href ? "#0094da" : "",
+    color: router.asPath === href ? "#0094da" : "#444444",
   }
 
   const handleClick = (e) => {
