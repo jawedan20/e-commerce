@@ -20,7 +20,7 @@ const index = () => {
         <LayoutSeller>
             <div className={style.content}>
                 <BoxDashboard data={summary} />
-                <TableInvoice data={summary && data.summary.invoice} />
+                <TableInvoice data={data && data.summary.invoice} />
             </div>
         </LayoutSeller>
     );

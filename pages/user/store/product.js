@@ -10,7 +10,7 @@ const product = () => {
     useEffect(() => {
         axios.get("api/auth/store/product").then((res) => {
             console.log(res.data);
-            setData(res.data.data);
+            setData(res.data.data.result);
         });
     }, []);
 
@@ -22,7 +22,7 @@ const product = () => {
                     <button>Add Product</button>
                 </div>
                 <Divider />
-                <TableProduct />
+                <TableProduct data={data} />
             </div>
         </LayoutSeller>
     );

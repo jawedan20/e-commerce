@@ -1,6 +1,7 @@
 /* layout style */
 .children{
     margin-left: 250px;
+    cursor: default;
 }
 /* navigasi style */
 .nav {
@@ -30,6 +31,7 @@
     width: 250px;
     height: 100vh;
     box-shadow: 0 2px 4px 0 rgba(216, 216, 216, 0.5);
+    cursor: default;
 }
 .headSidebar {
     padding: 10px 0;

@@ -1,5 +1,5 @@
 .content {
-    margin-top: -50px;
+    margin-top: -40px;
     padding: 0 25px;
 }
 /* dashboard seller */
@@ -58,7 +58,7 @@
 
 /* product seller*/
 .paper {
-    margin: -50px 25px 0 25px;
+    margin: -40px 25px 0 25px;
     background: white;
     box-shadow: 0 0 3px rgb(184, 184, 184);
 }
@@ -77,4 +77,45 @@
     padding:10px 15px;
     border-radius: 10px;
     font-weight: 700;
+}
+.inputPrice{
+    display: flex;
+    background-color: #f3f4f6;
+    height: 35px;
+    max-width: 170px;
+    border: #e6e8e7 1px solid;
+    border-radius: 10px;
+}
+.inputPrice:focus-within, .input:focus{
+    border: #0094da 1px solid;
+}
+.inputPrice h4{
+    margin: 7px 10px;
+    color: #444444;
+}
+.inputPrice input{
+    border: none;
+    outline: none;
+    padding: 0 10px;
+    width: 100%;
+    border-radius: 0 10px 10px 0;
+}
+.one {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    color: #444444;
+}
+.input{
+    outline: none;
+    height:35px;
+    border: #e6e8e7 1px solid;
+    border-radius: 10px;
+    max-width: 100px;
+    padding: 0 10px;
+
+}
+.name{
+    margin-left: 15px;
+    max-width: 230px;
 }
