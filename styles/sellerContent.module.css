@@ -55,7 +55,27 @@
     border-radius: 5px;
     color: white;
 }
-
+.dateOrder{
+    font-size: 0.7rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #444444;
+}
+.dateOrder span{
+    font-size: 0.7rem;
+    color: #0094da;
+    cursor: pointer;
+}
+.dateOrder span:hover{
+    text-decoration: underline;
+}
+.menuHead{
+    text-align: center;
+    font-size: small;
+}
+.menu{
+    max-height: 100px;
+}
 /* product seller*/
 .paper {
     margin: -40px 25px 0 25px;

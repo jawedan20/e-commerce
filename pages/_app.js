@@ -30,7 +30,7 @@ function MyApp({ Component, pageProps }) {
 		}
 		
 		if (auth) {
-			setToken();
+			// setToken();
 			const cart = getCookie("cart");
 			if (!cart) dispatch(fetchCartAction());
 			return () => cart;

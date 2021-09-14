@@ -7,6 +7,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import { NoSsr } from "@material-ui/core";
 
 const StyledTableRow = withStyles((theme) => ({
     root: {
@@ -25,35 +26,37 @@ export default function TableInvoice({ data }) {
     const classes = useStyles();
     return (
         <TableContainer component={Paper}>
-            <Table className={classes.table} aria-label="simple table">
-                <TableHead>
-                    <StyledTableRow>
-                        <TableCell colSpan={2}>
-                            <b>Invoices</b>
-                        </TableCell>
-                        <TableCell align="right" colSpan={2}>
-                            <a href="/user/store/order">View More</a>
-                        </TableCell>
-                    </StyledTableRow>
-                    <StyledTableRow>
-                        <TableCell>Invoice ID</TableCell>
-                        <TableCell>Customer</TableCell>
-                        <TableCell>Order Status</TableCell>
-                        <TableCell>Date</TableCell>
-                    </StyledTableRow>
-                </TableHead>
-                <TableBody>
-                    {data &&
-                        data.map((item) => (
-                            <StyledTableRow key={item.order_key}>
-                                <TableCell size="medium">{item.order_key}</TableCell>
-                                <TableCell>{item.customer}</TableCell>
-                                <TableCell>{item.order_status}</TableCell>
-                                <TableCell>{item.create_at}</TableCell>
-                            </StyledTableRow>
-                        ))}
-                </TableBody>
-            </Table>
+            <NoSsr>
+                <Table className={classes.table} aria-label="simple table">
+                    <TableHead>
+                        <StyledTableRow>
+                            <TableCell colSpan={2}>
+                                <b>Invoices</b>
+                            </TableCell>
+                            <TableCell align="right" colSpan={2}>
+                                <a href="/user/store/order">View More</a>
+                            </TableCell>
+                        </StyledTableRow>
+                        <StyledTableRow>
+                            <TableCell>Invoice ID</TableCell>
+                            <TableCell>Customer</TableCell>
+                            <TableCell>Order Status</TableCell>
+                            <TableCell>Date</TableCell>
+                        </StyledTableRow>
+                    </TableHead>
+                    <TableBody>
+                        {data &&
+                            data.map((item) => (
+                                <StyledTableRow key={item.order_key}>
+                                    <TableCell size="medium">{item.order_key}</TableCell>
+                                    <TableCell>{item.customer}</TableCell>
+                                    <TableCell>{item.order_status}</TableCell>
+                                    <TableCell>{item.create_at}</TableCell>
+                                </StyledTableRow>
+                            ))}
+                    </TableBody>
+                </Table>
+            </NoSsr>
         </TableContainer>
     );
 }

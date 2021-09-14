@@ -15,7 +15,7 @@ import { useSelector } from "react-redux";
 import { baseUrl, srcImage } from "../../utils/url";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
-export const Navbar = () => {
+const Navbar = () => {
   const matches = useMediaQuery('(min-width:700px)');
   const router = useRouter();
   const user = useSelector((state) => state.user.is_auth);
@@ -113,3 +113,5 @@ export const Navbar = () => {
     </div>
   );
 };
+
+export default Navbar

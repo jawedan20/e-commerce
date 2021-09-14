@@ -31,13 +31,12 @@ function Row({ row }) {
     const classes = useRowStyles();
     let stock = 0;
     let price = new Array();
-    for (let i = 0; i < row.varian.length; i++) {
-        price[i] = row.varian[i].price;
-    }
+
     for (let i = 0; i < row.varian.length; i++) {
         stock += row.varian[i].stock;
+        price[i] = row.varian[i].price;
     }
-    console.log(price);
+
     return (
         <React.Fragment>
             <TableRow className={classes.root} key={row.id}>
@@ -93,7 +92,7 @@ function Row({ row }) {
                                 <Table size="small" aria-label="purchases">
                                     <TableBody>
                                         {row.varian.map((variant) => (
-                                            <TableRow key={variant.id}>
+                                            <TableRow className={classes.root} key={variant.id}>
                                                 <TableCell width="36%" component="th" scope="row">
                                                     {variant.name}
                                                 </TableCell>
@@ -102,14 +101,14 @@ function Row({ row }) {
                                                         <h4>Rp</h4>
                                                         <input
                                                             type="number"
-                                                            value={variant.price}
+                                                            defaultValue={variant.price}
                                                         />
                                                     </div>
                                                 </TableCell>
                                                 <TableCell>
                                                     <input
                                                         className={style.input}
-                                                        value={variant.stock}
+                                                        defaultValue={variant.stock}
                                                         type="number"
                                                     />
                                                 </TableCell>
@@ -143,7 +142,7 @@ export default function TableProduct({ data }) {
 
     return (
         <TableContainer component={Paper}>
-            <Table className={classes.table} aria-label="simple table">
+            <Table aria-label="simple table">
                 <TableHead>
                     <TableRow>
                         <TableCell width="45%">
