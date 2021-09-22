@@ -99,7 +99,7 @@ export const removeFromCartAction = (productId) => (dispatch) => {
 };
 
 export const removeFromCartAuthAction = (productId) => (dispatch) => {
-	axiosInstance.post(`api/cart/delete/`, [productId]).then((res) => {
+	axiosInstance.delete(`api/cart/${productId}/delete/`).then((res) => {
 		dispatch({
 			type: types.REMOVE_CART,
 			payload: productId,

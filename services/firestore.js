@@ -5,6 +5,18 @@ export default class firestore {
 	static channels = firebase.firestore().collection("channels");
 	static message = firebase.firestore().collection("message");
 
+	static getChannelByUser = async (user_id) => {
+		const channel = await this.channels.where(
+			"member",
+			"array-contains",
+			user_id
+		).get()
+		const data = []
+		channel.docs.forEach((item) => data.push(item.data()));
+		console.log(data)
+		return data
+	};
+
 	static getMessageBychannels = async (user_1, user_2) => {
 		let id_channel;
 		const channels = await this.channels
